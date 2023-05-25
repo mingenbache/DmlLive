@@ -172,14 +172,14 @@ final parametersBuilderMap =
   'Chat': (data) async => ParameterData(
         allParams: {
           'chatUser': await getDocumentParameter<UsersRecord>(
-              data, 'chatUser', UsersRecord.serializer),
+              data, 'chatUser', UsersRecord.fromSnapshot),
           'chatRef': getParameter<DocumentReference>(data, 'chatRef'),
         },
       ),
   'TechnologistTestDeck': (data) async => ParameterData(
         allParams: {
           'bookedTest': await getDocumentParameter<BookedTestsRecord>(
-              data, 'bookedTest', BookedTestsRecord.serializer),
+              data, 'bookedTest', BookedTestsRecord.fromSnapshot),
         },
       ),
   'BookingReport': (data) async => ParameterData(

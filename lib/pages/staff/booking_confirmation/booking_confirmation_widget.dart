@@ -121,6 +121,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
             child: Scaffold(
               key: scaffoldKey,
               body: SafeArea(
+                top: true,
                 child: Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Container(
@@ -901,7 +902,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                         child:
                                                                             AutoSizeText(
                                                                           bookingConfirmationBookingsRecord
-                                                                              .docNameAddress!,
+                                                                              .docNameAddress,
                                                                           textAlign:
                                                                               TextAlign.center,
                                                                           style: FlutterFlowTheme.of(context)
@@ -1094,8 +1095,6 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                               FormFieldController<String>(null),
                                                                           options: refDoctorDoctorsRecordList
                                                                               .map((e) => e.name)
-                                                                              .withoutNulls
-                                                                              .toList()
                                                                               .toList(),
                                                                           onChanged: (val) =>
                                                                               setState(() => _model.refDoctorValue = val),
@@ -1427,7 +1426,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                         child:
                                                                             Text(
                                                                           bookingConfirmationBookingsRecord
-                                                                              .emailaddress!,
+                                                                              .emailaddress,
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
@@ -1529,7 +1528,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                         child:
                                                                             Text(
                                                                           bookingConfirmationBookingsRecord
-                                                                              .phonenumber!,
+                                                                              .phonenumber,
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
@@ -1717,7 +1716,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                               Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                 child: Text(
-                                                                                  bookingConfirmationBookingsRecord.sex!,
+                                                                                  bookingConfirmationBookingsRecord.sex,
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -1827,7 +1826,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                           builder: (context) {
                                                             final testFormImages =
                                                                 bookingConfirmationBookingsRecord
-                                                                    .formImages!
+                                                                    .formImages
                                                                     .toList();
                                                             return Wrap(
                                                               spacing: 5.0,
@@ -2044,7 +2043,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                       child:
                                                                           Text(
                                                                         bookingConfirmationBookingsRecord
-                                                                            .diagnosis!,
+                                                                            .diagnosis,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
@@ -2180,8 +2179,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                       ),
                                                                 ),
                                                                 if (bookingConfirmationBookingsRecord
-                                                                        .testPackages!
-                                                                        .toList()
+                                                                        .testPackages
                                                                         .length >
                                                                     0)
                                                                   Container(
@@ -2206,7 +2204,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                             MainAxisSize.max,
                                                                         children: [
                                                                           Text(
-                                                                            bookingConfirmationBookingsRecord.testPackages!.toList().length.toString(),
+                                                                            bookingConfirmationBookingsRecord.testPackages.length.toString(),
                                                                             textAlign:
                                                                                 TextAlign.center,
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2223,8 +2221,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                               ],
                                                             ),
                                                             if (bookingConfirmationBookingsRecord
-                                                                    .hasTestPackages ??
-                                                                true)
+                                                                .hasTestPackages)
                                                               Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
@@ -2261,7 +2258,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                       builder:
                                                                           (context) {
                                                                         final packagesList = bookingConfirmationBookingsRecord
-                                                                            .testPackages!
+                                                                            .testPackages
                                                                             .toList();
                                                                         return ListView
                                                                             .builder(
@@ -2341,7 +2338,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                                       children: [
                                                                                                         Text(
-                                                                                                          bookingTestPackageItemTestPackagesRecord.packageName!,
+                                                                                                          bookingTestPackageItemTestPackagesRecord.packageName,
                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                 fontFamily: 'Open Sans',
                                                                                                                 color: FlutterFlowTheme.of(context).primaryBackground,
@@ -2366,7 +2363,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                                         ),
                                                                                                       ),
                                                                                                       Text(
-                                                                                                        bookingTestPackageItemTestPackagesRecord.price!.toString(),
+                                                                                                        bookingTestPackageItemTestPackagesRecord.price.toString(),
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                               fontFamily: 'Open Sans',
                                                                                                               color: FlutterFlowTheme.of(context).primaryBackground,
@@ -2382,11 +2379,11 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                                           final bookingsUpdateData = {
                                                                                                             ...createBookingsRecordData(
                                                                                                               totalPrice: functions.removeFromCart(bookingConfirmationBookingsRecord.totalPrice, bookingTestPackageItemTestPackagesRecord.price),
-                                                                                                              paymentBalance: functions.returnBookingBalance(bookingTestPackageItemTestPackagesRecord.price?.toDouble(), bookingConfirmationBookingsRecord.paymentBalance),
+                                                                                                              paymentBalance: functions.returnBookingBalance(bookingTestPackageItemTestPackagesRecord.price.toDouble(), bookingConfirmationBookingsRecord.paymentBalance),
                                                                                                             ),
-                                                                                                            'total_tests': FieldValue.increment(-(bookingTestPackageItemTestPackagesRecord.testsIncluded!.toList().length)),
+                                                                                                            'total_tests': FieldValue.increment(-(bookingTestPackageItemTestPackagesRecord.testsIncluded.length)),
                                                                                                             'testPackages': FieldValue.arrayRemove([packagesListItem]),
-                                                                                                            'testPackTests': functions.removeTestsfromList(bookingTestPackageItemTestPackagesRecord.testsIncluded!.toList(), bookingConfirmationBookingsRecord.testPackTests!.toList()),
+                                                                                                            'testPackTests': functions.removeTestsfromList(bookingTestPackageItemTestPackagesRecord.testsIncluded.toList(), bookingConfirmationBookingsRecord.testPackTests.toList()),
                                                                                                           };
                                                                                                           await bookingConfirmationBookingsRecord.reference.update(bookingsUpdateData);
                                                                                                           ScaffoldMessenger.of(context).showSnackBar(
@@ -2414,7 +2411,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                           ),
                                                                                           Builder(
                                                                                             builder: (context) {
-                                                                                              final packageTests = bookingTestPackageItemTestPackagesRecord.testsIncluded!.toList();
+                                                                                              final packageTests = bookingTestPackageItemTestPackagesRecord.testsIncluded.toList();
                                                                                               return ListView.builder(
                                                                                                 padding: EdgeInsets.zero,
                                                                                                 shrinkWrap: true,
@@ -2481,7 +2478,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                                                         children: [
                                                                                                                           Text(
-                                                                                                                            packageTestItemTestsRecord.name!,
+                                                                                                                            packageTestItemTestsRecord.name,
                                                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                                   fontFamily: 'Open Sans',
                                                                                                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -2538,8 +2535,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                       ),
                                                                 ),
                                                                 if (bookingConfirmationBookingsRecord
-                                                                        .testsIncluded!
-                                                                        .toList()
+                                                                        .testsIncluded
                                                                         .length >
                                                                     0)
                                                                   Container(
@@ -2564,7 +2560,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                             MainAxisSize.max,
                                                                         children: [
                                                                           Text(
-                                                                            bookingConfirmationBookingsRecord.testsIncluded!.toList().length.toString(),
+                                                                            bookingConfirmationBookingsRecord.testsIncluded.length.toString(),
                                                                             textAlign:
                                                                                 TextAlign.center,
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2604,7 +2600,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                     builder:
                                                                         (context) {
                                                                       final testsList = bookingConfirmationBookingsRecord
-                                                                          .testsIncluded!
+                                                                          .testsIncluded
                                                                           .toList();
                                                                       return ListView
                                                                           .builder(
@@ -2683,7 +2679,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                 children: [
                                                                                                   Text(
-                                                                                                    bookingTestItemTestsRecord.name!,
+                                                                                                    bookingTestItemTestsRecord.name,
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                           fontFamily: 'Roboto',
                                                                                                           color: FlutterFlowTheme.of(context).primaryText,
@@ -2708,7 +2704,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                                   ),
                                                                                                 ),
                                                                                                 Text(
-                                                                                                  bookingTestItemTestsRecord.price!.toString(),
+                                                                                                  bookingTestItemTestsRecord.price.toString(),
                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                         fontFamily: 'Open Sans',
                                                                                                         color: FlutterFlowTheme.of(context).primaryText,
@@ -2784,8 +2780,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                       ),
                                                                 ),
                                                                 if (bookingConfirmationBookingsRecord
-                                                                        .specialTests!
-                                                                        .toList()
+                                                                        .specialTests
                                                                         .length >
                                                                     0)
                                                                   Container(
@@ -2810,7 +2805,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                             MainAxisSize.max,
                                                                         children: [
                                                                           Text(
-                                                                            bookingConfirmationBookingsRecord.specialTests!.toList().length.toString(),
+                                                                            bookingConfirmationBookingsRecord.specialTests.length.toString(),
                                                                             textAlign:
                                                                                 TextAlign.center,
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2841,7 +2836,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                       (context) {
                                                                     final specialtestsList =
                                                                         bookingConfirmationBookingsRecord
-                                                                            .specialTests!
+                                                                            .specialTests
                                                                             .toList();
                                                                     return ListView
                                                                         .builder(
@@ -3187,7 +3182,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                               Text(
                                                                 formatNumber(
                                                                   bookingConfirmationBookingsRecord
-                                                                      .totalPrice!,
+                                                                      .totalPrice,
                                                                   formatType:
                                                                       FormatType
                                                                           .decimal,
@@ -3347,7 +3342,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                           paymentBalance:
                                                               bookingConfirmationBookingsRecord
                                                                   .totalPrice
-                                                                  ?.toDouble(),
+                                                                  .toDouble(),
                                                           confirmationBegan:
                                                               true,
                                                           docRef:
@@ -3374,8 +3369,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                           FFAppState()
                                                                   .numTests =
                                                               bookingConfirmationBookingsRecord
-                                                                  .testsIncluded!
-                                                                  .toList()
+                                                                  .testsIncluded
                                                                   .length;
                                                         });
                                                         FFAppState().update(() {

@@ -48,6 +48,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiary,
           body: SafeArea(
+            top: true,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -324,7 +325,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                               }
                                                                               final textTestsRecord = snapshot.data!;
                                                                               return Text(
-                                                                                textTestsRecord.name!.maybeHandleOverflow(
+                                                                                textTestsRecord.name.maybeHandleOverflow(
                                                                                   maxChars: 20,
                                                                                   replacement: '…',
                                                                                 ),
@@ -509,7 +510,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                           child: Padding(
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                             child: Text(
-                                                                                              listViewTestedTestsRecord.labRefNum!,
+                                                                                              listViewTestedTestsRecord.labRefNum,
                                                                                               style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                     fontFamily: 'Lexend Deca',
                                                                                                     color: Color(0xFF586B06),
@@ -980,7 +981,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                             Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                                                                               child: Text(
-                                                                                containerTestsRecord.name!.maybeHandleOverflow(
+                                                                                containerTestsRecord.name.maybeHandleOverflow(
                                                                                   maxChars: 20,
                                                                                   replacement: '…',
                                                                                 ),
@@ -1165,7 +1166,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                           child: Padding(
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                             child: Text(
-                                                                                              listViewTestedTestsRecord.labRefNum!,
+                                                                                              listViewTestedTestsRecord.labRefNum,
                                                                                               style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                     fontFamily: 'Lexend Deca',
                                                                                                     color: Color(0xFF586B06),
@@ -1526,7 +1527,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                       children: [
                                                                         Text(
                                                                           containerTestsRecord
-                                                                              .name!,
+                                                                              .name,
                                                                           style:
                                                                               FlutterFlowTheme.of(context).titleMedium,
                                                                         ),
@@ -1707,7 +1708,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                   child: Padding(
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                     child: Text(
-                                                                                      listViewTestedTestsRecord.labRefNum!,
+                                                                                      listViewTestedTestsRecord.labRefNum,
                                                                                       style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                             fontFamily: 'Lexend Deca',
                                                                                             color: Color(0xFF586B06),

@@ -307,7 +307,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                           4.0),
                                                                   child: Text(
                                                                     containerTestsRecord
-                                                                        .category!,
+                                                                        .category,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
@@ -357,7 +357,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                 size: 20.0,
                                                               ),
                                                               Text(
-                                                                '${containerTestsRecord.durationResults?.toString()} Hrs',
+                                                                '${containerTestsRecord.durationResults.toString()} Hrs',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -472,8 +472,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                   child: Stack(
                                                                     children: [
                                                                       if (containerTestsRecord
-                                                                              .homeTest ??
-                                                                          true)
+                                                                          .homeTest)
                                                                         Align(
                                                                           alignment: AlignmentDirectional(
                                                                               1.0,
@@ -488,7 +487,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                           ),
                                                                         ),
                                                                       if (!containerTestsRecord
-                                                                          .homeTest!)
+                                                                          .homeTest)
                                                                         Align(
                                                                           alignment: AlignmentDirectional(
                                                                               1.0,
@@ -553,7 +552,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                     child: Text(
                                                                       formatNumber(
                                                                         containerTestsRecord
-                                                                            .price!,
+                                                                            .price,
                                                                         formatType:
                                                                             FormatType.decimal,
                                                                         decimalType:

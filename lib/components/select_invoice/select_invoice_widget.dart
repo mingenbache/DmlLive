@@ -326,7 +326,7 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                                                   Text(
                                                                     formatNumber(
                                                                       listViewInvoicesRecord
-                                                                          .amountDue!,
+                                                                          .amountDue,
                                                                       formatType:
                                                                           FormatType
                                                                               .decimal,
@@ -543,7 +543,7 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                                                                                   ),
                                                                                                 ),
                                                                                               ),
-                                                                                              if (listViewInvoicesRecord.paymentsList!.toList().length > 0)
+                                                                                              if (listViewInvoicesRecord.paymentsList.length > 0)
                                                                                                 Container(
                                                                                                   decoration: BoxDecoration(
                                                                                                     shape: BoxShape.circle,
@@ -581,7 +581,7 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                                                                                   ),
                                                                                                 ),
                                                                                               ),
-                                                                                              if (listViewInvoicesRecord.fullAmount ?? true)
+                                                                                              if (listViewInvoicesRecord.fullAmount)
                                                                                                 Container(
                                                                                                   decoration: BoxDecoration(
                                                                                                     shape: BoxShape.circle,

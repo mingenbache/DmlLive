@@ -171,7 +171,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     if (!containerUsersRecord
-                                        .hasCurrentBooking!) {
+                                        .hasCurrentBooking) {
                                       await showModalBottomSheet(
                                         isScrollControlled: true,
                                         backgroundColor: Colors.transparent,
@@ -202,7 +202,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                       FFAppState().lastBookingPage = false;
                                     });
                                     if (containerUsersRecord
-                                        .hasCurrentBooking!) {
+                                        .hasCurrentBooking) {
                                       context.pushNamed(
                                         'NewBooking',
                                         queryParams: {

@@ -120,13 +120,13 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                 child: Scaffold(
                   key: scaffoldKey,
                   floatingActionButton: Visibility(
-                    visible: !homeCopyUsersRecord.isStaff!,
+                    visible: !homeCopyUsersRecord.isStaff,
                     child: FloatingActionButton.extended(
                       onPressed: () async {
                         FFAppState().update(() {
                           FFAppState().lastBookingPage = false;
                         });
-                        if (homeCopyUsersRecord.hasCurrentBooking!) {
+                        if (homeCopyUsersRecord.hasCurrentBooking) {
                           context.pushNamed(
                             'NewBooking',
                             queryParams: {
@@ -305,8 +305,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                     .end,
                                                             children: [
                                                               if (homeCopyUsersRecord
-                                                                      .hasCurrentBooking ??
-                                                                  true)
+                                                                  .hasCurrentBooking)
                                                                 StreamBuilder<
                                                                     BookingsRecord>(
                                                                   stream: BookingsRecord
@@ -343,8 +342,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                       badgeContent:
                                                                           Text(
                                                                         badgeBookingsRecord
-                                                                            .testsIncluded!
-                                                                            .toList()
+                                                                            .testsIncluded
                                                                             .length
                                                                             .toString(),
                                                                         style: FlutterFlowTheme.of(context)
@@ -355,7 +353,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                             ),
                                                                       ),
                                                                       showBadge:
-                                                                          badgeBookingsRecord.totalTests! >
+                                                                          badgeBookingsRecord.totalTests >
                                                                               0,
                                                                       shape: badges
                                                                           .BadgeShape
@@ -708,7 +706,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                 child:
                                                                     AutoSizeText(
                                                                   homeCopyUsersRecord
-                                                                      .firstName!
+                                                                      .firstName
                                                                       .maybeHandleOverflow(
                                                                           maxChars:
                                                                               13),

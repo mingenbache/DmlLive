@@ -256,7 +256,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                       child: Builder(
                         builder: (context) {
                           final bookedTestRefs =
-                              widget.bookingRef!.bookedTestRefs!.toList();
+                              widget.bookingRef!.bookedTestRefs.toList();
                           return SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
@@ -346,9 +346,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                                           0.0, 0.0),
                                                   child: Text(
                                                     widget.bookingRef!
-                                                        .bookedTests!
-                                                        .toList()
-                                                        .length
+                                                        .bookedTests.length
                                                         .toString()
                                                         .maybeHandleOverflow(
                                                             maxChars: 2),
@@ -420,9 +418,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                               Expanded(
                                                 child: Text(
                                                   widget.bookingRef!
-                                                      .verifiedTests!
-                                                      .toList()
-                                                      .length
+                                                      .verifiedTests.length
                                                       .toString()
                                                       .maybeHandleOverflow(
                                                           maxChars: 2),
@@ -445,7 +441,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                 ),
                               ),
                             ),
-                            if (widget.bookingRef!.completed ?? true)
+                            if (widget.bookingRef!.completed)
                               Container(
                                 height: 32.0,
                                 constraints: BoxConstraints(

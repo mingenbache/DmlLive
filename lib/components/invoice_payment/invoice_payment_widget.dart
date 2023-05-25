@@ -93,7 +93,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
               await showModalBottomSheet(
                 isScrollControlled: true,
                 backgroundColor: Colors.transparent,
-                barrierColor: Color(0x00000000),
+                barrierColor: FlutterFlowTheme.of(context).secondaryBackground,
                 context: context,
                 builder: (bottomSheetContext) {
                   return Padding(
@@ -431,7 +431,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                                   3.0),
                                                       child: Text(
                                                         widget
-                                                            .booking!.labRefNum!
+                                                            .booking!.labRefNum
                                                             .maybeHandleOverflow(
                                                           maxChars: 20,
                                                           replacement: '…',
@@ -675,7 +675,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                             5.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           formatNumber(
-                                            containerInvoicesRecord.amountDue!,
+                                            containerInvoicesRecord.amountDue,
                                             formatType: FormatType.decimal,
                                             decimalType:
                                                 DecimalType.periodDecimal,
@@ -749,7 +749,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                           7.0, 3.0, 8.0, 3.0),
                                       child: Text(
                                         formatNumber(
-                                          widget.booking!.paymentBalance!,
+                                          widget.booking!.paymentBalance,
                                           formatType: FormatType.decimal,
                                           decimalType:
                                               DecimalType.periodDecimal,

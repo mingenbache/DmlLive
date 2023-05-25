@@ -54,6 +54,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           body: SafeArea(
+            top: true,
             child: Align(
               alignment: AlignmentDirectional(0.0, 0.0),
               child: Container(
@@ -300,7 +301,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                   onTap:
                                                                       () async {
                                                                     if (pastbookingsItem
-                                                                        .completed!) {
+                                                                        .completed) {
                                                                       context
                                                                           .pushNamed(
                                                                         'LabReport',
@@ -412,7 +413,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                         ),
                                                                                         if (pastbookingsItem.labRefNum != '')
                                                                                           Text(
-                                                                                            pastbookingsItem.labRefNum!,
+                                                                                            pastbookingsItem.labRefNum,
                                                                                             style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                   fontFamily: 'Open Sans',
                                                                                                   color: Colors.white,
@@ -703,7 +704,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                                                                       ),
                                                                                                                                                     ),
                                                                                                                                                   ),
-                                                                                                                                                  if (testsOfBookingItem.resultPosted ?? true)
+                                                                                                                                                  if (testsOfBookingItem.resultPosted)
                                                                                                                                                     Container(
                                                                                                                                                       decoration: BoxDecoration(
                                                                                                                                                         shape: BoxShape.circle,
@@ -739,7 +740,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                                                                       ),
                                                                                                                                                     ),
                                                                                                                                                   ),
-                                                                                                                                                  if (testsOfBookingItem.resultPosted ?? true)
+                                                                                                                                                  if (testsOfBookingItem.resultPosted)
                                                                                                                                                     Container(
                                                                                                                                                       decoration: BoxDecoration(
                                                                                                                                                         shape: BoxShape.circle,
@@ -991,7 +992,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                   ),
                                                                                   if (upcomingBookingsColumnBookingsRecord.labRefNum != '')
                                                                                     Text(
-                                                                                      upcomingBookingsColumnBookingsRecord.labRefNum!,
+                                                                                      upcomingBookingsColumnBookingsRecord.labRefNum,
                                                                                       style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                             fontFamily: 'Open Sans',
                                                                                             color: Colors.white,
@@ -1007,7 +1008,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
                                                                                         child: Text(
-                                                                                          upcomingBookingsColumnBookingsRecord.bookingstatus!,
+                                                                                          upcomingBookingsColumnBookingsRecord.bookingstatus,
                                                                                           style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                 fontFamily: 'Roboto',
                                                                                                 color: Colors.white,
@@ -1076,7 +1077,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                                 children: [
-                                                                                                  if (upcomingBookingsColumnBookingsRecord.flaggedTests!.toList().length > 0)
+                                                                                                  if (upcomingBookingsColumnBookingsRecord.flaggedTests.length > 0)
                                                                                                     Padding(
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
                                                                                                       child: Material(
@@ -1113,7 +1114,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                         ),
                                                                                                       ),
                                                                                                     ),
-                                                                                                  if (upcomingBookingsColumnBookingsRecord.frozenTests!.toList().length > 0)
+                                                                                                  if (upcomingBookingsColumnBookingsRecord.frozenTests.length > 0)
                                                                                                     Padding(
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
                                                                                                       child: Material(
@@ -1180,7 +1181,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                                                                                             child: Builder(
                                                                                               builder: (context) {
-                                                                                                final bookedTests = upcomingBookingsColumnBookingsRecord.bookedTests!.toList();
+                                                                                                final bookedTests = upcomingBookingsColumnBookingsRecord.bookedTests.toList();
                                                                                                 return ListView.builder(
                                                                                                   padding: EdgeInsets.zero,
                                                                                                   scrollDirection: Axis.horizontal,
@@ -1488,7 +1489,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                         ),
                                                                                         if (inactivebookingsItem.labRefNum != '')
                                                                                           Text(
-                                                                                            inactivebookingsItem.labRefNum!,
+                                                                                            inactivebookingsItem.labRefNum,
                                                                                             style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                   fontFamily: 'Open Sans',
                                                                                                   color: Colors.white,
@@ -1574,7 +1575,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                                     children: [
-                                                                                                      if (inactivebookingsItem.flaggedTests!.toList().length > 0)
+                                                                                                      if (inactivebookingsItem.flaggedTests.length > 0)
                                                                                                         Padding(
                                                                                                           padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                                           child: Material(
@@ -1611,7 +1612,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                             ),
                                                                                                           ),
                                                                                                         ),
-                                                                                                      if (inactivebookingsItem.frozenTests!.toList().length > 0)
+                                                                                                      if (inactivebookingsItem.frozenTests.length > 0)
                                                                                                         Padding(
                                                                                                           padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                                           child: Material(
@@ -1696,7 +1697,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                                                                                                       child: Builder(
                                                                                                         builder: (context) {
-                                                                                                          final bookingtests = inactivebookingsItem.testsIncluded!.toList();
+                                                                                                          final bookingtests = inactivebookingsItem.testsIncluded.toList();
                                                                                                           return ListView.builder(
                                                                                                             padding: EdgeInsets.zero,
                                                                                                             scrollDirection: Axis.horizontal,

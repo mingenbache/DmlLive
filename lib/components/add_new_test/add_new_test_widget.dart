@@ -425,9 +425,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                           String>(null),
                                                   options:
                                                       testCategoryCategoriesRecord!
-                                                          .categories!
-                                                          .toList()
-                                                          .toList(),
+                                                          .categories,
                                                   onChanged: (val) => setState(
                                                       () => _model
                                                               .testCategoryValue =

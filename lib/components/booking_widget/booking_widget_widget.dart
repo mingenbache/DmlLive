@@ -447,8 +447,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                                                         ),
                                                                       ),
                                                                       if (bookedTestsItem
-                                                                              .sampleCollected ??
-                                                                          true)
+                                                                          .sampleCollected)
                                                                         Container(
                                                                           decoration:
                                                                               BoxDecoration(
@@ -504,8 +503,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                                                         ),
                                                                       ),
                                                                       if (bookedTestsItem
-                                                                              .hasResult ??
-                                                                          true)
+                                                                          .hasResult)
                                                                         Container(
                                                                           decoration:
                                                                               BoxDecoration(
@@ -607,7 +605,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                                                             ),
                                                                             child:
                                                                                 Visibility(
-                                                                              visible: testVerifiedTestedTestsRecord!.isVerified ?? true,
+                                                                              visible: testVerifiedTestedTestsRecord!.isVerified,
                                                                               child: Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 2.0, 2.0),
                                                                                 child: Icon(
@@ -709,7 +707,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 2.0),
                                                 child: Text(
-                                                  widget.booking!.totalTests!
+                                                  widget.booking!.totalTests
                                                       .toString()
                                                       .maybeHandleOverflow(
                                                           maxChars: 2),
@@ -728,7 +726,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                     ),
                                   ),
                                 ),
-                                if (widget.booking!.completed ?? true)
+                                if (widget.booking!.completed)
                                   Container(
                                     height: 32.0,
                                     constraints: BoxConstraints(

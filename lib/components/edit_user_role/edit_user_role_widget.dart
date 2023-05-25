@@ -328,7 +328,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Text(
-                                                    submitRoleUsersRecord.role!,
+                                                    submitRoleUsersRecord.role,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -370,7 +370,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                       Expanded(
                                         child: SwitchListTile.adaptive(
                                           value: _model.switchListTileValue ??=
-                                              submitRoleUsersRecord.isStaff!,
+                                              submitRoleUsersRecord.isStaff,
                                           onChanged: (newValue) async {
                                             setState(() =>
                                                 _model.switchListTileValue =

@@ -252,7 +252,7 @@ class _UnconfirmedBookingWidgetWidgetState
                         child: Builder(
                           builder: (context) {
                             final includedTests =
-                                widget.bookingRef!.testsIncluded!.toList();
+                                widget.bookingRef!.testsIncluded.toList();
                             return Wrap(
                               spacing: 4.0,
                               runSpacing: 2.0,
@@ -300,7 +300,7 @@ class _UnconfirmedBookingWidgetWidgetState
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     7.0, 0.0, 7.0, 0.0),
                                             child: Text(
-                                              containerTestsRecord.name!,
+                                              containerTestsRecord.name,
                                               textAlign: TextAlign.center,
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -389,8 +389,7 @@ class _UnconfirmedBookingWidgetWidgetState
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 2.0),
                                             child: Text(
-                                              widget.bookingRef!.bookedTests!
-                                                  .toList()
+                                              widget.bookingRef!.bookedTests
                                                   .length
                                                   .toString()
                                                   .maybeHandleOverflow(

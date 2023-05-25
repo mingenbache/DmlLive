@@ -139,7 +139,7 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                if (bookingTestsItem.sampleCollected!) {
+                                if (bookingTestsItem.sampleCollected) {
                                   await showModalBottomSheet(
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
@@ -364,8 +364,7 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                                                 ),
                                                               ),
                                                               if (bookingTestsItem
-                                                                      .sampleCollected ??
-                                                                  true)
+                                                                  .sampleCollected)
                                                                 Container(
                                                                   decoration:
                                                                       BoxDecoration(

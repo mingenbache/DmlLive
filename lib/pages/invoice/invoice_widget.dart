@@ -73,6 +73,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).tertiary,
               body: SafeArea(
+                top: true,
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -288,7 +289,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                               Stack(
                                                 children: [
                                                   if (!invoiceInvoicesRecord
-                                                      .isPaid!)
+                                                      .isPaid)
                                                     Container(
                                                       width: 130.0,
                                                       height: 32.0,
@@ -365,8 +366,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                       ),
                                                     ),
                                                   if (invoiceInvoicesRecord
-                                                          .isPaid ??
-                                                      true)
+                                                      .isPaid)
                                                     Container(
                                                       width: 130.0,
                                                       height: 32.0,
@@ -517,7 +517,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 8.0, 4.0, 0.0),
                                               child: Text(
-                                                columnBookingsRecord.labRefNum!,
+                                                columnBookingsRecord.labRefNum,
                                                 textAlign: TextAlign.end,
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -940,7 +940,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                             3.0),
                                                                     child: Text(
                                                                       columnBookingsRecord
-                                                                          .emailaddress!,
+                                                                          .emailaddress,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -1053,7 +1053,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                             3.0),
                                                                     child: Text(
                                                                       columnBookingsRecord
-                                                                          .phonenumber!,
+                                                                          .phonenumber,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -1274,7 +1274,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                                 0.0),
                                                                             child:
                                                                                 Text(
-                                                                              columnBookingsRecord.sex!,
+                                                                              columnBookingsRecord.sex,
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).secondary,
@@ -1364,7 +1364,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                 builder: (context) {
                                                   final tests =
                                                       columnBookingsRecord
-                                                          .bookedTests!
+                                                          .bookedTests
                                                           .toList();
                                                   return ListView.builder(
                                                     padding: EdgeInsets.zero,
@@ -1453,7 +1453,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                     children: [
                                                                       Text(
                                                                         containerTestsRecord
-                                                                            .name!,
+                                                                            .name,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
@@ -1484,7 +1484,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                           ),
                                                                           Text(
                                                                             formatNumber(
-                                                                              containerTestsRecord.price!,
+                                                                              containerTestsRecord.price,
                                                                               formatType: FormatType.decimal,
                                                                               decimalType: DecimalType.periodDecimal,
                                                                             ),
@@ -1582,7 +1582,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                         MainAxisSize.max,
                                                     children: [
                                                       Text(
-                                                        'Kshs ${invoiceInvoicesRecord.invoiceAmount?.toString()}',
+                                                        'Kshs ${invoiceInvoicesRecord.invoiceAmount.toString()}',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1644,7 +1644,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                   builder: (context) {
                                                     final payments =
                                                         invoiceInvoicesRecord
-                                                            .paymentsList!
+                                                            .paymentsList
                                                             .toList();
                                                     return ListView.builder(
                                                       padding: EdgeInsets.zero,
@@ -1785,7 +1785,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                               5.0),
                                                                           child:
                                                                               Text(
-                                                                            containerPaymentsRecord.transactionCode!,
+                                                                            containerPaymentsRecord.transactionCode,
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).secondary,
@@ -1813,7 +1813,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                               5.0),
                                                                           child:
                                                                               Text(
-                                                                            containerPaymentsRecord.type!,
+                                                                            containerPaymentsRecord.type,
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: Colors.white,
@@ -1839,7 +1839,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                           child:
                                                                               Text(
                                                                             formatNumber(
-                                                                              containerPaymentsRecord.amount!,
+                                                                              containerPaymentsRecord.amount,
                                                                               formatType: FormatType.decimal,
                                                                               decimalType: DecimalType.periodDecimal,
                                                                               currency: 'Kshs ',

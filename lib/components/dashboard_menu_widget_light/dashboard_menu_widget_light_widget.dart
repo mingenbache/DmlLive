@@ -104,32 +104,19 @@ class _DashboardMenuWidgetLightWidgetState
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
       child: Container(
-        constraints: BoxConstraints(
-          maxWidth: 440.0,
-          maxHeight: 100.0,
-        ),
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0x00FFFFFF),
-              FlutterFlowTheme.of(context).primaryText
-            ],
-            stops: [0.0, 1.0],
-            begin: AlignmentDirectional(0.0, -1.0),
-            end: AlignmentDirectional(0, 1.0),
-          ),
           borderRadius: BorderRadius.circular(25.0),
         ),
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                flex: 1,
-                child: Padding(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
@@ -159,8 +146,10 @@ class _DashboardMenuWidgetLightWidgetState
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Container(
+                        width: 119.0,
+                        height: 148.0,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBtnText,
+                          color: FlutterFlowTheme.of(context).primaryText,
                           boxShadow: [
                             BoxShadow(
                               blurRadius: 4.0,
@@ -173,33 +162,36 @@ class _DashboardMenuWidgetLightWidgetState
                         ),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 3.0, 0.0, 3.0),
+                              0.0, 20.0, 0.0, 3.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Container(
-                                height: 50.0,
-                                decoration: BoxDecoration(),
-                                child: Icon(
-                                  Icons.fast_rewind,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  size: 40.0,
+                                decoration: BoxDecoration(
+                                  color: Color(0x4B6CD7B7),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 12.0, 12.0, 12.0),
+                                  child: Icon(
+                                    Icons.fast_rewind,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    size: 40.0,
+                                  ),
                                 ),
                               ),
                               Text(
                                 'Previous\nTests',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .titleSmall
                                     .override(
-                                      fontFamily: 'Roboto',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
+                                      fontFamily: 'Open Sans',
                                       fontSize: 14.0,
-                                      fontWeight: FontWeight.normal,
                                       lineHeight: 0.9,
                                     ),
                               ),
@@ -212,10 +204,7 @@ class _DashboardMenuWidgetLightWidgetState
                       animationsMap['containerOnActionTriggerAnimation1']!,
                       hasBeenTriggered: hasContainerTriggered1),
                 ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Padding(
+                Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
@@ -244,8 +233,10 @@ class _DashboardMenuWidgetLightWidgetState
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Container(
+                        width: 119.0,
+                        height: 148.0,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).secondary,
+                          color: FlutterFlowTheme.of(context).primaryText,
                           boxShadow: [
                             BoxShadow(
                               blurRadius: 4.0,
@@ -258,19 +249,25 @@ class _DashboardMenuWidgetLightWidgetState
                         ),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 3.0, 0.0, 3.0),
+                              0.0, 20.0, 0.0, 3.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Container(
-                                height: 50.0,
-                                decoration: BoxDecoration(),
-                                child: Icon(
-                                  Icons.schedule_send,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  size: 40.0,
+                                decoration: BoxDecoration(
+                                  color: Color(0x4B6CD7B7),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 12.0, 12.0, 12.0),
+                                  child: Icon(
+                                    Icons.schedule_send,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    size: 40.0,
+                                  ),
                                 ),
                               ),
                               Padding(
@@ -280,13 +277,10 @@ class _DashboardMenuWidgetLightWidgetState
                                   'Upcoming\nTests',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .titleSmall
                                       .override(
-                                        fontFamily: 'Roboto',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
+                                        fontFamily: 'Open Sans',
                                         fontSize: 14.0,
-                                        fontWeight: FontWeight.normal,
                                         lineHeight: 0.9,
                                       ),
                                 ),
@@ -300,10 +294,7 @@ class _DashboardMenuWidgetLightWidgetState
                       animationsMap['containerOnActionTriggerAnimation2']!,
                       hasBeenTriggered: hasContainerTriggered2),
                 ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Padding(
+                Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
@@ -320,8 +311,10 @@ class _DashboardMenuWidgetLightWidgetState
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Container(
+                        width: 119.0,
+                        height: 148.0,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).secondaryText,
+                          color: FlutterFlowTheme.of(context).primaryText,
                           boxShadow: [
                             BoxShadow(
                               blurRadius: 4.0,
@@ -334,28 +327,33 @@ class _DashboardMenuWidgetLightWidgetState
                         ),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 3.0, 0.0, 9.0),
+                              0.0, 20.0, 0.0, 3.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Container(
-                                height: 50.0,
-                                decoration: BoxDecoration(),
-                                child: Icon(
-                                  Icons.payments_outlined,
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                  size: 40.0,
+                                decoration: BoxDecoration(
+                                  color: Color(0x4B6CD7B7),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 12.0, 12.0, 12.0),
+                                  child: Icon(
+                                    Icons.payments_outlined,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    size: 40.0,
+                                  ),
                                 ),
                               ),
                               Text(
                                 'Payments',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .titleSmall
                                     .override(
-                                      fontFamily: 'Roboto',
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
+                                      fontFamily: 'Open Sans',
                                       fontSize: 14.0,
                                     ),
                               ),
@@ -368,12 +366,11 @@ class _DashboardMenuWidgetLightWidgetState
                       animationsMap['containerOnActionTriggerAnimation3']!,
                       hasBeenTriggered: hasContainerTriggered3),
                 ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Padding(
+                Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
                   child: Container(
+                    width: 119.0,
+                    height: 148.0,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       boxShadow: [
@@ -386,33 +383,35 @@ class _DashboardMenuWidgetLightWidgetState
                       borderRadius: BorderRadius.circular(20.0),
                       shape: BoxShape.rectangle,
                     ),
-                    alignment: AlignmentDirectional(0.0, 0.30000000000000004),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 3.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            height: 50.0,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
+                              color: Color(0x4B6CD7B7),
+                              shape: BoxShape.circle,
                             ),
-                            child: Icon(
-                              Icons.help_outline,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 40.0,
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 12.0, 12.0, 12.0),
+                              child: Icon(
+                                Icons.help_outline,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                size: 40.0,
+                              ),
                             ),
                           ),
                           Text(
                             'Help',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
-                                .bodyMedium
+                                .titleSmall
                                 .override(
-                                  fontFamily: 'Roboto',
+                                  fontFamily: 'Open Sans',
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
                                   fontSize: 14.0,
@@ -423,8 +422,8 @@ class _DashboardMenuWidgetLightWidgetState
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

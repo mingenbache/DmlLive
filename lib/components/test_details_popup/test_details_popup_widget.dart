@@ -229,7 +229,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                   .fromSTEB(
                                                       15.0, 0.0, 0.0, 0.0),
                                               child: AutoSizeText(
-                                                widget.test!.name!,
+                                                widget.test!.name,
                                                 textAlign: TextAlign.start,
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -244,7 +244,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                           ),
                                         ],
                                       ),
-                                      if (!widget.test!.isAvailable!)
+                                      if (!widget.test!.isAvailable)
                                         Align(
                                           alignment:
                                               AlignmentDirectional(0.8, 0.0),
@@ -500,7 +500,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                         0.0),
                                                                 child: Text(
                                                                   widget.test!
-                                                                      .description!,
+                                                                      .description,
                                                                   textAlign:
                                                                       TextAlign
                                                                           .start,
@@ -1544,8 +1544,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                     8.0,
                                                                     4.0),
                                                         child: Text(
-                                                          widget
-                                                              .test!.category!,
+                                                          widget.test!.category,
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: FlutterFlowTheme
@@ -1569,7 +1568,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                   children: [
                                                     Text(
                                                       formatNumber(
-                                                        widget.test!.price!,
+                                                        widget.test!.price,
                                                         formatType:
                                                             FormatType.decimal,
                                                         decimalType: DecimalType

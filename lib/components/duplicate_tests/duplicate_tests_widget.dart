@@ -196,7 +196,7 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                             .returnPackagesinBooking(
                                                 containerTestPackagesRecordList
                                                     .toList(),
-                                                widget.booking!.testPackages!
+                                                widget.booking!.testPackages
                                                     .toList())
                                             .toList(),
                                         FFAppState().duplicateTests.toList())
@@ -261,7 +261,7 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                                         children: [
                                                           Text(
                                                             duplicatetestsPackagesItem
-                                                                .packageName!,
+                                                                .packageName,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
@@ -293,8 +293,7 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                                               .transparent,
                                                           onTap: () async {
                                                             if (widget.booking!
-                                                                .testPackages!
-                                                                .toList()
+                                                                .testPackages
                                                                 .contains(widget
                                                                     .packageRef)) {
                                                               final bookingsUpdateData =
@@ -315,11 +314,11 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                                                 ]),
                                                                 'testPackTests': functions.removeBookingPackageTests(
                                                                     duplicatetestsPackagesItem
-                                                                        .testsIncluded!
+                                                                        .testsIncluded
                                                                         .toList(),
                                                                     widget
                                                                         .booking!
-                                                                        .testPackTests!
+                                                                        .testPackTests
                                                                         .toList()),
                                                               };
                                                               await widget

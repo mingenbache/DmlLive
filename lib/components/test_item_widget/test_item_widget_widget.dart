@@ -463,8 +463,7 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                 decoration: BoxDecoration(),
                                 child: Stack(
                                   children: [
-                                    if (widget.bookedTest!.sampleCollected ??
-                                        true)
+                                    if (widget.bookedTest!.sampleCollected)
                                       Container(
                                         width:
                                             MediaQuery.of(context).size.width *
@@ -606,7 +605,7 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                 decoration: BoxDecoration(),
                                 child: Stack(
                                   children: [
-                                    if (widget.bookedTest!.hasResult ?? true)
+                                    if (widget.bookedTest!.hasResult)
                                       InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,

@@ -431,7 +431,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                 FFAppState()
                                                                     .addToReportEmails(widget
                                                                         .booking!
-                                                                        .emailaddress!);
+                                                                        .emailaddress);
                                                               });
                                                               await _model
                                                                   .pageViewController
@@ -724,15 +724,15 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                               padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 0.0, 0.0),
                                                                               child: Text(
                                                                                 (valueOrDefault<int>(
-                                                                                          widget.booking!.bookedTests!.toList().length,
+                                                                                          widget.booking!.bookedTests.length,
                                                                                           0,
                                                                                         ) +
                                                                                         valueOrDefault<int>(
-                                                                                          widget.booking!.bookedSpecialTests!.toList().length,
+                                                                                          widget.booking!.bookedSpecialTests.length,
                                                                                           0,
                                                                                         ) +
                                                                                         valueOrDefault<int>(
-                                                                                          widget.booking!.testPackTests!.toList().length,
+                                                                                          widget.booking!.testPackTests.length,
                                                                                           0,
                                                                                         ))
                                                                                     .toString(),
@@ -871,7 +871,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                 }
                                                                                 List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data!;
                                                                                 return Text(
-                                                                                  widget.booking!.verifiedTests!.toList().length.toString(),
+                                                                                  widget.booking!.verifiedTests.length.toString(),
                                                                                   style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                         fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
@@ -1162,7 +1162,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 3.0, 3.0),
                                                                                         child: Text(
-                                                                                          widget.booking!.emailaddress!,
+                                                                                          widget.booking!.emailaddress,
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
@@ -1212,7 +1212,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 3.0, 3.0),
                                                                                         child: Text(
-                                                                                          widget.booking!.phonenumber!,
+                                                                                          widget.booking!.phonenumber,
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
@@ -1327,7 +1327,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                               Padding(
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                                 child: Text(
-                                                                                                  widget.booking!.sex!,
+                                                                                                  widget.booking!.sex,
                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                         fontFamily: 'Open Sans',
                                                                                                         color: FlutterFlowTheme.of(context).primaryText,
@@ -1547,7 +1547,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                         builder: (context) {
                                                           final bookedTests =
                                                               widget.booking!
-                                                                  .bookedTestRefs!
+                                                                  .bookedTestRefs
                                                                   .toList();
                                                           return ListView
                                                               .builder(
@@ -1655,7 +1655,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                         builder: (context) {
                                                           final bookingspecialTests =
                                                               widget.booking!
-                                                                  .bookedSpecialTests!
+                                                                  .bookedSpecialTests
                                                                   .toList();
                                                           return ListView
                                                               .builder(
@@ -1979,8 +1979,9 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                   ),
                                                                             ),
                                                                           ),
-                                                                          if (widget.booking!.paidFull ??
-                                                                              true)
+                                                                          if (widget
+                                                                              .booking!
+                                                                              .paidFull)
                                                                             Align(
                                                                               alignment: AlignmentDirectional(0.8, 0.0),
                                                                               child: Padding(
@@ -2046,7 +2047,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                         children: [
                                                                           Text(
                                                                             formatNumber(
-                                                                              widget.booking!.paymentBalance!,
+                                                                              widget.booking!.paymentBalance,
                                                                               formatType: FormatType.decimal,
                                                                               decimalType: DecimalType.periodDecimal,
                                                                               currency: 'Ksh ',
@@ -2084,7 +2085,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                       builder: (context) {
                                                         final invoices = widget
                                                             .booking!
-                                                            .invoiceRefs!
+                                                            .invoiceRefs
                                                             .toList();
                                                         return ListView.builder(
                                                           padding:
@@ -2272,7 +2273,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                       builder: (context) {
                                                         final reportVerifiedTests =
                                                             widget.booking!
-                                                                .verifiedTests!
+                                                                .verifiedTests
                                                                 .toList();
                                                         return ListView.builder(
                                                           padding:
@@ -2429,7 +2430,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                       builder: (context) {
                                                         final reportspecialTests =
                                                             widget.booking!
-                                                                .bookedSpecialTests!
+                                                                .bookedSpecialTests
                                                                 .toList();
                                                         return ListView.builder(
                                                           padding:
@@ -2776,7 +2777,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                       Text(
                                                                     widget
                                                                         .booking!
-                                                                        .emailaddress!,
+                                                                        .emailaddress,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .titleSmall,
@@ -2892,7 +2893,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                       subtitle:
                                                                           Text(
                                                                         regUserRecipientCheckboxUsersRecord
-                                                                            .email!,
+                                                                            .email,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .titleSmall,
                                                                       ),
@@ -2944,7 +2945,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                           () {
                                                                     FFAppState().addToReportEmails(widget
                                                                         .booking!
-                                                                        .doctorEmail!);
+                                                                        .doctorEmail);
                                                                   });
                                                                 } else {
                                                                   FFAppState()
@@ -2952,7 +2953,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                           () {
                                                                     FFAppState().removeFromReportEmails(widget
                                                                         .booking!
-                                                                        .doctorEmail!);
+                                                                        .doctorEmail);
                                                                   });
                                                                 }
                                                               },
@@ -3017,7 +3018,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                           Text(
                                                                         widget
                                                                             .booking!
-                                                                            .doctorEmail!,
+                                                                            .doctorEmail,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .titleSmall,
                                                                       ),
@@ -3224,8 +3225,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                   patientAge: functions
                                       .calculateAge(widget.booking!.dOB),
                                 ),
-                                'testedTests':
-                                    widget.booking!.verifiedTests!.toList(),
+                                'testedTests': widget.booking!.verifiedTests,
                               };
                               var reportsRecordReference =
                                   ReportsRecord.collection.doc();

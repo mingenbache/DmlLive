@@ -380,8 +380,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                           );
                                           await widget.testedTestRef!
                                               .update(testedTestsUpdateData);
-                                          if (!rowBookingsRecord.verifiedTests!
-                                              .toList()
+                                          if (!rowBookingsRecord.verifiedTests
                                               .contains(widget.testedTestRef)) {
                                             final bookingsUpdateData = {
                                               'verifiedTests':

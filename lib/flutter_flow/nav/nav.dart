@@ -5,7 +5,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '../flutter_flow_theme.dart';
-import '../../backend/backend.dart';
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '../../auth/base_auth_user_provider.dart';
 import '../../backend/push_notifications/push_notifications_handler.dart'
@@ -225,7 +226,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Chat',
               path: 'chat',
               asyncParams: {
-                'chatUser': getDoc(['users'], UsersRecord.serializer),
+                'chatUser': getDoc(['users'], UsersRecord.fromSnapshot),
               },
               builder: (context, params) => ChatWidget(
                 chatUser: params.getParam('chatUser', ParamType.Document),
@@ -238,7 +239,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'technologistTestDeck',
               asyncParams: {
                 'bookedTest':
-                    getDoc(['booked_tests'], BookedTestsRecord.serializer),
+                    getDoc(['booked_tests'], BookedTestsRecord.fromSnapshot),
               },
               builder: (context, params) => TechnologistTestDeckWidget(
                 bookedTest: params.getParam('bookedTest', ParamType.Document),
@@ -454,7 +455,8 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(param, type, isList, collectionNamePath);
+    return deserializeParam<T>(param, type, isList,
+        collectionNamePath: collectionNamePath);
   }
 }
 

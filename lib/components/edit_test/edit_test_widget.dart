@@ -452,9 +452,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                           ),
                                                           options:
                                                               dropDownCategoriesRecord!
-                                                                  .categories!
-                                                                  .toList()
-                                                                  .toList(),
+                                                                  .categories,
                                                           onChanged: (val) =>
                                                               setState(() =>
                                                                   _model.dropDownValue =
@@ -648,7 +646,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                       value: _model
                                                               .atHomeToggleValue ??=
                                                           columnTestsRecord
-                                                              .homeTest!,
+                                                              .homeTest,
                                                       onChanged:
                                                           (newValue) async {
                                                         setState(() => _model
@@ -811,7 +809,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                         ),
                                                         child: Text(
                                                           columnTestsRecord
-                                                              .duration!
+                                                              .duration
                                                               .toString()
                                                               .maybeHandleOverflow(
                                                                   maxChars: 3),
@@ -854,7 +852,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                           value: _model
                                                                   .testDurationSliderValue ??=
                                                               columnTestsRecord
-                                                                  .duration!,
+                                                                  .duration,
                                                           label: _model
                                                               .testDurationSliderValue
                                                               .toString(),
@@ -1127,7 +1125,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                           value: _model
                                                                   .durationResultsSliderValue ??=
                                                               columnTestsRecord
-                                                                  .durationResults!,
+                                                                  .durationResults,
                                                           label: _model
                                                               .durationResultsSliderValue
                                                               .toString(),
@@ -1259,7 +1257,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                 TextEditingController(
                                                               text: columnTestsRecord
                                                                   .price
-                                                                  ?.toString(),
+                                                                  .toString(),
                                                             ),
                                                             obscureText: false,
                                                             decoration:

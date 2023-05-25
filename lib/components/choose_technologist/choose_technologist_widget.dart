@@ -301,8 +301,6 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                           ),
                                           options: technologistStaffRecordList
                                               .map((e) => e.displayName)
-                                              .withoutNulls
-                                              .toList()
                                               .toList(),
                                           onChanged: (val) => setState(() =>
                                               _model.technologistValue = val),

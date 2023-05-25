@@ -64,7 +64,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 0.0, 0.0),
                   child: Text(
-                    widget.test!.name!,
+                    widget.test!.name,
                     textAlign: TextAlign.start,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Roboto',
@@ -112,7 +112,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   13.0, 0.0, 13.0, 0.0),
                               child: Text(
-                                widget.test!.description!,
+                                widget.test!.description,
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -538,7 +538,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                         children: [
                           Text(
                             formatNumber(
-                              widget.test!.price!,
+                              widget.test!.price,
                               formatType: FormatType.decimal,
                               decimalType: DecimalType.periodDecimal,
                               currency: 'Kshs. ',
@@ -558,7 +558,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 4.0, 8.0, 4.0),
                               child: Text(
-                                widget.test!.category!,
+                                widget.test!.category,
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium

@@ -1,92 +1,136 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'payments_record.g.dart';
+class PaymentsRecord extends FirestoreRecord {
+  PaymentsRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class PaymentsRecord
-    implements Built<PaymentsRecord, PaymentsRecordBuilder> {
-  static Serializer<PaymentsRecord> get serializer =>
-      _$paymentsRecordSerializer;
+  // "user_ref" field.
+  DocumentReference? _userRef;
+  DocumentReference? get userRef => _userRef;
+  bool hasUserRef() => _userRef != null;
 
-  @BuiltValueField(wireName: 'user_ref')
-  DocumentReference? get userRef;
+  // "booking_ref" field.
+  DocumentReference? _bookingRef;
+  DocumentReference? get bookingRef => _bookingRef;
+  bool hasBookingRef() => _bookingRef != null;
 
-  @BuiltValueField(wireName: 'booking_ref')
-  DocumentReference? get bookingRef;
+  // "type" field.
+  String? _type;
+  String get type => _type ?? '';
+  bool hasType() => _type != null;
 
-  String? get type;
+  // "transaction_code" field.
+  String? _transactionCode;
+  String get transactionCode => _transactionCode ?? '';
+  bool hasTransactionCode() => _transactionCode != null;
 
-  @BuiltValueField(wireName: 'transaction_code')
-  String? get transactionCode;
+  // "created_date" field.
+  DateTime? _createdDate;
+  DateTime? get createdDate => _createdDate;
+  bool hasCreatedDate() => _createdDate != null;
 
-  @BuiltValueField(wireName: 'created_date')
-  DateTime? get createdDate;
+  // "is_approved" field.
+  bool? _isApproved;
+  bool get isApproved => _isApproved ?? false;
+  bool hasIsApproved() => _isApproved != null;
 
-  @BuiltValueField(wireName: 'is_approved')
-  bool? get isApproved;
+  // "invoice_ref" field.
+  DocumentReference? _invoiceRef;
+  DocumentReference? get invoiceRef => _invoiceRef;
+  bool hasInvoiceRef() => _invoiceRef != null;
 
-  @BuiltValueField(wireName: 'invoice_ref')
-  DocumentReference? get invoiceRef;
+  // "amount" field.
+  int? _amount;
+  int get amount => _amount ?? 0;
+  bool hasAmount() => _amount != null;
 
-  int? get amount;
+  // "first_name" field.
+  String? _firstName;
+  String get firstName => _firstName ?? '';
+  bool hasFirstName() => _firstName != null;
 
-  @BuiltValueField(wireName: 'first_name')
-  String? get firstName;
+  // "last_name" field.
+  String? _lastName;
+  String get lastName => _lastName ?? '';
+  bool hasLastName() => _lastName != null;
 
-  @BuiltValueField(wireName: 'last_name')
-  String? get lastName;
+  // "payment_notes" field.
+  String? _paymentNotes;
+  String get paymentNotes => _paymentNotes ?? '';
+  bool hasPaymentNotes() => _paymentNotes != null;
 
-  @BuiltValueField(wireName: 'payment_notes')
-  String? get paymentNotes;
+  // "transaction_date" field.
+  DateTime? _transactionDate;
+  DateTime? get transactionDate => _transactionDate;
+  bool hasTransactionDate() => _transactionDate != null;
 
-  @BuiltValueField(wireName: 'transaction_date')
-  DateTime? get transactionDate;
+  // "updated_date" field.
+  DateTime? _updatedDate;
+  DateTime? get updatedDate => _updatedDate;
+  bool hasUpdatedDate() => _updatedDate != null;
 
-  @BuiltValueField(wireName: 'updated_date')
-  DateTime? get updatedDate;
+  // "has_receipt" field.
+  bool? _hasReceipt;
+  bool get hasReceipt => _hasReceipt ?? false;
+  bool hasHasReceipt() => _hasReceipt != null;
 
-  @BuiltValueField(wireName: 'has_receipt')
-  bool? get hasReceipt;
+  // "updateRole" field.
+  String? _updateRole;
+  String get updateRole => _updateRole ?? '';
+  bool hasUpdateRole() => _updateRole != null;
 
-  String? get updateRole;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(PaymentsRecordBuilder builder) => builder
-    ..type = ''
-    ..transactionCode = ''
-    ..isApproved = false
-    ..amount = 0
-    ..firstName = ''
-    ..lastName = ''
-    ..paymentNotes = ''
-    ..hasReceipt = false
-    ..updateRole = '';
+  void _initializeFields() {
+    _userRef = snapshotData['user_ref'] as DocumentReference?;
+    _bookingRef = snapshotData['booking_ref'] as DocumentReference?;
+    _type = snapshotData['type'] as String?;
+    _transactionCode = snapshotData['transaction_code'] as String?;
+    _createdDate = snapshotData['created_date'] as DateTime?;
+    _isApproved = snapshotData['is_approved'] as bool?;
+    _invoiceRef = snapshotData['invoice_ref'] as DocumentReference?;
+    _amount = snapshotData['amount'] as int?;
+    _firstName = snapshotData['first_name'] as String?;
+    _lastName = snapshotData['last_name'] as String?;
+    _paymentNotes = snapshotData['payment_notes'] as String?;
+    _transactionDate = snapshotData['transaction_date'] as DateTime?;
+    _updatedDate = snapshotData['updated_date'] as DateTime?;
+    _hasReceipt = snapshotData['has_receipt'] as bool?;
+    _updateRole = snapshotData['updateRole'] as String?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('payments');
 
-  static Stream<PaymentsRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<PaymentsRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => PaymentsRecord.fromSnapshot(s));
 
-  static Future<PaymentsRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Future<PaymentsRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => PaymentsRecord.fromSnapshot(s));
 
-  PaymentsRecord._();
-  factory PaymentsRecord([void Function(PaymentsRecordBuilder) updates]) =
-      _$PaymentsRecord;
+  static PaymentsRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      PaymentsRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static PaymentsRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      PaymentsRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'PaymentsRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createPaymentsRecordData({
@@ -106,26 +150,24 @@ Map<String, dynamic> createPaymentsRecordData({
   bool? hasReceipt,
   String? updateRole,
 }) {
-  final firestoreData = serializers.toFirestore(
-    PaymentsRecord.serializer,
-    PaymentsRecord(
-      (p) => p
-        ..userRef = userRef
-        ..bookingRef = bookingRef
-        ..type = type
-        ..transactionCode = transactionCode
-        ..createdDate = createdDate
-        ..isApproved = isApproved
-        ..invoiceRef = invoiceRef
-        ..amount = amount
-        ..firstName = firstName
-        ..lastName = lastName
-        ..paymentNotes = paymentNotes
-        ..transactionDate = transactionDate
-        ..updatedDate = updatedDate
-        ..hasReceipt = hasReceipt
-        ..updateRole = updateRole,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'user_ref': userRef,
+      'booking_ref': bookingRef,
+      'type': type,
+      'transaction_code': transactionCode,
+      'created_date': createdDate,
+      'is_approved': isApproved,
+      'invoice_ref': invoiceRef,
+      'amount': amount,
+      'first_name': firstName,
+      'last_name': lastName,
+      'payment_notes': paymentNotes,
+      'transaction_date': transactionDate,
+      'updated_date': updatedDate,
+      'has_receipt': hasReceipt,
+      'updateRole': updateRole,
+    }.withoutNulls,
   );
 
   return firestoreData;

@@ -207,7 +207,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                     .fromSTEB(
                                                         5.0, 15.0, 0.0, 0.0),
                                                 child: Text(
-                                                  testResultsTestsRecord.name!,
+                                                  testResultsTestsRecord.name,
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -229,7 +229,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                         Stack(
                                           children: [
                                             if (!viewResultsTestedTestsRecord
-                                                .resultPosted!)
+                                                .resultPosted)
                                               Container(
                                                 width: 145.0,
                                                 height: 32.0,
@@ -462,8 +462,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                           ],
                                         ),
                                         if (viewResultsTestedTestsRecord
-                                                .isFlagged ??
-                                            true)
+                                            .isFlagged)
                                           InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
@@ -761,7 +760,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 children: [
                                                                                   Text(
-                                                                                    tabBarBookingsRecord.labRefNum!,
+                                                                                    tabBarBookingsRecord.labRefNum,
                                                                                     style: FlutterFlowTheme.of(context).titleMedium,
                                                                                   ),
                                                                                 ],
@@ -1262,8 +1261,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                       Visibility(
                                                         visible:
                                                             viewResultsTestedTestsRecord
-                                                                    .resultPosted ??
-                                                                true,
+                                                                .resultPosted,
                                                         child: Column(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
@@ -1353,7 +1351,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                         children: [
                                                                           Visibility(
                                                                             visible:
-                                                                                viewResultsTestedTestsRecord.resultsPositive ?? true,
+                                                                                viewResultsTestedTestsRecord.resultsPositive,
                                                                             child:
                                                                                 Container(
                                                                               width: 116.0,
@@ -1402,7 +1400,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                           ),
                                                                           Visibility(
                                                                             visible:
-                                                                                !viewResultsTestedTestsRecord.resultsPositive!,
+                                                                                !viewResultsTestedTestsRecord.resultsPositive,
                                                                             child:
                                                                                 Container(
                                                                               width: 116.0,
@@ -1529,7 +1527,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(7.0, 7.0, 7.0, 4.0),
                                                                               child: Text(
-                                                                                viewResultsTestedTestsRecord.testResult!,
+                                                                                viewResultsTestedTestsRecord.testResult,
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
@@ -1625,7 +1623,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(7.0, 7.0, 7.0, 4.0),
                                                                                 child: Text(
-                                                                                  viewResultsTestedTestsRecord.testNote!,
+                                                                                  viewResultsTestedTestsRecord.testNote,
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
@@ -2037,7 +2035,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                     (context) {
                                                                   final resultAttachments =
                                                                       viewResultsTestedTestsRecord
-                                                                          .resultsAttachment!
+                                                                          .resultsAttachment
                                                                           .toList();
                                                                   return ListView
                                                                       .builder(

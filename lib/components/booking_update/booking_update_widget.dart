@@ -330,7 +330,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               0.0),
                                                                           child:
                                                                               Text(
-                                                                            bookingUpdatesContainerBookingsRecord.bookingstatus!,
+                                                                            bookingUpdatesContainerBookingsRecord.bookingstatus,
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Lexend Deca',
                                                                                   color: Colors.white,
@@ -612,15 +612,15 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 0.0, 0.0),
                                                                                                   child: Text(
                                                                                                     (valueOrDefault<int>(
-                                                                                                              bookingUpdatesContainerBookingsRecord.testsIncluded!.toList().length,
+                                                                                                              bookingUpdatesContainerBookingsRecord.testsIncluded.length,
                                                                                                               0,
                                                                                                             ) +
                                                                                                             valueOrDefault<int>(
-                                                                                                              bookingUpdatesContainerBookingsRecord.specialTests!.toList().length,
+                                                                                                              bookingUpdatesContainerBookingsRecord.specialTests.length,
                                                                                                               0,
                                                                                                             ) +
                                                                                                             valueOrDefault<int>(
-                                                                                                              bookingUpdatesContainerBookingsRecord.testPackTests!.toList().length,
+                                                                                                              bookingUpdatesContainerBookingsRecord.testPackTests.length,
                                                                                                               0,
                                                                                                             ))
                                                                                                         .toString(),
@@ -720,7 +720,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                     }
                                                                                                     List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data!;
                                                                                                     return Text(
-                                                                                                      bookingUpdatesContainerBookingsRecord.verifiedTests!.toList().length.toString(),
+                                                                                                      bookingUpdatesContainerBookingsRecord.verifiedTests.length.toString(),
                                                                                                       textAlign: TextAlign.center,
                                                                                                       maxLines: 1,
                                                                                                       style: FlutterFlowTheme.of(context).titleSmall.override(
@@ -797,7 +797,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 0.0, 0.0),
                                                                                     child: Text(
                                                                                       formatNumber(
-                                                                                        bookingUpdatesContainerBookingsRecord.totalPrice!,
+                                                                                        bookingUpdatesContainerBookingsRecord.totalPrice,
                                                                                         formatType: FormatType.decimal,
                                                                                         decimalType: DecimalType.periodDecimal,
                                                                                         currency: 'Ksh ',
@@ -869,7 +869,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(3.0, 7.0, 0.0, 0.0),
                                                                                     child: Text(
                                                                                       formatNumber(
-                                                                                        bookingUpdatesContainerBookingsRecord.paymentBalance!,
+                                                                                        bookingUpdatesContainerBookingsRecord.paymentBalance,
                                                                                         formatType: FormatType.decimal,
                                                                                         decimalType: DecimalType.periodDecimal,
                                                                                         currency: 'Ksh ',
@@ -1142,7 +1142,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               3.0),
                                                                           child:
                                                                               Text(
-                                                                            bookingUpdatesContainerBookingsRecord.emailaddress!,
+                                                                            bookingUpdatesContainerBookingsRecord.emailaddress,
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -1238,7 +1238,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               3.0),
                                                                           child:
                                                                               Text(
-                                                                            bookingUpdatesContainerBookingsRecord.phonenumber!,
+                                                                            bookingUpdatesContainerBookingsRecord.phonenumber,
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -1426,7 +1426,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                 Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                   child: Text(
-                                                                                    bookingUpdatesContainerBookingsRecord.sex!,
+                                                                                    bookingUpdatesContainerBookingsRecord.sex,
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).primaryText,
@@ -1571,7 +1571,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                   (context) {
                                                                 final invoices =
                                                                     bookingUpdatesContainerBookingsRecord
-                                                                        .invoiceRefs!
+                                                                        .invoiceRefs
                                                                         .toList();
                                                                 return ListView
                                                                     .builder(
@@ -1681,7 +1681,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                         children: [
                                                                                           Text(
                                                                                             formatNumber(
-                                                                                              containerInvoicesRecord.invoiceAmount!,
+                                                                                              containerInvoicesRecord.invoiceAmount,
                                                                                               formatType: FormatType.decimal,
                                                                                               decimalType: DecimalType.periodDecimal,
                                                                                               currency: 'Ksh ',
@@ -1814,7 +1814,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                                   height: 25.0,
                                                                                                                   child: Stack(
                                                                                                                     children: [
-                                                                                                                      if (!containerInvoicesRecord.isPaid!)
+                                                                                                                      if (!containerInvoicesRecord.isPaid)
                                                                                                                         Container(
                                                                                                                           decoration: BoxDecoration(
                                                                                                                             shape: BoxShape.circle,
@@ -1828,7 +1828,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                                             ),
                                                                                                                           ),
                                                                                                                         ),
-                                                                                                                      if (containerInvoicesRecord.isPaid ?? true)
+                                                                                                                      if (containerInvoicesRecord.isPaid)
                                                                                                                         Container(
                                                                                                                           decoration: BoxDecoration(
                                                                                                                             shape: BoxShape.circle,
@@ -1866,7 +1866,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                                           ),
                                                                                                                         ),
                                                                                                                       ),
-                                                                                                                      if (containerInvoicesRecord.fullAmount ?? true)
+                                                                                                                      if (containerInvoicesRecord.fullAmount)
                                                                                                                         Container(
                                                                                                                           decoration: BoxDecoration(
                                                                                                                             shape: BoxShape.circle,

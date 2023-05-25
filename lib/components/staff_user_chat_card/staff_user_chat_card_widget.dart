@@ -181,7 +181,7 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                                           ),
                                         ),
                                         Text(
-                                          widget.userRecord!.email!,
+                                          widget.userRecord!.email,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -247,7 +247,7 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                                                       .fromSTEB(
                                                           3.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    widget.userRecord!.role!,
+                                                    widget.userRecord!.role,
                                                     textAlign: TextAlign.center,
                                                     style: FlutterFlowTheme.of(
                                                             context)

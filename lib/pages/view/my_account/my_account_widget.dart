@@ -68,6 +68,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
             child: Scaffold(
               key: scaffoldKey,
               body: SafeArea(
+                top: true,
                 child: Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Container(
@@ -323,7 +324,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                                       0.0),
                                                           child: Text(
                                                             myAccountUsersRecord
-                                                                .firstName!,
+                                                                .firstName,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodySmall
@@ -430,7 +431,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                                       0.0),
                                                           child: Text(
                                                             myAccountUsersRecord
-                                                                .phoneNumber!,
+                                                                .phoneNumber,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodySmall
@@ -537,7 +538,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                                       0.0),
                                                           child: Text(
                                                             myAccountUsersRecord
-                                                                .email!,
+                                                                .email,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodySmall
@@ -761,7 +762,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                                       0.0),
                                                           child: Text(
                                                             myAccountUsersRecord
-                                                                .sex!,
+                                                                .sex,
                                                             textAlign:
                                                                 TextAlign.start,
                                                             style: FlutterFlowTheme
@@ -1308,7 +1309,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                   .clearRedirectLocation();
 
                                               context.goNamedAuth(
-                                                  'Login', mounted);
+                                                  'Login', context.mounted);
                                             },
                                             text: 'Log Out',
                                             options: FFButtonOptions(

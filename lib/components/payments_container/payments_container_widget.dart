@@ -58,7 +58,7 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
       decoration: BoxDecoration(),
       child: Builder(
         builder: (context) {
-          final payments = widget.invoice!.paymentsList!.toList();
+          final payments = widget.invoice!.paymentsList.toList();
           return ListView.builder(
             padding: EdgeInsets.zero,
             scrollDirection: Axis.vertical,
@@ -163,7 +163,7 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       7.0, 9.0, 5.0, 5.0),
                                   child: Text(
-                                    containerPaymentsRecord.transactionCode!
+                                    containerPaymentsRecord.transactionCode
                                         .maybeHandleOverflow(maxChars: 8),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -190,7 +190,7 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       9.0, 9.0, 5.0, 5.0),
                                   child: Text(
-                                    containerPaymentsRecord.type!,
+                                    containerPaymentsRecord.type,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -213,7 +213,7 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
                                       5.0, 9.0, 5.0, 5.0),
                                   child: Text(
                                     formatNumber(
-                                      containerPaymentsRecord.amount!,
+                                      containerPaymentsRecord.amount,
                                       formatType: FormatType.decimal,
                                       decimalType: DecimalType.periodDecimal,
                                       currency: 'Ksh ',

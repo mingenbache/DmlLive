@@ -560,7 +560,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                                                     child: Text(
                                                                       widget
                                                                           .test!
-                                                                          .category!,
+                                                                          .category,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -613,7 +613,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                                                   size: 20.0,
                                                                 ),
                                                                 Text(
-                                                                  '${widget.test!.durationResults?.toString()} Hrs',
+                                                                  '${widget.test!.durationResults.toString()} Hrs',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -722,7 +722,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                                                         formatNumber(
                                                                           widget
                                                                               .test!
-                                                                              .price!,
+                                                                              .price,
                                                                           formatType:
                                                                               FormatType.decimal,
                                                                           decimalType:

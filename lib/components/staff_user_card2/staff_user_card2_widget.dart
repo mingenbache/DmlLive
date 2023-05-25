@@ -250,7 +250,7 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
                                         ),
                                       ),
                                       Text(
-                                        widget.userRecord!.email!,
+                                        widget.userRecord!.email,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -401,7 +401,7 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     3.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              widget.userRecord!.role!,
+                                              widget.userRecord!.role,
                                               textAlign: TextAlign.center,
                                               style:
                                                   FlutterFlowTheme.of(context)

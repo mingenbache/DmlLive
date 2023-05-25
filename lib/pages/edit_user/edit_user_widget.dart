@@ -45,6 +45,7 @@ class _EditUserWidgetState extends State<EditUserWidget> {
         child: Scaffold(
           key: scaffoldKey,
           body: SafeArea(
+            top: true,
             child: Align(
               alignment: AlignmentDirectional(0.0, 0.0),
               child: wrapWithModel(

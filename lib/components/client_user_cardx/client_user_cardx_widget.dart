@@ -170,7 +170,7 @@ class _ClientUserCardxWidgetState extends State<ClientUserCardxWidget> {
                                 ),
                               ),
                               Text(
-                                widget.userRecord!.email!,
+                                widget.userRecord!.email,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -206,7 +206,7 @@ class _ClientUserCardxWidgetState extends State<ClientUserCardxWidget> {
                                 ),
                               ),
                               Text(
-                                widget.userRecord!.phoneNumber!,
+                                widget.userRecord!.phoneNumber,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(

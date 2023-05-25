@@ -1,95 +1,147 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'users_record.g.dart';
+class UsersRecord extends FirestoreRecord {
+  UsersRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
-  static Serializer<UsersRecord> get serializer => _$usersRecordSerializer;
+  // "email" field.
+  String? _email;
+  String get email => _email ?? '';
+  bool hasEmail() => _email != null;
 
-  String? get email;
+  // "display_name" field.
+  String? _displayName;
+  String get displayName => _displayName ?? '';
+  bool hasDisplayName() => _displayName != null;
 
-  @BuiltValueField(wireName: 'display_name')
-  String? get displayName;
+  // "photo_url" field.
+  String? _photoUrl;
+  String get photoUrl => _photoUrl ?? '';
+  bool hasPhotoUrl() => _photoUrl != null;
 
-  @BuiltValueField(wireName: 'photo_url')
-  String? get photoUrl;
+  // "uid" field.
+  String? _uid;
+  String get uid => _uid ?? '';
+  bool hasUid() => _uid != null;
 
-  String? get uid;
+  // "created_time" field.
+  DateTime? _createdTime;
+  DateTime? get createdTime => _createdTime;
+  bool hasCreatedTime() => _createdTime != null;
 
-  @BuiltValueField(wireName: 'created_time')
-  DateTime? get createdTime;
+  // "phone_number" field.
+  String? _phoneNumber;
+  String get phoneNumber => _phoneNumber ?? '';
+  bool hasPhoneNumber() => _phoneNumber != null;
 
-  @BuiltValueField(wireName: 'phone_number')
-  String? get phoneNumber;
+  // "role" field.
+  String? _role;
+  String get role => _role ?? '';
+  bool hasRole() => _role != null;
 
-  String? get role;
+  // "first_name" field.
+  String? _firstName;
+  String get firstName => _firstName ?? '';
+  bool hasFirstName() => _firstName != null;
 
-  @BuiltValueField(wireName: 'first_name')
-  String? get firstName;
+  // "last_name" field.
+  String? _lastName;
+  String get lastName => _lastName ?? '';
+  bool hasLastName() => _lastName != null;
 
-  @BuiltValueField(wireName: 'last_name')
-  String? get lastName;
+  // "sex" field.
+  String? _sex;
+  String get sex => _sex ?? '';
+  bool hasSex() => _sex != null;
 
-  String? get sex;
+  // "d_o_b" field.
+  DateTime? _dOB;
+  DateTime? get dOB => _dOB;
+  bool hasDOB() => _dOB != null;
 
-  @BuiltValueField(wireName: 'd_o_b')
-  DateTime? get dOB;
+  // "password" field.
+  String? _password;
+  String get password => _password ?? '';
+  bool hasPassword() => _password != null;
 
-  String? get password;
+  // "current_booking" field.
+  DocumentReference? _currentBooking;
+  DocumentReference? get currentBooking => _currentBooking;
+  bool hasCurrentBookingField() => _currentBooking != null;
 
-  @BuiltValueField(wireName: 'current_booking')
-  DocumentReference? get currentBooking;
+  // "has_current_booking" field.
+  bool? _hasCurrentBooking;
+  bool get hasCurrentBooking => _hasCurrentBooking ?? false;
+  bool hasHasCurrentBooking() => _hasCurrentBooking != null;
 
-  @BuiltValueField(wireName: 'has_current_booking')
-  bool? get hasCurrentBooking;
+  // "isStaff" field.
+  bool? _isStaff;
+  bool get isStaff => _isStaff ?? false;
+  bool hasIsStaff() => _isStaff != null;
 
-  bool? get isStaff;
+  // "lastLogin" field.
+  DateTime? _lastLogin;
+  DateTime? get lastLogin => _lastLogin;
+  bool hasLastLogin() => _lastLogin != null;
 
-  DateTime? get lastLogin;
+  // "hasInitAccount" field.
+  bool? _hasInitAccount;
+  bool get hasInitAccount => _hasInitAccount ?? false;
+  bool hasHasInitAccount() => _hasInitAccount != null;
 
-  bool? get hasInitAccount;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(UsersRecordBuilder builder) => builder
-    ..email = ''
-    ..displayName = ''
-    ..photoUrl = ''
-    ..uid = ''
-    ..phoneNumber = ''
-    ..role = ''
-    ..firstName = ''
-    ..lastName = ''
-    ..sex = ''
-    ..password = ''
-    ..hasCurrentBooking = false
-    ..isStaff = false
-    ..hasInitAccount = false;
+  void _initializeFields() {
+    _email = snapshotData['email'] as String?;
+    _displayName = snapshotData['display_name'] as String?;
+    _photoUrl = snapshotData['photo_url'] as String?;
+    _uid = snapshotData['uid'] as String?;
+    _createdTime = snapshotData['created_time'] as DateTime?;
+    _phoneNumber = snapshotData['phone_number'] as String?;
+    _role = snapshotData['role'] as String?;
+    _firstName = snapshotData['first_name'] as String?;
+    _lastName = snapshotData['last_name'] as String?;
+    _sex = snapshotData['sex'] as String?;
+    _dOB = snapshotData['d_o_b'] as DateTime?;
+    _password = snapshotData['password'] as String?;
+    _currentBooking = snapshotData['current_booking'] as DocumentReference?;
+    _hasCurrentBooking = snapshotData['has_current_booking'] as bool?;
+    _isStaff = snapshotData['isStaff'] as bool?;
+    _lastLogin = snapshotData['lastLogin'] as DateTime?;
+    _hasInitAccount = snapshotData['hasInitAccount'] as bool?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
 
-  static Stream<UsersRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<UsersRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => UsersRecord.fromSnapshot(s));
 
-  static Future<UsersRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Future<UsersRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => UsersRecord.fromSnapshot(s));
 
-  UsersRecord._();
-  factory UsersRecord([void Function(UsersRecordBuilder) updates]) =
-      _$UsersRecord;
+  static UsersRecord fromSnapshot(DocumentSnapshot snapshot) => UsersRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static UsersRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      UsersRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'UsersRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createUsersRecordData({
@@ -111,28 +163,26 @@ Map<String, dynamic> createUsersRecordData({
   DateTime? lastLogin,
   bool? hasInitAccount,
 }) {
-  final firestoreData = serializers.toFirestore(
-    UsersRecord.serializer,
-    UsersRecord(
-      (u) => u
-        ..email = email
-        ..displayName = displayName
-        ..photoUrl = photoUrl
-        ..uid = uid
-        ..createdTime = createdTime
-        ..phoneNumber = phoneNumber
-        ..role = role
-        ..firstName = firstName
-        ..lastName = lastName
-        ..sex = sex
-        ..dOB = dOB
-        ..password = password
-        ..currentBooking = currentBooking
-        ..hasCurrentBooking = hasCurrentBooking
-        ..isStaff = isStaff
-        ..lastLogin = lastLogin
-        ..hasInitAccount = hasInitAccount,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'email': email,
+      'display_name': displayName,
+      'photo_url': photoUrl,
+      'uid': uid,
+      'created_time': createdTime,
+      'phone_number': phoneNumber,
+      'role': role,
+      'first_name': firstName,
+      'last_name': lastName,
+      'sex': sex,
+      'd_o_b': dOB,
+      'password': password,
+      'current_booking': currentBooking,
+      'has_current_booking': hasCurrentBooking,
+      'isStaff': isStaff,
+      'lastLogin': lastLogin,
+      'hasInitAccount': hasInitAccount,
+    }.withoutNulls,
   );
 
   return firestoreData;

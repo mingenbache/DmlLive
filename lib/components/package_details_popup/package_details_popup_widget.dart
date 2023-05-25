@@ -226,7 +226,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                     .fromSTEB(
                                                         15.0, 0.0, 0.0, 0.0),
                                                 child: AutoSizeText(
-                                                  widget.package!.packageName!,
+                                                  widget.package!.packageName,
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -240,7 +240,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                             ),
                                           ],
                                         ),
-                                        if (widget.package!.isAvailable ?? true)
+                                        if (widget.package!.isAvailable)
                                           Align(
                                             alignment:
                                                 AlignmentDirectional(0.8, 0.0),
@@ -505,7 +505,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                   child: Text(
                                                                     widget
                                                                         .package!
-                                                                        .description!,
+                                                                        .description,
                                                                     textAlign:
                                                                         TextAlign
                                                                             .start,
@@ -577,7 +577,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                         (context) {
                                                                       final packageTests = widget
                                                                           .package!
-                                                                          .testsIncluded!
+                                                                          .testsIncluded
                                                                           .toList();
                                                                       return ListView
                                                                           .builder(
@@ -1562,7 +1562,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                       4.0),
                                                           child: Text(
                                                             widget.package!
-                                                                .category!,
+                                                                .category,
                                                             textAlign: TextAlign
                                                                 .center,
                                                             style: FlutterFlowTheme
@@ -1586,8 +1586,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                     children: [
                                                       Text(
                                                         formatNumber(
-                                                          widget
-                                                              .package!.price!,
+                                                          widget.package!.price,
                                                           formatType: FormatType
                                                               .decimal,
                                                           decimalType:
@@ -1634,18 +1633,23 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                     children: [
                       Stack(
                         children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.9,
-                            decoration: BoxDecoration(),
-                            child: wrapWithModel(
-                              model: _model.packageActionsWidgetModel,
-                              updateCallback: () => setState(() {}),
-                              child: PackageActionsWidgetWidget(
-                                package: widget.package,
-                                bookingRef: widget.booking,
+                          if (valueOrDefault<bool>(
+                                  currentUserDocument?.isStaff, false) ==
+                              false)
+                            AuthUserStreamWidget(
+                              builder: (context) => Container(
+                                width: MediaQuery.of(context).size.width * 0.9,
+                                decoration: BoxDecoration(),
+                                child: wrapWithModel(
+                                  model: _model.packageActionsWidgetModel,
+                                  updateCallback: () => setState(() {}),
+                                  child: PackageActionsWidgetWidget(
+                                    package: widget.package,
+                                    bookingRef: widget.booking,
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
                         ],
                       ),
                     ],

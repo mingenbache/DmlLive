@@ -180,8 +180,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                     children: [
                       Stack(
                         children: [
-                          if (widget.booking!.testsIncluded!
-                              .toList()
+                          if (widget.booking!.testsIncluded
                               .contains(widget.test!.reference))
                             InkWell(
                               splashColor: Colors.transparent,
@@ -189,8 +188,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                if (widget.booking!.testsIncluded!
-                                    .toList()
+                                if (widget.booking!.testsIncluded
                                     .contains(widget.test!.reference)) {
                                   final bookingsUpdateData = {
                                     ...createBookingsRecordData(
@@ -268,8 +266,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                 animationsMap[
                                     'containerOnActionTriggerAnimation1']!,
                                 hasBeenTriggered: hasContainerTriggered1),
-                          if (!widget.booking!.testsIncluded!
-                              .toList()
+                          if (!widget.booking!.testsIncluded
                               .contains(widget.test!.reference))
                             InkWell(
                               splashColor: Colors.transparent,
@@ -277,11 +274,9 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                if (!widget.booking!.testsIncluded!
-                                    .toList()
+                                if (!widget.booking!.testsIncluded
                                     .contains(widget.test!.reference)) {
-                                  if (!widget.booking!.testPackTests!
-                                      .toList()
+                                  if (!widget.booking!.testPackTests
                                       .contains(widget.test!.reference)) {
                                     final bookingsUpdateData = {
                                       ...createBookingsRecordData(
@@ -298,7 +293,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          'Test Added.${widget.booking!.testsIncluded!.toList().length.toString()} Tests in Total.',
+                                          'Test Added.${widget.booking!.testsIncluded.length.toString()} Tests in Total.',
                                           style: TextStyle(),
                                         ),
                                         duration: Duration(milliseconds: 4000),
@@ -633,7 +628,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                     child: Text(
                                                                       widget
                                                                           .test!
-                                                                          .category!,
+                                                                          .category,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -686,7 +681,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                   size: 20.0,
                                                                 ),
                                                                 Text(
-                                                                  '${widget.test!.durationResults?.toString()} Hrs',
+                                                                  '${widget.test!.durationResults.toString()} Hrs',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -795,7 +790,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                         formatNumber(
                                                                           widget
                                                                               .test!
-                                                                              .price!,
+                                                                              .price,
                                                                           formatType:
                                                                               FormatType.decimal,
                                                                           decimalType:

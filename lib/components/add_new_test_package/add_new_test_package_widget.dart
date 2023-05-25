@@ -153,15 +153,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                       maxHeight: 730.0,
                     ),
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          FlutterFlowTheme.of(context).tertiary,
-                          Color(0xFF77A54A)
-                        ],
-                        stops: [0.5, 1.0],
-                        begin: AlignmentDirectional(1.0, -1.0),
-                        end: AlignmentDirectional(-1.0, 1.0),
-                      ),
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                     child: Padding(
@@ -180,7 +172,8 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                     .displaySmall
                                     .override(
                                       fontFamily: 'Open Sans',
-                                      color: Color(0xFF586B06),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                     ),
                               ),
                               InkWell(
@@ -241,18 +234,23 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Open Sans',
-                                              color: Color(0xFF586B06),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                             ),
                                         hintText: 'Enter Name',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Open Sans',
-                                              color: Color(0xFF586B06),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                             ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color(0xFF586B06),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
                                             width: 2.0,
                                           ),
                                           borderRadius:
@@ -376,8 +374,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Open Sans',
-                                                                color: Color(
-                                                                    0xFF586B06),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -441,9 +440,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                       null),
                                                               options:
                                                                   packageCategoryDropDownCategoriesRecord!
-                                                                      .categories!
-                                                                      .toList()
-                                                                      .toList(),
+                                                                      .categories,
                                                               onChanged: (val) =>
                                                                   setState(() =>
                                                                       _model.packageCategoryDropDownValue =
@@ -462,13 +459,15 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                         fontFamily:
                                                                             'Open Sans',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .primary,
+                                                                            .primaryText,
                                                                       ),
                                                               fillColor:
                                                                   Colors.white,
                                                               elevation: 2.0,
-                                                              borderColor: Color(
-                                                                  0xFF586B06),
+                                                              borderColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
                                                               borderWidth: 2.0,
                                                               borderRadius:
                                                                   10.0,
@@ -502,8 +501,8 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                 ),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(20.0, 20.0,
-                                                          20.0, 20.0),
+                                                      .fromSTEB(
+                                                          0.0, 20.0, 0.0, 20.0),
                                                   child: TextFormField(
                                                     controller: _model
                                                         .packageDescriptionController,
@@ -524,7 +523,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondary,
+                                                                .primaryText,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -535,16 +534,17 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondary,
+                                                                .primaryText,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
-                                                          color:
-                                                              Color(0x00000000),
-                                                          width: 1.0,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          width: 2.0,
                                                         ),
                                                         borderRadius:
                                                             BorderRadius
@@ -555,7 +555,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                         borderSide: BorderSide(
                                                           color:
                                                               Color(0x00000000),
-                                                          width: 1.0,
+                                                          width: 2.0,
                                                         ),
                                                         borderRadius:
                                                             BorderRadius
@@ -566,7 +566,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                         borderSide: BorderSide(
                                                           color:
                                                               Color(0x00000000),
-                                                          width: 1.0,
+                                                          width: 2.0,
                                                         ),
                                                         borderRadius:
                                                             BorderRadius
@@ -577,15 +577,13 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                         borderSide: BorderSide(
                                                           color:
                                                               Color(0x00000000),
-                                                          width: 1.0,
+                                                          width: 2.0,
                                                         ),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(12.0),
                                                       ),
                                                       filled: true,
-                                                      fillColor:
-                                                          Color(0xFFEEEEEE),
                                                       contentPadding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
@@ -606,8 +604,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               },
                                                               child: Icon(
                                                                 Icons.clear,
-                                                                color: Color(
-                                                                    0xFF889238),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                                 size: 15.0,
                                                               ),
                                                             )
@@ -618,7 +617,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .secondary,
+                                                              .primaryText,
                                                       fontWeight:
                                                           FontWeight.normal,
                                                     ),
@@ -780,8 +779,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Open Sans',
-                                                                color: Color(
-                                                                    0xFF586B06),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -797,7 +797,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                     'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondary,
+                                                                    .accent1,
                                                                 fontSize: 12.0,
                                                               ),
                                                         ),
@@ -836,8 +836,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                           12.0),
                                                               border:
                                                                   Border.all(
-                                                                color: Color(
-                                                                    0xFF586B06),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                               ),
                                                             ),
                                                             child: Padding(
@@ -962,8 +963,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                     .override(
                                                                       fontFamily:
                                                                           'Open Sans',
-                                                                      color: Color(
-                                                                          0xFF586B06),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
                                                                       fontSize:
                                                                           18.0,
                                                                     ),
@@ -985,7 +987,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                             activeColor:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondary,
+                                                                    .primaryText,
                                                             inactiveColor:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -1057,8 +1059,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Open Sans',
-                                                                color: Color(
-                                                                    0xFF586B06),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -1074,7 +1077,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                     'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondary,
+                                                                    .accent1,
                                                                 fontSize: 12.0,
                                                               ),
                                                         ),
@@ -1113,8 +1116,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                           12.0),
                                                               border:
                                                                   Border.all(
-                                                                color: Color(
-                                                                    0xFF586B06),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                               ),
                                                             ),
                                                             child: Padding(
@@ -1238,8 +1242,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                     .override(
                                                                       fontFamily:
                                                                           'Open Sans',
-                                                                      color: Color(
-                                                                          0xFF586B06),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
                                                                       fontSize:
                                                                           18.0,
                                                                     ),
@@ -1261,7 +1266,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                             activeColor:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondary,
+                                                                    .primaryText,
                                                             inactiveColor:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -1352,19 +1357,22 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                       ),
                                                       Text(
                                                         'Price',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Open Sans',
-                                                              color: Color(
-                                                                  0xFF586B06),
-                                                              fontSize: 18.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                            ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Open Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  fontSize:
+                                                                      18.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
                                                       ),
                                                     ],
                                                   ),
@@ -1411,7 +1419,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                 BorderSide(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .alternate,
+                                                                  .primaryText,
                                                               width: 1.0,
                                                             ),
                                                             borderRadius:
@@ -1472,8 +1480,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                         style:
                                                             GoogleFonts.getFont(
                                                           'Roboto',
-                                                          color:
-                                                              Color(0xFF586B06),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -1592,7 +1601,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
-                                                            Color(0xFF586B06),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                       ),
                                                 ),
                                                 Padding(
@@ -1712,10 +1723,10 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   children: [
                                                                                     Text(
-                                                                                      testPackTestItemTestsRecord.name!,
+                                                                                      testPackTestItemTestsRecord.name,
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Open Sans',
-                                                                                            color: FlutterFlowTheme.of(context).secondary,
+                                                                                            color: FlutterFlowTheme.of(context).primaryText,
                                                                                             fontWeight: FontWeight.w500,
                                                                                           ),
                                                                                     ),
@@ -1731,16 +1742,16 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                                       'Ksh',
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Open Sans',
-                                                                                            color: FlutterFlowTheme.of(context).primary,
+                                                                                            color: FlutterFlowTheme.of(context).primaryText,
                                                                                             fontWeight: FontWeight.w600,
                                                                                           ),
                                                                                     ),
                                                                                   ),
                                                                                   Text(
-                                                                                    testPackTestItemTestsRecord.price!.toString(),
+                                                                                    testPackTestItemTestsRecord.price.toString(),
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
-                                                                                          color: FlutterFlowTheme.of(context).primary,
+                                                                                          color: FlutterFlowTheme.of(context).accent1,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
                                                                                   ),
@@ -1929,8 +1940,10 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                           dotWidth: 16.0,
                                           dotHeight: 16.0,
                                           dotColor: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          activeDotColor: Colors.white,
+                                              .secondary,
+                                          activeDotColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
                                           paintStyle: PaintingStyle.fill,
                                         ),
                                       ),

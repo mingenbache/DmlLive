@@ -72,6 +72,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
             child: Scaffold(
               key: scaffoldKey,
               body: SafeArea(
+                top: true,
                 child: Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Container(
@@ -368,7 +369,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                         Expanded(
                                                                           child:
                                                                               Text(
-                                                                            myReportsItem.labRefNum!,
+                                                                            myReportsItem.labRefNum,
                                                                             maxLines:
                                                                                 1,
                                                                             style: FlutterFlowTheme.of(context).titleSmall.override(
@@ -486,7 +487,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                     children: [
-                                                                                      if (containerBookingsRecord.flaggedTests!.toList().length > 0)
+                                                                                      if (containerBookingsRecord.flaggedTests.length > 0)
                                                                                         Padding(
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
                                                                                           child: Material(
@@ -523,7 +524,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                                             ),
                                                                                           ),
                                                                                         ),
-                                                                                      if (containerBookingsRecord.frozenTests!.toList().length > 0)
+                                                                                      if (containerBookingsRecord.frozenTests.length > 0)
                                                                                         Padding(
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
                                                                                           child: Material(
@@ -600,7 +601,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                         builder:
                                                                             (context) {
                                                                           final verifiedTests = containerBookingsRecord
-                                                                              .bookedTests!
+                                                                              .bookedTests
                                                                               .toList();
                                                                           return ListView
                                                                               .builder(

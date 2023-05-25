@@ -1,64 +1,93 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'staff_record.g.dart';
+class StaffRecord extends FirestoreRecord {
+  StaffRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class StaffRecord implements Built<StaffRecord, StaffRecordBuilder> {
-  static Serializer<StaffRecord> get serializer => _$staffRecordSerializer;
+  // "email" field.
+  String? _email;
+  String get email => _email ?? '';
+  bool hasEmail() => _email != null;
 
-  String? get email;
+  // "first_name" field.
+  String? _firstName;
+  String get firstName => _firstName ?? '';
+  bool hasFirstName() => _firstName != null;
 
-  @BuiltValueField(wireName: 'first_name')
-  String? get firstName;
+  // "last_name" field.
+  String? _lastName;
+  String get lastName => _lastName ?? '';
+  bool hasLastName() => _lastName != null;
 
-  @BuiltValueField(wireName: 'last_name')
-  String? get lastName;
+  // "role" field.
+  String? _role;
+  String get role => _role ?? '';
+  bool hasRole() => _role != null;
 
-  String? get role;
+  // "UserRef" field.
+  DocumentReference? _userRef;
+  DocumentReference? get userRef => _userRef;
+  bool hasUserRef() => _userRef != null;
 
-  @BuiltValueField(wireName: 'UserRef')
-  DocumentReference? get userRef;
+  // "createDate" field.
+  DateTime? _createDate;
+  DateTime? get createDate => _createDate;
+  bool hasCreateDate() => _createDate != null;
 
-  DateTime? get createDate;
+  // "createUser" field.
+  DocumentReference? _createUser;
+  DocumentReference? get createUser => _createUser;
+  bool hasCreateUser() => _createUser != null;
 
-  DocumentReference? get createUser;
+  // "display_name" field.
+  String? _displayName;
+  String get displayName => _displayName ?? '';
+  bool hasDisplayName() => _displayName != null;
 
-  @BuiltValueField(wireName: 'display_name')
-  String? get displayName;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(StaffRecordBuilder builder) => builder
-    ..email = ''
-    ..firstName = ''
-    ..lastName = ''
-    ..role = ''
-    ..displayName = '';
+  void _initializeFields() {
+    _email = snapshotData['email'] as String?;
+    _firstName = snapshotData['first_name'] as String?;
+    _lastName = snapshotData['last_name'] as String?;
+    _role = snapshotData['role'] as String?;
+    _userRef = snapshotData['UserRef'] as DocumentReference?;
+    _createDate = snapshotData['createDate'] as DateTime?;
+    _createUser = snapshotData['createUser'] as DocumentReference?;
+    _displayName = snapshotData['display_name'] as String?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('staff');
 
-  static Stream<StaffRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<StaffRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => StaffRecord.fromSnapshot(s));
 
-  static Future<StaffRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Future<StaffRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => StaffRecord.fromSnapshot(s));
 
-  StaffRecord._();
-  factory StaffRecord([void Function(StaffRecordBuilder) updates]) =
-      _$StaffRecord;
+  static StaffRecord fromSnapshot(DocumentSnapshot snapshot) => StaffRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static StaffRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      StaffRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'StaffRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createStaffRecordData({
@@ -71,19 +100,17 @@ Map<String, dynamic> createStaffRecordData({
   DocumentReference? createUser,
   String? displayName,
 }) {
-  final firestoreData = serializers.toFirestore(
-    StaffRecord.serializer,
-    StaffRecord(
-      (s) => s
-        ..email = email
-        ..firstName = firstName
-        ..lastName = lastName
-        ..role = role
-        ..userRef = userRef
-        ..createDate = createDate
-        ..createUser = createUser
-        ..displayName = displayName,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'email': email,
+      'first_name': firstName,
+      'last_name': lastName,
+      'role': role,
+      'UserRef': userRef,
+      'createDate': createDate,
+      'createUser': createUser,
+      'display_name': displayName,
+    }.withoutNulls,
   );
 
   return firestoreData;

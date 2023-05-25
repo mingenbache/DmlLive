@@ -66,6 +66,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
             ),
           ),
           body: SafeArea(
+            top: true,
             child: Align(
               alignment: AlignmentDirectional(0.0, 0.0),
               child: Container(
@@ -425,7 +426,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Text(
-                                                                                columnChatsRecord.topic!,
+                                                                                columnChatsRecord.topic,
                                                                                 style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                       fontFamily: 'Roboto',
                                                                                       color: FlutterFlowTheme.of(context).secondary,
@@ -468,7 +469,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                                                   child: Padding(
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 4.0, 0.0),
                                                                                     child: Text(
-                                                                                      columnChatsRecord.lastMessage!,
+                                                                                      columnChatsRecord.lastMessage,
                                                                                       style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                             fontFamily: 'Lexend Deca',
                                                                                             color: FlutterFlowTheme.of(context).primaryText,

@@ -1,99 +1,154 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'invoices_record.g.dart';
+class InvoicesRecord extends FirestoreRecord {
+  InvoicesRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class InvoicesRecord
-    implements Built<InvoicesRecord, InvoicesRecordBuilder> {
-  static Serializer<InvoicesRecord> get serializer =>
-      _$invoicesRecordSerializer;
+  // "booked_tests_list" field.
+  List<DocumentReference>? _bookedTestsList;
+  List<DocumentReference> get bookedTestsList => _bookedTestsList ?? const [];
+  bool hasBookedTestsList() => _bookedTestsList != null;
 
-  @BuiltValueField(wireName: 'booked_tests_list')
-  BuiltList<DocumentReference>? get bookedTestsList;
+  // "created_date" field.
+  DateTime? _createdDate;
+  DateTime? get createdDate => _createdDate;
+  bool hasCreatedDate() => _createdDate != null;
 
-  @BuiltValueField(wireName: 'created_date')
-  DateTime? get createdDate;
+  // "created_by" field.
+  DocumentReference? _createdBy;
+  DocumentReference? get createdBy => _createdBy;
+  bool hasCreatedBy() => _createdBy != null;
 
-  @BuiltValueField(wireName: 'created_by')
-  DocumentReference? get createdBy;
+  // "is_paid" field.
+  bool? _isPaid;
+  bool get isPaid => _isPaid ?? false;
+  bool hasIsPaid() => _isPaid != null;
 
-  @BuiltValueField(wireName: 'is_paid')
-  bool? get isPaid;
+  // "payment_submitted" field.
+  bool? _paymentSubmitted;
+  bool get paymentSubmitted => _paymentSubmitted ?? false;
+  bool hasPaymentSubmitted() => _paymentSubmitted != null;
 
-  @BuiltValueField(wireName: 'payment_submitted')
-  bool? get paymentSubmitted;
+  // "full_amount" field.
+  bool? _fullAmount;
+  bool get fullAmount => _fullAmount ?? false;
+  bool hasFullAmount() => _fullAmount != null;
 
-  @BuiltValueField(wireName: 'full_amount')
-  bool? get fullAmount;
+  // "labRefNum" field.
+  String? _labRefNum;
+  String get labRefNum => _labRefNum ?? '';
+  bool hasLabRefNum() => _labRefNum != null;
 
-  String? get labRefNum;
+  // "Booking_ref" field.
+  DocumentReference? _bookingRef;
+  DocumentReference? get bookingRef => _bookingRef;
+  bool hasBookingRef() => _bookingRef != null;
 
-  @BuiltValueField(wireName: 'Booking_ref')
-  DocumentReference? get bookingRef;
+  // "payments_list" field.
+  List<DocumentReference>? _paymentsList;
+  List<DocumentReference> get paymentsList => _paymentsList ?? const [];
+  bool hasPaymentsList() => _paymentsList != null;
 
-  @BuiltValueField(wireName: 'payments_list')
-  BuiltList<DocumentReference>? get paymentsList;
+  // "Amount_due" field.
+  double? _amountDue;
+  double get amountDue => _amountDue ?? 0.0;
+  bool hasAmountDue() => _amountDue != null;
 
-  @BuiltValueField(wireName: 'Amount_due')
-  double? get amountDue;
+  // "user" field.
+  DocumentReference? _user;
+  DocumentReference? get user => _user;
+  bool hasUser() => _user != null;
 
-  DocumentReference? get user;
+  // "due_date" field.
+  DateTime? _dueDate;
+  DateTime? get dueDate => _dueDate;
+  bool hasDueDate() => _dueDate != null;
 
-  @BuiltValueField(wireName: 'due_date')
-  DateTime? get dueDate;
+  // "updateDate" field.
+  DateTime? _updateDate;
+  DateTime? get updateDate => _updateDate;
+  bool hasUpdateDate() => _updateDate != null;
 
-  DateTime? get updateDate;
+  // "updateRole" field.
+  String? _updateRole;
+  String get updateRole => _updateRole ?? '';
+  bool hasUpdateRole() => _updateRole != null;
 
-  String? get updateRole;
+  // "Invoice_amount" field.
+  double? _invoiceAmount;
+  double get invoiceAmount => _invoiceAmount ?? 0.0;
+  bool hasInvoiceAmount() => _invoiceAmount != null;
 
-  @BuiltValueField(wireName: 'Invoice_amount')
-  double? get invoiceAmount;
+  // "invoiceNum" field.
+  String? _invoiceNum;
+  String get invoiceNum => _invoiceNum ?? '';
+  bool hasInvoiceNum() => _invoiceNum != null;
 
-  String? get invoiceNum;
+  // "bookingUser" field.
+  DocumentReference? _bookingUser;
+  DocumentReference? get bookingUser => _bookingUser;
+  bool hasBookingUser() => _bookingUser != null;
 
-  DocumentReference? get bookingUser;
+  // "userEmail" field.
+  String? _userEmail;
+  String get userEmail => _userEmail ?? '';
+  bool hasUserEmail() => _userEmail != null;
 
-  String? get userEmail;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(InvoicesRecordBuilder builder) => builder
-    ..bookedTestsList = ListBuilder()
-    ..isPaid = false
-    ..paymentSubmitted = false
-    ..fullAmount = false
-    ..labRefNum = ''
-    ..paymentsList = ListBuilder()
-    ..amountDue = 0.0
-    ..updateRole = ''
-    ..invoiceAmount = 0.0
-    ..invoiceNum = ''
-    ..userEmail = '';
+  void _initializeFields() {
+    _bookedTestsList = getDataList(snapshotData['booked_tests_list']);
+    _createdDate = snapshotData['created_date'] as DateTime?;
+    _createdBy = snapshotData['created_by'] as DocumentReference?;
+    _isPaid = snapshotData['is_paid'] as bool?;
+    _paymentSubmitted = snapshotData['payment_submitted'] as bool?;
+    _fullAmount = snapshotData['full_amount'] as bool?;
+    _labRefNum = snapshotData['labRefNum'] as String?;
+    _bookingRef = snapshotData['Booking_ref'] as DocumentReference?;
+    _paymentsList = getDataList(snapshotData['payments_list']);
+    _amountDue = castToType<double>(snapshotData['Amount_due']);
+    _user = snapshotData['user'] as DocumentReference?;
+    _dueDate = snapshotData['due_date'] as DateTime?;
+    _updateDate = snapshotData['updateDate'] as DateTime?;
+    _updateRole = snapshotData['updateRole'] as String?;
+    _invoiceAmount = castToType<double>(snapshotData['Invoice_amount']);
+    _invoiceNum = snapshotData['invoiceNum'] as String?;
+    _bookingUser = snapshotData['bookingUser'] as DocumentReference?;
+    _userEmail = snapshotData['userEmail'] as String?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('Invoices');
 
-  static Stream<InvoicesRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<InvoicesRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => InvoicesRecord.fromSnapshot(s));
 
-  static Future<InvoicesRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Future<InvoicesRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => InvoicesRecord.fromSnapshot(s));
 
-  InvoicesRecord._();
-  factory InvoicesRecord([void Function(InvoicesRecordBuilder) updates]) =
-      _$InvoicesRecord;
+  static InvoicesRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      InvoicesRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static InvoicesRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      InvoicesRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'InvoicesRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createInvoicesRecordData({
@@ -114,29 +169,25 @@ Map<String, dynamic> createInvoicesRecordData({
   DocumentReference? bookingUser,
   String? userEmail,
 }) {
-  final firestoreData = serializers.toFirestore(
-    InvoicesRecord.serializer,
-    InvoicesRecord(
-      (i) => i
-        ..bookedTestsList = null
-        ..createdDate = createdDate
-        ..createdBy = createdBy
-        ..isPaid = isPaid
-        ..paymentSubmitted = paymentSubmitted
-        ..fullAmount = fullAmount
-        ..labRefNum = labRefNum
-        ..bookingRef = bookingRef
-        ..paymentsList = null
-        ..amountDue = amountDue
-        ..user = user
-        ..dueDate = dueDate
-        ..updateDate = updateDate
-        ..updateRole = updateRole
-        ..invoiceAmount = invoiceAmount
-        ..invoiceNum = invoiceNum
-        ..bookingUser = bookingUser
-        ..userEmail = userEmail,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'created_date': createdDate,
+      'created_by': createdBy,
+      'is_paid': isPaid,
+      'payment_submitted': paymentSubmitted,
+      'full_amount': fullAmount,
+      'labRefNum': labRefNum,
+      'Booking_ref': bookingRef,
+      'Amount_due': amountDue,
+      'user': user,
+      'due_date': dueDate,
+      'updateDate': updateDate,
+      'updateRole': updateRole,
+      'Invoice_amount': invoiceAmount,
+      'invoiceNum': invoiceNum,
+      'bookingUser': bookingUser,
+      'userEmail': userEmail,
+    }.withoutNulls,
   );
 
   return firestoreData;

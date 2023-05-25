@@ -214,8 +214,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          if (!containerBookingsRecord.testsIncluded!
-                              .toList()
+                          if (!containerBookingsRecord.testsIncluded
                               .contains(widget.test!.reference)) {
                             final bookingsUpdateData = {
                               ...createBookingsRecordData(

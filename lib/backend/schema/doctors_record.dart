@@ -1,55 +1,76 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'doctors_record.g.dart';
+class DoctorsRecord extends FirestoreRecord {
+  DoctorsRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class DoctorsRecord
-    implements Built<DoctorsRecord, DoctorsRecordBuilder> {
-  static Serializer<DoctorsRecord> get serializer => _$doctorsRecordSerializer;
+  // "names" field.
+  List<String>? _names;
+  List<String> get names => _names ?? const [];
+  bool hasNames() => _names != null;
 
-  BuiltList<String>? get names;
+  // "address" field.
+  String? _address;
+  String get address => _address ?? '';
+  bool hasAddress() => _address != null;
 
-  String? get address;
+  // "phonenumber" field.
+  String? _phonenumber;
+  String get phonenumber => _phonenumber ?? '';
+  bool hasPhonenumber() => _phonenumber != null;
 
-  String? get phonenumber;
+  // "name" field.
+  String? _name;
+  String get name => _name ?? '';
+  bool hasName() => _name != null;
 
-  String? get name;
+  // "emailaddress" field.
+  String? _emailaddress;
+  String get emailaddress => _emailaddress ?? '';
+  bool hasEmailaddress() => _emailaddress != null;
 
-  String? get emailaddress;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(DoctorsRecordBuilder builder) => builder
-    ..names = ListBuilder()
-    ..address = ''
-    ..phonenumber = ''
-    ..name = ''
-    ..emailaddress = '';
+  void _initializeFields() {
+    _names = getDataList(snapshotData['names']);
+    _address = snapshotData['address'] as String?;
+    _phonenumber = snapshotData['phonenumber'] as String?;
+    _name = snapshotData['name'] as String?;
+    _emailaddress = snapshotData['emailaddress'] as String?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('doctors');
 
-  static Stream<DoctorsRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<DoctorsRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => DoctorsRecord.fromSnapshot(s));
 
-  static Future<DoctorsRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Future<DoctorsRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => DoctorsRecord.fromSnapshot(s));
 
-  DoctorsRecord._();
-  factory DoctorsRecord([void Function(DoctorsRecordBuilder) updates]) =
-      _$DoctorsRecord;
+  static DoctorsRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      DoctorsRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static DoctorsRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      DoctorsRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'DoctorsRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createDoctorsRecordData({
@@ -58,16 +79,13 @@ Map<String, dynamic> createDoctorsRecordData({
   String? name,
   String? emailaddress,
 }) {
-  final firestoreData = serializers.toFirestore(
-    DoctorsRecord.serializer,
-    DoctorsRecord(
-      (d) => d
-        ..names = null
-        ..address = address
-        ..phonenumber = phonenumber
-        ..name = name
-        ..emailaddress = emailaddress,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'address': address,
+      'phonenumber': phonenumber,
+      'name': name,
+      'emailaddress': emailaddress,
+    }.withoutNulls,
   );
 
   return firestoreData;

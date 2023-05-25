@@ -387,8 +387,6 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                             FormFieldController<String>(null),
                                     options: pathologistStaffRecordList
                                         .map((e) => e.displayName)
-                                        .withoutNulls
-                                        .toList()
                                         .toList(),
                                     onChanged: (val) => setState(
                                         () => _model.pathologistValue = val),
@@ -462,9 +460,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                 ],
                               ),
                             ),
-                            if (confirmTestsSheetBookingsRecord
-                                    .hasTestPackages ??
-                                true)
+                            if (confirmTestsSheetBookingsRecord.hasTestPackages)
                               Expanded(
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -473,7 +469,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                     builder: (context) {
                                       final bookedTestPacks =
                                           confirmTestsSheetBookingsRecord
-                                              .testPackages!
+                                              .testPackages
                                               .toList();
                                       return ListView.builder(
                                         padding: EdgeInsets.zero,
@@ -564,7 +560,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                     flex: 2,
                                                                     child: Text(
                                                                       containerTestPackagesRecord
-                                                                          .packageName!,
+                                                                          .packageName,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .titleSmall
@@ -579,7 +575,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                   Expanded(
                                                                     flex: 1,
                                                                     child: Text(
-                                                                      '${containerTestPackagesRecord.testsIncluded!.toList().length.toString()} Tests',
+                                                                      '${containerTestPackagesRecord.testsIncluded.length.toString()} Tests',
                                                                       textAlign:
                                                                           TextAlign
                                                                               .end,
@@ -647,7 +643,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                           builder: (context) {
                                                             final testPackTests =
                                                                 containerTestPackagesRecord
-                                                                    .testsIncluded!
+                                                                    .testsIncluded
                                                                     .toList();
                                                             return ListView
                                                                 .builder(
@@ -716,8 +712,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                           var _shouldSetState =
                                                                               false;
                                                                           if (confirmTestsSheetBookingsRecord
-                                                                              .bookedTests!
-                                                                              .toList()
+                                                                              .bookedTests
                                                                               .contains(testPackTestsItem)) {
                                                                             if (_shouldSetState)
                                                                               setState(() {});
@@ -818,7 +813,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       children: [
                                                                                         Text(
-                                                                                          containerTestsRecord.name!,
+                                                                                          containerTestsRecord.name,
                                                                                           style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                 fontFamily: 'Roboto',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
@@ -843,7 +838,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                               color: FlutterFlowTheme.of(context).secondary,
                                                                                               size: 30.0,
                                                                                             ),
-                                                                                            if (confirmTestsSheetBookingsRecord.bookedTests!.toList().contains(testPackTestsItem))
+                                                                                            if (confirmTestsSheetBookingsRecord.bookedTests.contains(testPackTestsItem))
                                                                                               StreamBuilder<List<BookedTestsRecord>>(
                                                                                                 stream: queryBookedTestsRecord(
                                                                                                   queryBuilder: (bookedTestsRecord) => bookedTestsRecord.where('testRef', isEqualTo: testPackTestsItem).where('booking_ref', isEqualTo: confirmTestsSheetBookingsRecord.reference),
@@ -915,7 +910,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                   builder: (context) {
                                     final nopackTests =
                                         confirmTestsSheetBookingsRecord
-                                            .testsIncluded!
+                                            .testsIncluded
                                             .toList();
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
@@ -959,8 +954,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                 onTap: () async {
                                                   var _shouldSetState = false;
                                                   if (confirmTestsSheetBookingsRecord
-                                                      .bookedTests!
-                                                      .toList()
+                                                      .bookedTests
                                                       .contains(
                                                           nopackTestsItem)) {
                                                     if (_shouldSetState)
@@ -1067,7 +1061,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                             children: [
                                                               Text(
                                                                 containerTestsRecord
-                                                                    .name!,
+                                                                    .name,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleSmall
@@ -1193,8 +1187,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                   builder: (context) {
                                     final specialTestsList =
                                         confirmTestsSheetBookingsRecord
-                                            .specialTests!
-                                            .toList()
+                                            .specialTests
                                             .map((e) => e)
                                             .toList();
                                     return ListView.builder(
@@ -1283,7 +1276,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                         children: [
                                                           Text(
                                                             specialTestsListItem
-                                                                .name!,
+                                                                .name,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
@@ -1478,10 +1471,10 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                       });
                                       if (functions.checktestsListsEqual(
                                           confirmTestsSheetBookingsRecord
-                                              .testsIncluded!
+                                              .testsIncluded
                                               .toList(),
                                           confirmTestsSheetBookingsRecord
-                                              .bookedTests!
+                                              .bookedTests
                                               .toList())) {
                                         if (FFAppState().proceedconfirmation) {
                                           final bookingsUpdateData =

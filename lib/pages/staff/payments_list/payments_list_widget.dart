@@ -51,6 +51,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
         child: Scaffold(
           key: scaffoldKey,
           body: SafeArea(
+            top: true,
             child: Align(
               alignment: AlignmentDirectional(0.0, 0.0),
               child: Container(
@@ -375,7 +376,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
                                                                                         child: Text(
                                                                                           formatNumber(
-                                                                                            columnPaymentsRecord.amount!,
+                                                                                            columnPaymentsRecord.amount,
                                                                                             formatType: FormatType.decimal,
                                                                                             decimalType: DecimalType.periodDecimal,
                                                                                             currency: 'Ksh ',
@@ -403,7 +404,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                         child: Text(
-                                                                                          columnPaymentsRecord.type!,
+                                                                                          columnPaymentsRecord.type,
                                                                                           maxLines: 1,
                                                                                           style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                 fontFamily: 'Lexend Deca',
@@ -500,7 +501,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                                 child: Padding(
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                                   child: Text(
-                                                                                                    columnPaymentsRecord.transactionCode!,
+                                                                                                    columnPaymentsRecord.transactionCode,
                                                                                                     style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                           fontFamily: 'Lexend Deca',
                                                                                                           color: FlutterFlowTheme.of(context).primaryText,
@@ -682,7 +683,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                                     padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                                     child: Text(
                                                                                                       formatNumber(
-                                                                                                        columnBookingsRecord.paymentBalance!,
+                                                                                                        columnBookingsRecord.paymentBalance,
                                                                                                         formatType: FormatType.decimal,
                                                                                                         decimalType: DecimalType.periodDecimal,
                                                                                                         currency: 'Ksh ',
@@ -900,7 +901,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                       padding: EdgeInsetsDirectional.fromSTEB(6.0, 4.0, 4.0, 4.0),
                                                                                       child: Text(
                                                                                         formatNumber(
-                                                                                          columnPaymentsRecord.amount!,
+                                                                                          columnPaymentsRecord.amount,
                                                                                           formatType: FormatType.decimal,
                                                                                           decimalType: DecimalType.periodDecimal,
                                                                                           currency: 'Ksh ',
@@ -924,7 +925,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                     child: Padding(
                                                                                       padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                       child: Text(
-                                                                                        columnPaymentsRecord.type!,
+                                                                                        columnPaymentsRecord.type,
                                                                                         style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                               fontFamily: 'Lexend Deca',
                                                                                               color: Colors.white,
@@ -1091,7 +1092,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                               child: Padding(
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                                 child: Text(
-                                                                                                  columnBookingsRecord.labRefNum!.maybeHandleOverflow(
+                                                                                                  columnBookingsRecord.labRefNum.maybeHandleOverflow(
                                                                                                     maxChars: 20,
                                                                                                     replacement: '…',
                                                                                                   ),
@@ -1155,7 +1156,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 8.0, 3.0),
                                                                                                   child: Text(
                                                                                                     formatNumber(
-                                                                                                      columnBookingsRecord.paymentBalance!,
+                                                                                                      columnBookingsRecord.paymentBalance,
                                                                                                       formatType: FormatType.decimal,
                                                                                                       decimalType: DecimalType.periodDecimal,
                                                                                                       currency: 'Ksh ',

@@ -118,13 +118,13 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                 child: Scaffold(
                   key: scaffoldKey,
                   floatingActionButton: Visibility(
-                    visible: !homeUsersRecord.isStaff!,
+                    visible: !homeUsersRecord.isStaff,
                     child: FloatingActionButton.extended(
                       onPressed: () async {
                         FFAppState().update(() {
                           FFAppState().lastBookingPage = false;
                         });
-                        if (homeUsersRecord.hasCurrentBooking!) {
+                        if (homeUsersRecord.hasCurrentBooking) {
                           context.pushNamed(
                             'NewBooking',
                             queryParams: {
@@ -231,7 +231,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                   colors: [
                                                     Color(0xB16CD7B7),
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryText
+                                                        .secondary
                                                   ],
                                                   stops: [0.2, 0.5],
                                                   begin: AlignmentDirectional(
@@ -239,15 +239,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                   end: AlignmentDirectional(
                                                       0, 1.0),
                                                 ),
-                                                borderRadius: BorderRadius.only(
-                                                  bottomLeft:
-                                                      Radius.circular(30.0),
-                                                  bottomRight:
-                                                      Radius.circular(30.0),
-                                                  topLeft: Radius.circular(0.0),
-                                                  topRight:
-                                                      Radius.circular(0.0),
-                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(0.0),
                                               ),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
@@ -306,8 +299,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                     .end,
                                                             children: [
                                                               if (homeUsersRecord
-                                                                      .hasCurrentBooking ??
-                                                                  true)
+                                                                  .hasCurrentBooking)
                                                                 StreamBuilder<
                                                                     BookingsRecord>(
                                                                   stream: BookingsRecord
@@ -344,8 +336,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                       badgeContent:
                                                                           Text(
                                                                         badgeBookingsRecord
-                                                                            .testsIncluded!
-                                                                            .toList()
+                                                                            .testsIncluded
                                                                             .length
                                                                             .toString(),
                                                                         style: FlutterFlowTheme.of(context)
@@ -356,7 +347,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                             ),
                                                                       ),
                                                                       showBadge:
-                                                                          badgeBookingsRecord.totalTests! >
+                                                                          badgeBookingsRecord.totalTests >
                                                                               0,
                                                                       shape: badges
                                                                           .BadgeShape
@@ -401,7 +392,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         onPressed:
                                                                             () async {
                                                                           if (homeUsersRecord
-                                                                              .hasCurrentBooking!) {
+                                                                              .hasCurrentBooking) {
                                                                             context.pushNamed(
                                                                               'NewBooking',
                                                                               queryParams: {
@@ -731,7 +722,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                     child:
                                                                         AutoSizeText(
                                                                       homeUsersRecord
-                                                                          .firstName!
+                                                                          .firstName
                                                                           .maybeHandleOverflow(
                                                                               maxChars: 13),
                                                                       style: FlutterFlowTheme.of(
@@ -741,7 +732,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                             fontFamily:
                                                                                 'Montserrat',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             fontWeight:
                                                                                 FontWeight.w600,
                                                                           ),
@@ -966,12 +957,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 8.0, 12.0, 0.0),
                                           child: Container(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.2,
                                             constraints: BoxConstraints(
                                               maxWidth: 440.0,
+                                              maxHeight: 200.0,
                                             ),
                                             decoration: BoxDecoration(),
                                             child: GridView(

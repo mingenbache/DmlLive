@@ -805,7 +805,7 @@ class _EditUserDetailsPopupWidgetState
                                                             List<String>>(
                                                       [
                                                         editUserContainerUsersRecord
-                                                            .sex!
+                                                            .sex
                                                       ],
                                                     ),
                                                   ),

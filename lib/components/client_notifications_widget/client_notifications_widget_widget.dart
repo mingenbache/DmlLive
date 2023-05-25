@@ -150,7 +150,7 @@ class _ClientNotificationsWidgetWidgetState
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
+                  Flexible(
                     child: wrapWithModel(
                       model: _model.dashboardMenuWidgetLightModel,
                       updateCallback: () => setState(() {}),

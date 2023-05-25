@@ -1,33 +1,75 @@
-import 'dart:async';
+// ignore_for_file: unnecessary_getters_setters
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../index.dart';
-import '../serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
-part 'special_test_type_struct.g.dart';
+import 'index.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-abstract class SpecialTestTypeStruct
-    implements Built<SpecialTestTypeStruct, SpecialTestTypeStructBuilder> {
-  static Serializer<SpecialTestTypeStruct> get serializer =>
-      _$specialTestTypeStructSerializer;
+class SpecialTestTypeStruct extends FFFirebaseStruct {
+  SpecialTestTypeStruct({
+    String? name,
+    String? description,
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
+  })  : _name = name,
+        _description = description,
+        super(firestoreUtilData);
 
-  String? get name;
+  // "name" field.
+  String? _name;
+  String get name => _name ?? '';
+  set name(String? val) => _name = val;
+  bool hasName() => _name != null;
 
-  String? get description;
+  // "description" field.
+  String? _description;
+  String get description => _description ?? '';
+  set description(String? val) => _description = val;
+  bool hasDescription() => _description != null;
 
-  /// Utility class for Firestore updates
-  FirestoreUtilData get firestoreUtilData;
+  static SpecialTestTypeStruct fromMap(Map<String, dynamic> data) =>
+      SpecialTestTypeStruct(
+        name: data['name'] as String?,
+        description: data['description'] as String?,
+      );
 
-  static void _initializeBuilder(SpecialTestTypeStructBuilder builder) =>
-      builder
-        ..name = ''
-        ..description = ''
-        ..firestoreUtilData = FirestoreUtilData();
+  static SpecialTestTypeStruct? maybeFromMap(dynamic data) =>
+      data is Map<String, dynamic> ? SpecialTestTypeStruct.fromMap(data) : null;
 
-  SpecialTestTypeStruct._();
-  factory SpecialTestTypeStruct(
-          [void Function(SpecialTestTypeStructBuilder) updates]) =
-      _$SpecialTestTypeStruct;
+  Map<String, dynamic> toMap() => {
+        'name': _name,
+        'description': _description,
+      }.withoutNulls;
+
+  @override
+  Map<String, dynamic> toSerializableMap() => {
+        'name': serializeParam(
+          _name,
+          ParamType.String,
+        ),
+        'description': serializeParam(
+          _description,
+          ParamType.String,
+        ),
+      }.withoutNulls;
+
+  static SpecialTestTypeStruct fromSerializableMap(Map<String, dynamic> data) =>
+      SpecialTestTypeStruct(
+        name: deserializeParam(
+          data['name'],
+          ParamType.String,
+          false,
+        ),
+        description: deserializeParam(
+          data['description'],
+          ParamType.String,
+          false,
+        ),
+      );
+
+  @override
+  String toString() => 'SpecialTestTypeStruct(${toMap()})';
 }
 
 SpecialTestTypeStruct createSpecialTestTypeStruct({
@@ -39,27 +81,23 @@ SpecialTestTypeStruct createSpecialTestTypeStruct({
   bool delete = false,
 }) =>
     SpecialTestTypeStruct(
-      (s) => s
-        ..name = name
-        ..description = description
-        ..firestoreUtilData = FirestoreUtilData(
-          clearUnsetFields: clearUnsetFields,
-          create: create,
-          delete: delete,
-          fieldValues: fieldValues,
-        ),
+      name: name,
+      description: description,
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
     );
 
 SpecialTestTypeStruct? updateSpecialTestTypeStruct(
   SpecialTestTypeStruct? specialTestType, {
   bool clearUnsetFields = true,
 }) =>
-    specialTestType != null
-        ? (specialTestType.toBuilder()
-              ..firestoreUtilData =
-                  FirestoreUtilData(clearUnsetFields: clearUnsetFields))
-            .build()
-        : null;
+    specialTestType
+      ?..firestoreUtilData =
+          FirestoreUtilData(clearUnsetFields: clearUnsetFields);
 
 void addSpecialTestTypeStructData(
   Map<String, dynamic> firestoreData,
@@ -85,8 +123,6 @@ void addSpecialTestTypeStructData(
 
   final create = specialTestType.firestoreUtilData.create;
   firestoreData.addAll(create ? mergeNestedFields(nestedData) : nestedData);
-
-  return;
 }
 
 Map<String, dynamic> getSpecialTestTypeFirestoreData(
@@ -96,8 +132,7 @@ Map<String, dynamic> getSpecialTestTypeFirestoreData(
   if (specialTestType == null) {
     return {};
   }
-  final firestoreData = serializers.toFirestore(
-      SpecialTestTypeStruct.serializer, specialTestType);
+  final firestoreData = mapToFirestore(specialTestType.toMap());
 
   // Add any Firestore field values
   specialTestType.firestoreUtilData.fieldValues
@@ -110,6 +145,6 @@ List<Map<String, dynamic>> getSpecialTestTypeListFirestoreData(
   List<SpecialTestTypeStruct>? specialTestTypes,
 ) =>
     specialTestTypes
-        ?.map((s) => getSpecialTestTypeFirestoreData(s, true))
+        ?.map((e) => getSpecialTestTypeFirestoreData(e, true))
         .toList() ??
     [];

@@ -216,25 +216,25 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                           if (functions.checkTestPackageBookingHasDuplicates(
                               functions
                                   .returnAllBookingTests(
-                                      containerBookingsRecord.testPackTests!
+                                      containerBookingsRecord.testPackTests
                                           .toList(),
-                                      containerBookingsRecord.testsIncluded!
+                                      containerBookingsRecord.testsIncluded
                                           .toList())
                                   .toList(),
-                              widget.package!.testsIncluded!.toList())) {
+                              widget.package!.testsIncluded.toList())) {
                             FFAppState().update(() {
                               FFAppState().duplicateTests = functions
                                   .returnDuplicateTestsinBooking(
                                       functions
                                           .returnAllBookingTests(
                                               containerBookingsRecord
-                                                  .testPackTests!
+                                                  .testPackTests
                                                   .toList(),
                                               containerBookingsRecord
-                                                  .testsIncluded!
+                                                  .testsIncluded
                                                   .toList())
                                           .toList(),
-                                      widget.package!.testsIncluded!.toList())
+                                      widget.package!.testsIncluded.toList())
                                   .toList();
                             });
                             await showModalBottomSheet(
@@ -253,8 +253,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                               },
                             ).then((value) => setState(() {}));
                           } else {
-                            if (!containerBookingsRecord.testPackages!
-                                .toList()
+                            if (!containerBookingsRecord.testPackages
                                 .contains(widget.package!.reference)) {
                               final bookingsUpdateData = {
                                 ...createBookingsRecordData(
@@ -267,10 +266,9 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                                     [widget.package!.reference]),
                                 'testPackTests':
                                     functions.addBookingPackageTests(
-                                        containerBookingsRecord.testPackTests!
+                                        containerBookingsRecord.testPackTests
                                             .toList(),
-                                        widget.package!.testsIncluded!
-                                            .toList()),
+                                        widget.package!.testsIncluded.toList()),
                               };
                               await containerBookingsRecord.reference
                                   .update(bookingsUpdateData);

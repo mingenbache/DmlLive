@@ -226,8 +226,7 @@ class _TechnologistTestDeckWidgetState
                                                       .fromSTEB(
                                                           5.0, 15.0, 0.0, 0.0),
                                                   child: Text(
-                                                    testResultsTestsRecord
-                                                        .name!,
+                                                    testResultsTestsRecord.name,
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -249,9 +248,7 @@ class _TechnologistTestDeckWidgetState
                                         children: [
                                           Stack(
                                             children: [
-                                              if (widget
-                                                      .bookedTest!.hasResult ??
-                                                  true)
+                                              if (widget.bookedTest!.hasResult)
                                                 Container(
                                                   width: 145.0,
                                                   height: 32.0,
@@ -492,8 +489,7 @@ class _TechnologistTestDeckWidgetState
                                             ],
                                           ),
                                           if (viewResultsTestedTestsRecord!
-                                                  .isFlagged ??
-                                              true)
+                                              .isFlagged)
                                             InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,
@@ -776,7 +772,7 @@ class _TechnologistTestDeckWidgetState
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   children: [
                                                                                     Text(
-                                                                                      viewResultsTestedTestsRecord!.labRefNum!,
+                                                                                      viewResultsTestedTestsRecord!.labRefNum,
                                                                                       style: FlutterFlowTheme.of(context).titleMedium,
                                                                                     ),
                                                                                   ],
@@ -1147,7 +1143,7 @@ class _TechnologistTestDeckWidgetState
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   children: [
                                                                                     Text(
-                                                                                      containerBookingsRecord.pathologist!,
+                                                                                      containerBookingsRecord.pathologist,
                                                                                       style: FlutterFlowTheme.of(context).titleMedium,
                                                                                     ),
                                                                                   ],
@@ -1263,9 +1259,8 @@ class _TechnologistTestDeckWidgetState
                                                     ),
                                                     Visibility(
                                                       visible: widget
-                                                              .bookedTest!
-                                                              .hasResult ??
-                                                          true,
+                                                          .bookedTest!
+                                                          .hasResult,
                                                       child: StreamBuilder<
                                                           List<
                                                               TestedTestsRecord>>(
@@ -1406,7 +1401,7 @@ class _TechnologistTestDeckWidgetState
                                                                         Stack(
                                                                           children: [
                                                                             Visibility(
-                                                                              visible: columnTestedTestsRecord!.resultsPositive ?? true,
+                                                                              visible: columnTestedTestsRecord!.resultsPositive,
                                                                               child: Container(
                                                                                 width: 116.0,
                                                                                 height: 32.0,
@@ -1453,7 +1448,7 @@ class _TechnologistTestDeckWidgetState
                                                                               ),
                                                                             ),
                                                                             Visibility(
-                                                                              visible: columnTestedTestsRecord!.resultsPositive ?? true,
+                                                                              visible: columnTestedTestsRecord!.resultsPositive,
                                                                               child: Container(
                                                                                 width: 116.0,
                                                                                 height: 32.0,
@@ -1576,7 +1571,7 @@ class _TechnologistTestDeckWidgetState
                                                                               Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(7.0, 7.0, 7.0, 4.0),
                                                                                 child: Text(
-                                                                                  columnTestedTestsRecord!.testResult!,
+                                                                                  columnTestedTestsRecord!.testResult,
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondary,
@@ -1667,7 +1662,7 @@ class _TechnologistTestDeckWidgetState
                                                                                 Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7.0, 7.0, 7.0, 4.0),
                                                                                   child: Text(
-                                                                                    columnTestedTestsRecord!.testNote!,
+                                                                                    columnTestedTestsRecord!.testNote,
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).secondary,

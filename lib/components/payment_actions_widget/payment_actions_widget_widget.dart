@@ -118,7 +118,7 @@ class _PaymentActionsWidgetWidgetState
                     children: [
                       Stack(
                         children: [
-                          if (!containerPaymentsRecord.isApproved!)
+                          if (!containerPaymentsRecord.isApproved)
                             Container(
                               width: 110.0,
                               height: 50.0,
@@ -170,7 +170,7 @@ class _PaymentActionsWidgetWidgetState
                       ),
                       Stack(
                         children: [
-                          if (!containerPaymentsRecord.isApproved!)
+                          if (!containerPaymentsRecord.isApproved)
                             StreamBuilder<InvoicesRecord>(
                               stream: InvoicesRecord.getDocument(
                                   containerPaymentsRecord.invoiceRef!),
@@ -214,11 +214,11 @@ class _PaymentActionsWidgetWidgetState
                                             verifyButtonInvoicesRecord
                                                 .invoiceAmount,
                                             containerPaymentsRecord.amount
-                                                ?.toDouble()),
+                                                .toDouble()),
                                         amountDue: functions
                                             .returnInvoiceAmountDue(
                                                 containerPaymentsRecord.amount
-                                                    ?.toDouble(),
+                                                    .toDouble(),
                                                 verifyButtonInvoicesRecord
                                                     .amountDue),
                                         updateDate: getCurrentTimestamp,
@@ -230,15 +230,14 @@ class _PaymentActionsWidgetWidgetState
                                     };
                                     await verifyButtonInvoicesRecord.reference
                                         .update(invoicesUpdateData);
-                                    if (!rowBookingsRecord.payments!
-                                        .toList()
+                                    if (!rowBookingsRecord.payments
                                         .contains(widget.paymentRef)) {
                                       final bookingsUpdateData = {
                                         ...createBookingsRecordData(
                                           paymentBalance:
                                               functions.returnBookingBalance(
                                                   containerPaymentsRecord.amount
-                                                      ?.toDouble(),
+                                                      .toDouble(),
                                                   rowBookingsRecord
                                                       .paymentBalance),
                                           updatedDate: getCurrentTimestamp,
@@ -306,7 +305,7 @@ class _PaymentActionsWidgetWidgetState
                                 );
                               },
                             ),
-                          if (containerPaymentsRecord.isApproved ?? true)
+                          if (containerPaymentsRecord.isApproved)
                             Container(
                               width: 110.0,
                               height: 50.0,

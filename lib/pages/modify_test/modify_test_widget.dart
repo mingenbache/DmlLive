@@ -75,6 +75,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).tertiary,
               body: SafeArea(
+                top: true,
                 child: Form(
                   key: _model.formKey,
                   autovalidateMode: AutovalidateMode.disabled,
@@ -131,7 +132,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 Expanded(
                                   child: SwitchListTile(
                                     value: _model.switchListTileValue ??=
-                                        modifyTestTestsRecord.isAvailable!,
+                                        modifyTestTestsRecord.isAvailable,
                                     onChanged: (newValue) async {
                                       setState(() => _model
                                           .switchListTileValue = newValue!);
@@ -414,10 +415,8 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                         _model.dropDownValue ??=
                                             modifyTestTestsRecord.category,
                                       ),
-                                      options: dropDownCategoriesRecord!
-                                          .categories!
-                                          .toList()
-                                          .toList(),
+                                      options:
+                                          dropDownCategoriesRecord!.categories,
                                       onChanged: (val) => setState(
                                           () => _model.dropDownValue = val),
                                       width: MediaQuery.of(context).size.width *
@@ -454,7 +453,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                     10.0, 10.0, 10.0, 10.0),
                                 child: SwitchListTile(
                                   value: _model.atHomeToggleValue ??=
-                                      modifyTestTestsRecord.homeTest!,
+                                      modifyTestTestsRecord.homeTest,
                                   onChanged: (newValue) async {
                                     setState(() =>
                                         _model.atHomeToggleValue = newValue!);
@@ -559,7 +558,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                                   .testDurationTextController ??=
                                               TextEditingController(
                                             text: modifyTestTestsRecord.duration
-                                                ?.toString(),
+                                                .toString(),
                                           ),
                                           obscureText: false,
                                           decoration: InputDecoration(
@@ -720,7 +719,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                               TextEditingController(
                                             text: modifyTestTestsRecord
                                                 .durationResults
-                                                ?.toString(),
+                                                .toString(),
                                           ),
                                           obscureText: false,
                                           decoration: InputDecoration(
@@ -865,7 +864,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                       controller: _model.testPriceController ??=
                                           TextEditingController(
                                         text: modifyTestTestsRecord.price
-                                            ?.toString(),
+                                            .toString(),
                                       ),
                                       obscureText: false,
                                       decoration: InputDecoration(

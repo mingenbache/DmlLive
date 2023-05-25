@@ -7,9 +7,10 @@ import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'lat_lng.dart';
 import 'place.dart';
-import '../backend/backend.dart';
+import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../auth/firebase_auth/auth_util.dart';
+import '/backend/schema/structs/index.dart';
+import '/auth/firebase_auth/auth_util.dart';
 
 double addBookingPaymentBalance(
   int? current,
@@ -1289,7 +1290,7 @@ List<DocumentReference>? filterTestPackTests(
         .then((snap) {
       // testPackTests.addAll(TestPackagesRecord().testsIncluded);
       // testPackTests. (TestPackagesRecord().testsIncluded!.asList);
-      return TestPackagesRecord().testsIncluded!.asList;
+      return TestPackagesRecord().testsIncluded!;
       // return testPackTests;
     });
 

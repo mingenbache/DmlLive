@@ -325,7 +325,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                           3.0, 6.0, 0.0, 6.0),
                                                   child: Text(
                                                     submitRoleUsersRecord
-                                                        .phoneNumber!,
+                                                        .phoneNumber,
                                                     style: TextStyle(
                                                       color:
                                                           FlutterFlowTheme.of(
@@ -388,7 +388,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                     .fromSTEB(
                                                         3.0, 6.0, 0.0, 6.0),
                                                 child: Text(
-                                                  submitRoleUsersRecord.email!,
+                                                  submitRoleUsersRecord.email,
                                                   style: TextStyle(
                                                     color: FlutterFlowTheme.of(
                                                             context)
@@ -559,7 +559,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                     .fromSTEB(
                                                         4.0, 9.0, 0.0, 0.0),
                                                 child: Text(
-                                                  submitRoleUsersRecord.sex!,
+                                                  submitRoleUsersRecord.sex,
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -636,7 +636,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                     .fromSTEB(
                                                         3.0, 6.0, 0.0, 6.0),
                                                 child: Text(
-                                                  submitRoleUsersRecord.role!,
+                                                  submitRoleUsersRecord.role,
                                                   style: TextStyle(
                                                     color: FlutterFlowTheme.of(
                                                             context)

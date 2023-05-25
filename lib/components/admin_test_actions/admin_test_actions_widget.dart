@@ -187,8 +187,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                 height: 50.0,
                                 child: Stack(
                                   children: [
-                                    if (containerTestsRecord.isAvailable ??
-                                        true)
+                                    if (containerTestsRecord.isAvailable)
                                       InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
@@ -300,7 +299,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                           ),
                                         ),
                                       ),
-                                    if (!containerTestsRecord.isAvailable!)
+                                    if (!containerTestsRecord.isAvailable)
                                       InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
