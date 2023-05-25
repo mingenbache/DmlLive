@@ -231,9 +231,10 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                   colors: [
                                                     Color(0xB16CD7B7),
                                                     FlutterFlowTheme.of(context)
-                                                        .secondary
+                                                        .secondary,
+                                                    Color(0x1E6CD7B7)
                                                   ],
-                                                  stops: [0.2, 0.5],
+                                                  stops: [0.2, 0.5, 0.9],
                                                   begin: AlignmentDirectional(
                                                       0.0, -1.0),
                                                   end: AlignmentDirectional(

@@ -146,7 +146,7 @@ class _DashboardMenuWidgetLightWidgetState
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Container(
-                        width: 119.0,
+                        width: 100.0,
                         height: 148.0,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryText,
@@ -233,7 +233,7 @@ class _DashboardMenuWidgetLightWidgetState
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Container(
-                        width: 119.0,
+                        width: 100.0,
                         height: 148.0,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryText,
@@ -311,7 +311,7 @@ class _DashboardMenuWidgetLightWidgetState
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Container(
-                        width: 119.0,
+                        width: 100.0,
                         height: 148.0,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryText,
@@ -369,7 +369,7 @@ class _DashboardMenuWidgetLightWidgetState
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
                   child: Container(
-                    width: 119.0,
+                    width: 100.0,
                     height: 148.0,
                     decoration: BoxDecoration(
                       color: Colors.white,
