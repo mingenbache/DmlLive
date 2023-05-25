@@ -162,9 +162,10 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0x8F006392),
-                                          Color(0xA96CD7B7)
+                                          Color(0xA96CD7B7),
+                                          Color(0x1E6CD7B7)
                                         ],
-                                        stops: [0.0, 1.0],
+                                        stops: [0.0, 0.0, 0.9],
                                         begin: AlignmentDirectional(0.0, -1.0),
                                         end: AlignmentDirectional(0, 1.0),
                                       ),
@@ -669,8 +670,12 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                                             0.0,
                                                                             5.0,
                                                                             0.0),
+                                                                        borderWidth:
+                                                                            0.0,
                                                                         borderRadius:
                                                                             BorderRadius.circular(0.0),
+                                                                        borderColor:
+                                                                            Colors.transparent,
                                                                         indicatorSize:
                                                                             10.0,
                                                                       ),

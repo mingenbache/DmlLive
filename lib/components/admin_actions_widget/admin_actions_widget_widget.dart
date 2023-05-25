@@ -90,14 +90,14 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                       color: Colors.transparent,
                       elevation: 3.0,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Container(
-                        width: 119.0,
+                        width: 100.0,
                         height: 119.0,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryText,
-                          borderRadius: BorderRadius.circular(30.0),
+                          borderRadius: BorderRadius.circular(20.0),
                           shape: BoxShape.rectangle,
                         ),
                         child: Padding(
@@ -105,13 +105,23 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                               0.0, 15.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(
-                                Icons.people_sharp,
-                                color: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                size: 40.0,
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0x4B6CD7B7),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 12.0, 12.0, 12.0),
+                                  child: Icon(
+                                    Icons.people_sharp,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    size: 40.0,
+                                  ),
+                                ),
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -151,14 +161,14 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                       color: Colors.transparent,
                       elevation: 3.0,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Container(
-                        width: 119.0,
+                        width: 100.0,
                         height: 119.0,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryText,
-                          borderRadius: BorderRadius.circular(30.0),
+                          borderRadius: BorderRadius.circular(20.0),
                           shape: BoxShape.rectangle,
                         ),
                         child: Padding(
@@ -166,12 +176,22 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                               0.0, 15.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(
-                                Icons.calendar_today,
-                                color: Colors.white,
-                                size: 40.0,
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0x4B6CD7B7),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 12.0, 12.0, 12.0),
+                                  child: Icon(
+                                    Icons.calendar_today,
+                                    color: Colors.white,
+                                    size: 40.0,
+                                  ),
+                                ),
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -211,14 +231,14 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                       color: Colors.transparent,
                       elevation: 3.0,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Container(
-                        width: 119.0,
+                        width: 100.0,
                         height: 119.0,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryText,
-                          borderRadius: BorderRadius.circular(30.0),
+                          borderRadius: BorderRadius.circular(20.0),
                           shape: BoxShape.rectangle,
                         ),
                         child: Padding(
@@ -226,12 +246,22 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                               0.0, 15.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(
-                                Icons.payments_outlined,
-                                color: Colors.white,
-                                size: 40.0,
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0x4B6CD7B7),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 12.0, 12.0, 12.0),
+                                  child: Icon(
+                                    Icons.payments_outlined,
+                                    color: Colors.white,
+                                    size: 40.0,
+                                  ),
+                                ),
                               ),
                               Text(
                                 'Payments',
@@ -279,11 +309,11 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                       ).then((value) => setState(() {}));
                     },
                     child: Container(
-                      width: 119.0,
+                      width: 100.0,
                       height: 119.0,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(30.0),
+                        borderRadius: BorderRadius.circular(20.0),
                         shape: BoxShape.rectangle,
                       ),
                       child: Padding(
@@ -291,12 +321,23 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            FaIcon(
-                              FontAwesomeIcons.flask,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 40.0,
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0x4B6CD7B7),
+                                shape: BoxShape.circle,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 12.0, 12.0, 12.0),
+                                child: FaIcon(
+                                  FontAwesomeIcons.flask,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 40.0,
+                                ),
+                              ),
                             ),
                             Text(
                               'Catalog',
