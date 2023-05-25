@@ -144,9 +144,8 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                     bookedTestsRecord
                                         .where('scheduled_date',
                                             isGreaterThanOrEqualTo:
-                                                functions.returntheDay(_model
-                                                    .uICalendarSelectedDay
-                                                    ?.start))
+                                                functions.returntheDay(
+                                                    _model.selectedDate))
                                         .orderBy('scheduled_date'),
                               ),
                               builder: (context, snapshot) {
@@ -173,7 +172,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                   decoration: BoxDecoration(),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 10.0, 12.0, 0.0),
+                                        0.0, 10.0, 0.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
@@ -198,60 +197,55 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(12.0),
                                             ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(6.0, 6.0, 6.0, 6.0),
-                                              child: FlutterFlowCalendar(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                iconColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                weekFormat: true,
-                                                weekStartsMonday: true,
-                                                initialDate:
-                                                    functions.returntheDay(
-                                                        getCurrentTimestamp),
-                                                rowHeight: 50.0,
-                                                onChange: (DateTimeRange?
-                                                    newSelectedDate) {
-                                                  setState(() => _model
-                                                          .uICalendarSelectedDay =
-                                                      newSelectedDate);
-                                                },
-                                                titleStyle: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                                dayOfWeekStyle: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                                dateStyle: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                                selectedDateStyle: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                ),
-                                                inactiveDateStyle: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                ),
-                                                locale:
-                                                    FFLocalizations.of(context)
-                                                        .languageCode,
-                                              ),
+                                            child: FlutterFlowCalendar(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              iconColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              weekFormat: true,
+                                              weekStartsMonday: true,
+                                              initialDate: _model.selectedDate,
+                                              rowHeight: 50.0,
+                                              onChange: (DateTimeRange?
+                                                  newSelectedDate) async {
+                                                _model.calendarSelectedDay =
+                                                    newSelectedDate;
+                                                setState(() {
+                                                  _model.selectedDate = _model
+                                                      .calendarSelectedDay
+                                                      ?.start;
+                                                });
+                                                setState(() {});
+                                              },
+                                              titleStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineSmall
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryBackground,
+                                                      ),
+                                              dayOfWeekStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                      ),
+                                              dateStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                              selectedDateStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall,
+                                              inactiveDateStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
                                             ),
                                           ),
                                         ),
@@ -277,9 +271,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                 children: [
                                                   Text(
                                                     functions.returnDateString(
-                                                        _model
-                                                            .uICalendarSelectedDay
-                                                            ?.start),
+                                                        _model.selectedDate),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleSmall
@@ -292,7 +284,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                         ),
                                                   ),
                                                   Text(
-                                                    '${functions.getDayTestsnumber(calendarScheduleContainerBookedTestsRecordList.toList(), _model.uICalendarSelectedDay?.start).toString()} Tests',
+                                                    '${functions.getDayTestsnumber(calendarScheduleContainerBookedTestsRecordList.toList(), _model.selectedDate).toString()} Tests',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleSmall
@@ -395,9 +387,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                     .filterDayTests(
                                                         calendarScheduleContainerBookedTestsRecordList
                                                             .toList(),
-                                                        _model
-                                                            .uICalendarSelectedDay
-                                                            ?.start)
+                                                        _model.selectedDate)
                                                     .toList();
                                                 return ListView.builder(
                                                   padding: EdgeInsets.zero,

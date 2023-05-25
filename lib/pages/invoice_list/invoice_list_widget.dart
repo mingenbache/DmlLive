@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -366,7 +365,9 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                           .width *
                                                       0.9,
                                                   decoration: BoxDecoration(
-                                                    color: Colors.white,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondary,
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             12.0),
@@ -378,51 +379,54 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                     iconColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .secondaryText,
+                                                            .primaryText,
                                                     weekFormat: true,
                                                     weekStartsMonday: true,
                                                     initialDate:
-                                                        functions.returntheDay(
-                                                            getCurrentTimestamp),
+                                                        _model.selectedDate,
+                                                    rowHeight: 50.0,
                                                     onChange: (DateTimeRange?
-                                                        newSelectedDate) {
-                                                      setState(() => _model
-                                                              .uICalendarSelectedDay =
-                                                          newSelectedDate);
+                                                        newSelectedDate) async {
+                                                      _model.calendarSelectedDay =
+                                                          newSelectedDate;
+                                                      setState(() {
+                                                        _model.selectedDate = _model
+                                                            .calendarSelectedDay
+                                                            ?.start;
+                                                      });
+                                                      setState(() {});
                                                     },
-                                                    titleStyle: TextStyle(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                                    dayOfWeekStyle: TextStyle(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                                    dateStyle: TextStyle(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
+                                                    titleStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineSmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Open Sans',
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryBackground,
+                                                            ),
+                                                    dayOfWeekStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelLarge
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Open Sans',
+                                                            ),
+                                                    dateStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium,
                                                     selectedDateStyle:
-                                                        TextStyle(),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmall,
                                                     inactiveDateStyle:
-                                                        TextStyle(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondary,
-                                                    ),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium,
                                                     locale: FFLocalizations.of(
                                                             context)
                                                         .languageCode,

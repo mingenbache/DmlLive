@@ -570,22 +570,6 @@ List<TestPackagesRecord> returnSearchPackages(
   return list;
 }
 
-DocumentReference returnStaff(
-  String? displayName,
-  List<StaffRecord>? staffList,
-) {
-  // filter firebase collection of documents by string and return single document
-  StaffRecord foundStaff = new StaffRecord();
-
-  staffList!.forEach((element) {
-    if (element.displayName == displayName) {
-      foundStaff = element;
-    }
-  });
-
-  return foundStaff.reference;
-}
-
 List<UsersRecord> filterClients(List<UsersRecord>? usersList) {
   // filter a list of documents based on a boolean value not true
   var result =
