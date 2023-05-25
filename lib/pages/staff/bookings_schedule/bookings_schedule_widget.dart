@@ -51,6 +51,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
         child: Scaffold(
           key: scaffoldKey,
           body: SafeArea(
+            top: true,
             child: Align(
               alignment: AlignmentDirectional(0.0, 0.0),
               child: Container(

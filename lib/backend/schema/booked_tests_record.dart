@@ -1,95 +1,148 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'booked_tests_record.g.dart';
+class BookedTestsRecord extends FirestoreRecord {
+  BookedTestsRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class BookedTestsRecord
-    implements Built<BookedTestsRecord, BookedTestsRecordBuilder> {
-  static Serializer<BookedTestsRecord> get serializer =>
-      _$bookedTestsRecordSerializer;
+  // "testRef" field.
+  DocumentReference? _testRef;
+  DocumentReference? get testRef => _testRef;
+  bool hasTestRef() => _testRef != null;
 
-  DocumentReference? get testRef;
+  // "scheduled_date" field.
+  DateTime? _scheduledDate;
+  DateTime? get scheduledDate => _scheduledDate;
+  bool hasScheduledDate() => _scheduledDate != null;
 
-  @BuiltValueField(wireName: 'scheduled_date')
-  DateTime? get scheduledDate;
+  // "booking_ref" field.
+  DocumentReference? _bookingRef;
+  DocumentReference? get bookingRef => _bookingRef;
+  bool hasBookingRef() => _bookingRef != null;
 
-  @BuiltValueField(wireName: 'booking_ref')
-  DocumentReference? get bookingRef;
+  // "sample_collected" field.
+  bool? _sampleCollected;
+  bool get sampleCollected => _sampleCollected ?? false;
+  bool hasSampleCollected() => _sampleCollected != null;
 
-  @BuiltValueField(wireName: 'sample_collected')
-  bool? get sampleCollected;
+  // "sample_slide_requested" field.
+  bool? _sampleSlideRequested;
+  bool get sampleSlideRequested => _sampleSlideRequested ?? false;
+  bool hasSampleSlideRequested() => _sampleSlideRequested != null;
 
-  @BuiltValueField(wireName: 'sample_slide_requested')
-  bool? get sampleSlideRequested;
+  // "sample_slide_surrendered" field.
+  bool? _sampleSlideSurrendered;
+  bool get sampleSlideSurrendered => _sampleSlideSurrendered ?? false;
+  bool hasSampleSlideSurrendered() => _sampleSlideSurrendered != null;
 
-  @BuiltValueField(wireName: 'sample_slide_surrendered')
-  bool? get sampleSlideSurrendered;
+  // "user" field.
+  DocumentReference? _user;
+  DocumentReference? get user => _user;
+  bool hasUser() => _user != null;
 
-  DocumentReference? get user;
+  // "test_result" field.
+  String? _testResult;
+  String get testResult => _testResult ?? '';
+  bool hasTestResult() => _testResult != null;
 
-  @BuiltValueField(wireName: 'test_result')
-  String? get testResult;
+  // "test_attachment" field.
+  String? _testAttachment;
+  String get testAttachment => _testAttachment ?? '';
+  bool hasTestAttachment() => _testAttachment != null;
 
-  @BuiltValueField(wireName: 'test_attachment')
-  String? get testAttachment;
+  // "created_date" field.
+  DateTime? _createdDate;
+  DateTime? get createdDate => _createdDate;
+  bool hasCreatedDate() => _createdDate != null;
 
-  @BuiltValueField(wireName: 'created_date')
-  DateTime? get createdDate;
+  // "has_result" field.
+  bool? _hasResult;
+  bool get hasResult => _hasResult ?? false;
+  bool hasHasResult() => _hasResult != null;
 
-  @BuiltValueField(wireName: 'has_result')
-  bool? get hasResult;
+  // "labRefNum" field.
+  String? _labRefNum;
+  String get labRefNum => _labRefNum ?? '';
+  bool hasLabRefNum() => _labRefNum != null;
 
-  String? get labRefNum;
+  // "technologist" field.
+  DocumentReference? _technologist;
+  DocumentReference? get technologist => _technologist;
+  bool hasTechnologist() => _technologist != null;
 
-  DocumentReference? get technologist;
+  // "createUser" field.
+  DocumentReference? _createUser;
+  DocumentReference? get createUser => _createUser;
+  bool hasCreateUser() => _createUser != null;
 
-  DocumentReference? get createUser;
+  // "has_test_pack" field.
+  bool? _hasTestPack;
+  bool get hasTestPack => _hasTestPack ?? false;
+  bool hasHasTestPack() => _hasTestPack != null;
 
-  @BuiltValueField(wireName: 'has_test_pack')
-  bool? get hasTestPack;
+  // "test_pack_ref" field.
+  DocumentReference? _testPackRef;
+  DocumentReference? get testPackRef => _testPackRef;
+  bool hasTestPackRef() => _testPackRef != null;
 
-  @BuiltValueField(wireName: 'test_pack_ref')
-  DocumentReference? get testPackRef;
+  // "tested_test_Ref" field.
+  DocumentReference? _testedTestRef;
+  DocumentReference? get testedTestRef => _testedTestRef;
+  bool hasTestedTestRef() => _testedTestRef != null;
 
-  @BuiltValueField(wireName: 'tested_test_Ref')
-  DocumentReference? get testedTestRef;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(BookedTestsRecordBuilder builder) => builder
-    ..sampleCollected = false
-    ..sampleSlideRequested = false
-    ..sampleSlideSurrendered = false
-    ..testResult = ''
-    ..testAttachment = ''
-    ..hasResult = false
-    ..labRefNum = ''
-    ..hasTestPack = false;
+  void _initializeFields() {
+    _testRef = snapshotData['testRef'] as DocumentReference?;
+    _scheduledDate = snapshotData['scheduled_date'] as DateTime?;
+    _bookingRef = snapshotData['booking_ref'] as DocumentReference?;
+    _sampleCollected = snapshotData['sample_collected'] as bool?;
+    _sampleSlideRequested = snapshotData['sample_slide_requested'] as bool?;
+    _sampleSlideSurrendered = snapshotData['sample_slide_surrendered'] as bool?;
+    _user = snapshotData['user'] as DocumentReference?;
+    _testResult = snapshotData['test_result'] as String?;
+    _testAttachment = snapshotData['test_attachment'] as String?;
+    _createdDate = snapshotData['created_date'] as DateTime?;
+    _hasResult = snapshotData['has_result'] as bool?;
+    _labRefNum = snapshotData['labRefNum'] as String?;
+    _technologist = snapshotData['technologist'] as DocumentReference?;
+    _createUser = snapshotData['createUser'] as DocumentReference?;
+    _hasTestPack = snapshotData['has_test_pack'] as bool?;
+    _testPackRef = snapshotData['test_pack_ref'] as DocumentReference?;
+    _testedTestRef = snapshotData['tested_test_Ref'] as DocumentReference?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('booked_tests');
 
-  static Stream<BookedTestsRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<BookedTestsRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => BookedTestsRecord.fromSnapshot(s));
 
-  static Future<BookedTestsRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Future<BookedTestsRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => BookedTestsRecord.fromSnapshot(s));
 
-  BookedTestsRecord._();
-  factory BookedTestsRecord([void Function(BookedTestsRecordBuilder) updates]) =
-      _$BookedTestsRecord;
+  static BookedTestsRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      BookedTestsRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static BookedTestsRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      BookedTestsRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'BookedTestsRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createBookedTestsRecordData({
@@ -111,28 +164,26 @@ Map<String, dynamic> createBookedTestsRecordData({
   DocumentReference? testPackRef,
   DocumentReference? testedTestRef,
 }) {
-  final firestoreData = serializers.toFirestore(
-    BookedTestsRecord.serializer,
-    BookedTestsRecord(
-      (b) => b
-        ..testRef = testRef
-        ..scheduledDate = scheduledDate
-        ..bookingRef = bookingRef
-        ..sampleCollected = sampleCollected
-        ..sampleSlideRequested = sampleSlideRequested
-        ..sampleSlideSurrendered = sampleSlideSurrendered
-        ..user = user
-        ..testResult = testResult
-        ..testAttachment = testAttachment
-        ..createdDate = createdDate
-        ..hasResult = hasResult
-        ..labRefNum = labRefNum
-        ..technologist = technologist
-        ..createUser = createUser
-        ..hasTestPack = hasTestPack
-        ..testPackRef = testPackRef
-        ..testedTestRef = testedTestRef,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'testRef': testRef,
+      'scheduled_date': scheduledDate,
+      'booking_ref': bookingRef,
+      'sample_collected': sampleCollected,
+      'sample_slide_requested': sampleSlideRequested,
+      'sample_slide_surrendered': sampleSlideSurrendered,
+      'user': user,
+      'test_result': testResult,
+      'test_attachment': testAttachment,
+      'created_date': createdDate,
+      'has_result': hasResult,
+      'labRefNum': labRefNum,
+      'technologist': technologist,
+      'createUser': createUser,
+      'has_test_pack': hasTestPack,
+      'test_pack_ref': testPackRef,
+      'tested_test_Ref': testedTestRef,
+    }.withoutNulls,
   );
 
   return firestoreData;

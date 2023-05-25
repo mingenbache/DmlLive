@@ -80,7 +80,7 @@ class _InvoiceListItemWidgetWidgetState
                   children: [
                     Text(
                       formatNumber(
-                        widget.invoice!.invoiceAmount!,
+                        widget.invoice!.invoiceAmount,
                         formatType: FormatType.decimal,
                         decimalType: DecimalType.periodDecimal,
                         currency: 'Ksh. ',
@@ -233,9 +233,8 @@ class _InvoiceListItemWidgetWidgetState
                                                     ),
                                                   ),
                                                 ),
-                                                if (widget.invoice!
-                                                        .paymentSubmitted ??
-                                                    true)
+                                                if (widget
+                                                    .invoice!.paymentSubmitted)
                                                   Container(
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
@@ -284,9 +283,7 @@ class _InvoiceListItemWidgetWidgetState
                                                     ),
                                                   ),
                                                 ),
-                                                if (widget
-                                                        .invoice!.fullAmount ??
-                                                    true)
+                                                if (widget.invoice!.fullAmount)
                                                   Container(
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,

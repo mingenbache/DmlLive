@@ -115,7 +115,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                 height: 50.0,
                                 child: Stack(
                                   children: [
-                                    if (!rowTestedTestsRecord.resultPosted!)
+                                    if (!rowTestedTestsRecord.resultPosted)
                                       InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
@@ -123,7 +123,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           if (!rowTestedTestsRecord
-                                              .resultPosted!) {
+                                              .resultPosted) {
                                             await showModalBottomSheet(
                                               isScrollControlled: true,
                                               backgroundColor:
@@ -210,8 +210,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                           ),
                                         ),
                                       ),
-                                    if (rowTestedTestsRecord.resultPosted ??
-                                        true)
+                                    if (rowTestedTestsRecord.resultPosted)
                                       Container(
                                         width:
                                             MediaQuery.of(context).size.width *
@@ -283,7 +282,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                 height: 50.0,
                                 child: Stack(
                                   children: [
-                                    if (!rowTestedTestsRecord.isVerified!)
+                                    if (!rowTestedTestsRecord.isVerified)
                                       Container(
                                         height: 50.0,
                                         constraints: BoxConstraints(
@@ -441,7 +440,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                 height: 50.0,
                                 child: Stack(
                                   children: [
-                                    if (rowTestedTestsRecord.isFlagged ?? true)
+                                    if (rowTestedTestsRecord.isFlagged)
                                       Container(
                                         width:
                                             MediaQuery.of(context).size.width *
@@ -495,7 +494,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                           ],
                                         ),
                                       ),
-                                    if (!rowTestedTestsRecord.isFlagged!)
+                                    if (!rowTestedTestsRecord.isFlagged)
                                       InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,

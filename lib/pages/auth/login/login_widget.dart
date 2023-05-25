@@ -356,7 +356,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         await currentUserReference!
                                             .update(usersUpdateData);
 
-                                        context.goNamedAuth('checkup', mounted);
+                                        context.goNamedAuth(
+                                            'checkup', context.mounted);
                                       },
                                       text: 'Sign In',
                                       options: FFButtonOptions(
@@ -427,8 +428,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                     return;
                                                   }
 
-                                                  context.goNamedAuth(
-                                                      'checkup', mounted);
+                                                  context.goNamedAuth('checkup',
+                                                      context.mounted);
                                                 },
                                                 text: 'Sign in with Google',
                                                 icon: Icon(

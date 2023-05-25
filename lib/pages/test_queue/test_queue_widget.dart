@@ -53,6 +53,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiary,
           body: SafeArea(
+            top: true,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -501,7 +502,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   children: [
                                                                                     Text(
-                                                                                      containerTestsRecord.name!,
+                                                                                      containerTestsRecord.name,
                                                                                       style: FlutterFlowTheme.of(context).titleMedium,
                                                                                     ),
                                                                                   ],
@@ -571,7 +572,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                                 child: Padding(
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                                   child: Text(
-                                                                                                    columnBookingsRecord.labRefNum!,
+                                                                                                    columnBookingsRecord.labRefNum,
                                                                                                     style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                           fontFamily: 'Lexend Deca',
                                                                                                           color: Color(0xFF586B06),
@@ -597,7 +598,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                           children: [
                                                                                             Stack(
                                                                                               children: [
-                                                                                                if (bookedTestsItem.sampleCollected ?? true)
+                                                                                                if (bookedTestsItem.sampleCollected)
                                                                                                   FFButtonWidget(
                                                                                                     onPressed: () {
                                                                                                       print('ButtonCollected pressed ...');
@@ -628,7 +629,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                                       borderRadius: BorderRadius.circular(12.0),
                                                                                                     ),
                                                                                                   ),
-                                                                                                if (!bookedTestsItem.sampleCollected!)
+                                                                                                if (!bookedTestsItem.sampleCollected)
                                                                                                   FFButtonWidget(
                                                                                                     onPressed: () {
                                                                                                       print('ButtonNotCollected pressed ...');

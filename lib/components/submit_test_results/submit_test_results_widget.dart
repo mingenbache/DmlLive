@@ -317,7 +317,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                                       snapshot.data!;
                                                   return Text(
                                                     submitResultsTestedTestsRecord
-                                                        .labRefNum!,
+                                                        .labRefNum,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleMedium,
@@ -379,7 +379,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                               final textTestsRecord =
                                                   snapshot.data!;
                                               return Text(
-                                                textTestsRecord.name!,
+                                                textTestsRecord.name,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .titleMedium,

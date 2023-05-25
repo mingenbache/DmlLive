@@ -180,8 +180,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                     children: [
                       Stack(
                         children: [
-                          if (widget.booking!.testPackages!
-                              .toList()
+                          if (widget.booking!.testPackages
                               .contains(widget.package!.reference))
                             InkWell(
                               splashColor: Colors.transparent,
@@ -189,8 +188,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                if (widget.booking!.testPackages!
-                                    .toList()
+                                if (widget.booking!.testPackages
                                     .contains(widget.package!.reference)) {
                                   final bookingsUpdateData = {
                                     ...createBookingsRecordData(
@@ -202,9 +200,9 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                         [widget.package!.reference]),
                                     'testPackTests':
                                         functions.removeBookingPackageTests(
-                                            widget.package!.testsIncluded!
+                                            widget.package!.testsIncluded
                                                 .toList(),
-                                            widget.booking!.testPackTests!
+                                            widget.booking!.testPackTests
                                                 .toList()),
                                   };
                                   await widget.booking!.reference
@@ -273,8 +271,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                 animationsMap[
                                     'containerOnActionTriggerAnimation1']!,
                                 hasBeenTriggered: hasContainerTriggered1),
-                          if (!widget.booking!.testPackages!
-                              .toList()
+                          if (!widget.booking!.testPackages
                               .contains(widget.package!.reference))
                             InkWell(
                               splashColor: Colors.transparent,
@@ -282,9 +279,8 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                if (widget.booking!.hasTestPackages!) {
-                                  if (!widget.booking!.testPackages!
-                                      .toList()
+                                if (widget.booking!.hasTestPackages) {
+                                  if (!widget.booking!.testPackages
                                       .contains(widget.package!.reference)) {
                                     final bookingsUpdateData1 = {
                                       ...createBookingsRecordData(
@@ -297,9 +293,9 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                           [widget.package!.reference]),
                                       'testPackTests':
                                           functions.addBookingPackageTests(
-                                              widget.booking!.testPackTests!
+                                              widget.booking!.testPackTests
                                                   .toList(),
-                                              widget.package!.testsIncluded!
+                                              widget.package!.testsIncluded
                                                   .toList()),
                                     };
                                     await widget.booking!.reference
@@ -330,9 +326,9 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                         [widget.package!.reference]),
                                     'testPackTests':
                                         functions.addBookingPackageTests(
-                                            widget.booking!.testPackTests!
+                                            widget.booking!.testPackTests
                                                 .toList(),
-                                            widget.package!.testsIncluded!
+                                            widget.package!.testsIncluded
                                                 .toList()),
                                   };
                                   await widget.booking!.reference
@@ -644,7 +640,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                     child: Text(
                                                                       widget
                                                                           .package!
-                                                                          .category!,
+                                                                          .category,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -697,7 +693,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                   size: 20.0,
                                                                 ),
                                                                 Text(
-                                                                  '${widget.package!.durationResults?.toString()} Hrs',
+                                                                  '${widget.package!.durationResults.toString()} Hrs',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -810,8 +806,9 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                     child:
                                                                         Stack(
                                                                       children: [
-                                                                        if (widget.package!.atHome ??
-                                                                            true)
+                                                                        if (widget
+                                                                            .package!
+                                                                            .atHome)
                                                                           Align(
                                                                             alignment:
                                                                                 AlignmentDirectional(1.0, 0.0),
@@ -822,8 +819,9 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                               size: 16.0,
                                                                             ),
                                                                           ),
-                                                                        if (widget.package!.atHome ??
-                                                                            true)
+                                                                        if (widget
+                                                                            .package!
+                                                                            .atHome)
                                                                           Align(
                                                                             alignment:
                                                                                 AlignmentDirectional(1.0, 0.0),
@@ -886,7 +884,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                         formatNumber(
                                                                           widget
                                                                               .package!
-                                                                              .price!,
+                                                                              .price,
                                                                           formatType:
                                                                               FormatType.decimal,
                                                                           decimalType:

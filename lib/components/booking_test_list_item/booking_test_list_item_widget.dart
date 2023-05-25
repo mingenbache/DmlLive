@@ -80,7 +80,7 @@ class _BookingTestListItemWidgetState extends State<BookingTestListItemWidget> {
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              if (testItemContainerBookedTestsRecord.sampleCollected!) {
+              if (testItemContainerBookedTestsRecord.sampleCollected) {
                 await showModalBottomSheet(
                   isScrollControlled: true,
                   backgroundColor: Colors.transparent,

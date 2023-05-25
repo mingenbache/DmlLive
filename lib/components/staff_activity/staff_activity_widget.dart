@@ -333,7 +333,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                       0.0),
                                                           child: Text(
                                                             columnUsersRecord
-                                                                .role!,
+                                                                .role,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
@@ -1244,7 +1244,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 3.0, 3.0),
                                                                                   child: Text(
-                                                                                    columnUsersRecord.displayName!,
+                                                                                    columnUsersRecord.displayName,
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).secondary,
@@ -1303,7 +1303,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 3.0, 3.0),
                                                                                   child: Text(
-                                                                                    columnUsersRecord.email!,
+                                                                                    columnUsersRecord.email,
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).secondary,
@@ -1368,7 +1368,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 3.0, 3.0),
                                                                                   child: Text(
-                                                                                    columnUsersRecord.phoneNumber!,
+                                                                                    columnUsersRecord.phoneNumber,
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).secondary,
@@ -1495,7 +1495,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         Padding(
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                           child: Text(
-                                                                                            columnUsersRecord.sex!,
+                                                                                            columnUsersRecord.sex,
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Open Sans',
                                                                                                   color: FlutterFlowTheme.of(context).secondary,
@@ -1804,7 +1804,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(7.0, 9.0, 5.0, 5.0),
                                                                                         child: Text(
-                                                                                          containerPaymentsRecord.transactionCode!.maybeHandleOverflow(maxChars: 8),
+                                                                                          containerPaymentsRecord.transactionCode.maybeHandleOverflow(maxChars: 8),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).secondary,
@@ -1826,7 +1826,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(9.0, 9.0, 5.0, 5.0),
                                                                                         child: Text(
-                                                                                          containerPaymentsRecord.type!,
+                                                                                          containerPaymentsRecord.type,
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
                                                                                                 color: Colors.white,
@@ -1846,7 +1846,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(5.0, 9.0, 5.0, 5.0),
                                                                                         child: Text(
                                                                                           formatNumber(
-                                                                                            containerPaymentsRecord.amount!,
+                                                                                            containerPaymentsRecord.amount,
                                                                                             formatType: FormatType.decimal,
                                                                                             decimalType: DecimalType.periodDecimal,
                                                                                             currency: 'Ksh ',

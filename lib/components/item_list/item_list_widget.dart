@@ -117,7 +117,7 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        duplicateTestItemTestsRecord.name!,
+                                        duplicateTestItemTestsRecord.name,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(

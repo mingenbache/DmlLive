@@ -72,6 +72,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).tertiary,
               body: SafeArea(
+                top: true,
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -278,7 +279,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                               children: [
                                                 Image.network(
                                                   containerDMLInfoRecord!
-                                                      .dMLLogo!,
+                                                      .dMLLogo,
                                                   width: 200.0,
                                                   height: 100.0,
                                                   fit: BoxFit.contain,
@@ -319,7 +320,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                         builder: (context) {
                                                           final phonenumbers =
                                                               containerDMLInfoRecord!
-                                                                  .phoneNumbers!
+                                                                  .phoneNumbers
                                                                   .toList();
                                                           return ListView
                                                               .builder(
@@ -379,7 +380,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                     ),
                                                     Text(
                                                       containerDMLInfoRecord!
-                                                          .primaryEmail!,
+                                                          .primaryEmail,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -417,7 +418,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                     ),
                                                     Text(
                                                       containerDMLInfoRecord!
-                                                          .url!,
+                                                          .url,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -496,7 +497,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                 3.0, 3.0),
                                                     child: Text(
                                                       bookingReportReportsRecord
-                                                          .patientName!,
+                                                          .patientName,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -589,7 +590,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                   0.0),
                                                       child: Text(
                                                         bookingReportReportsRecord
-                                                            .patientAge!
+                                                            .patientAge
                                                             .toString(),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -692,7 +693,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                           0.0, 8.0, 16.0, 0.0),
                                                   child: Text(
                                                     bookingReportReportsRecord
-                                                        .patientSex!,
+                                                        .patientSex,
                                                     textAlign: TextAlign.end,
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -787,7 +788,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                           0.0, 8.0, 16.0, 0.0),
                                                   child: Text(
                                                     bookingReportReportsRecord
-                                                        .labRefNum!,
+                                                        .labRefNum,
                                                     textAlign: TextAlign.end,
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -902,7 +903,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                       0.0),
                                                           child: Text(
                                                             containerDoctorsRecord
-                                                                .name!,
+                                                                .name,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
@@ -1076,7 +1077,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                   builder: (context) {
                                                     final testPackages =
                                                         bookingReportReportsRecord
-                                                            .testpackageList!
+                                                            .testpackageList
                                                             .toList();
                                                     return ListView.builder(
                                                       padding: EdgeInsets.zero,
@@ -1145,7 +1146,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                       ),
                                                                       Text(
                                                                         containerTestPackagesRecord
-                                                                            .packageName!,
+                                                                            .packageName,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
@@ -1200,7 +1201,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                     builder:
                                                                         (context) {
                                                                       final packagetestedtests = containerTestPackagesRecord
-                                                                          .testsIncluded!
+                                                                          .testsIncluded
                                                                           .toList();
                                                                       return ListView
                                                                           .builder(
@@ -1245,7 +1246,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                                                                                   children: [
                                                                                     Text(
-                                                                                      containerTestsRecord.name!,
+                                                                                      containerTestsRecord.name,
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondary,
@@ -1274,7 +1275,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                                         List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data!;
                                                                                         final textTestedTestsRecord = textTestedTestsRecordList.isNotEmpty ? textTestedTestsRecordList.first : null;
                                                                                         return Text(
-                                                                                          textTestedTestsRecord!.testResult!,
+                                                                                          textTestedTestsRecord!.testResult,
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).secondary,
@@ -1330,7 +1331,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                   builder: (context) {
                                                     final tests =
                                                         bookingReportReportsRecord
-                                                            .testedTests!
+                                                            .testedTests
                                                             .toList();
                                                     return ListView.builder(
                                                       padding: EdgeInsets.zero,
@@ -1416,7 +1417,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                     children: [
                                                                       Text(
                                                                         rowTestsRecord
-                                                                            .name!,
+                                                                            .name,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
@@ -1427,7 +1428,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                       ),
                                                                       Text(
                                                                         containerTestedTestsRecord
-                                                                            .testResult!,
+                                                                            .testResult,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
@@ -1528,7 +1529,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                     14.0),
                                                         child: Text(
                                                           bookingReportReportsRecord
-                                                              .pathologistComments!,
+                                                              .pathologistComments,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -1666,7 +1667,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                         child: Builder(
                                           builder: (context) {
                                             final refs = containerDMLInfoRecord!
-                                                .footerReferences!
+                                                .footerReferences
                                                 .toList();
                                             return Wrap(
                                               spacing: 5.0,
@@ -1711,7 +1712,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                           );
                         },
                       ),
-                      if (bookingReportReportsRecord.isComplete ?? true)
+                      if (bookingReportReportsRecord.isComplete)
                         Align(
                           alignment: AlignmentDirectional(0.0, 0.05),
                           child: Padding(

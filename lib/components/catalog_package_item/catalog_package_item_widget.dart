@@ -268,7 +268,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                                         4.0),
                                                             child: Text(
                                                               widget.package!
-                                                                  .category!,
+                                                                  .category,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -314,7 +314,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                           size: 20.0,
                                                         ),
                                                         Text(
-                                                          '${widget.package!.durationResults?.toString()} Hrs',
+                                                          '${widget.package!.durationResults.toString()} Hrs',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -490,7 +490,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                                 formatNumber(
                                                                   widget
                                                                       .package!
-                                                                      .price!,
+                                                                      .price,
                                                                   formatType:
                                                                       FormatType
                                                                           .decimal,

@@ -46,83 +46,71 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
-      child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+    return Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(25.0),
         child: Container(
-          height: 100.0,
-          constraints: BoxConstraints(
-            maxWidth: 400.0,
-          ),
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                FlutterFlowTheme.of(context).tertiary,
-                FlutterFlowTheme.of(context).primary
-              ],
-              stops: [0.0, 1.0],
-              begin: AlignmentDirectional(0.0, -1.0),
-              end: AlignmentDirectional(0, 1.0),
-            ),
             borderRadius: BorderRadius.circular(25.0),
           ),
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
             child: Row(
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(
-                  flex: 1,
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        FFAppState().update(() {
-                          FFAppState().userListQuery = '';
-                        });
-                        await showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          barrierColor: Color(0x00000000),
-                          context: context,
-                          builder: (bottomSheetContext) {
-                            return Padding(
-                              padding:
-                                  MediaQuery.of(bottomSheetContext).viewInsets,
-                              child: UserList2Widget(),
-                            );
-                          },
-                        ).then((value) => setState(() {}));
-                      },
-                      child: Material(
-                        color: Colors.transparent,
-                        elevation: 3.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      FFAppState().update(() {
+                        FFAppState().userListQuery = '';
+                      });
+                      await showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        barrierColor: Color(0x00000000),
+                        context: context,
+                        builder: (bottomSheetContext) {
+                          return Padding(
+                            padding:
+                                MediaQuery.of(bottomSheetContext).viewInsets,
+                            child: UserList2Widget(),
+                          );
+                        },
+                      ).then((value) => setState(() {}));
+                    },
+                    child: Material(
+                      color: Colors.transparent,
+                      elevation: 3.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      child: Container(
+                        width: 119.0,
+                        height: 119.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          borderRadius: BorderRadius.circular(30.0),
+                          shape: BoxShape.rectangle,
                         ),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.2,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).secondary,
-                            borderRadius: BorderRadius.circular(20.0),
-                            shape: BoxShape.rectangle,
-                          ),
-                          alignment:
-                              AlignmentDirectional(0.0, 0.30000000000000004),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 15.0, 0.0, 0.0),
                           child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Icon(
                                 Icons.people_sharp,
-                                color: FlutterFlowTheme.of(context).primaryText,
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
                                 size: 40.0,
                               ),
                               Padding(
@@ -132,12 +120,13 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                                   'Users',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .titleMedium
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryText,
+                                            .primaryBackground,
                                         fontSize: 14.0,
+                                        fontWeight: FontWeight.w500,
                                       ),
                                 ),
                               ),
@@ -148,36 +137,36 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                     ),
                   ),
                 ),
-                Expanded(
-                  flex: 1,
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        context.pushNamed('BookingsSchedule');
-                      },
-                      child: Material(
-                        color: Colors.transparent,
-                        elevation: 3.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.pushNamed('BookingsSchedule');
+                    },
+                    child: Material(
+                      color: Colors.transparent,
+                      elevation: 3.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      child: Container(
+                        width: 119.0,
+                        height: 119.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          borderRadius: BorderRadius.circular(30.0),
+                          shape: BoxShape.rectangle,
                         ),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.2,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            borderRadius: BorderRadius.circular(20.0),
-                            shape: BoxShape.rectangle,
-                          ),
-                          alignment:
-                              AlignmentDirectional(0.0, 0.30000000000000004),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 15.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Icon(
                                 Icons.calendar_today,
@@ -191,10 +180,13 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                                   'Bookings',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .titleMedium
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Open Sans',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
                                         fontSize: 14.0,
+                                        fontWeight: FontWeight.w500,
                                       ),
                                 ),
                               ),
@@ -205,36 +197,36 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                     ),
                   ),
                 ),
-                Expanded(
-                  flex: 1,
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        context.pushNamed('PaymentsList');
-                      },
-                      child: Material(
-                        color: Colors.transparent,
-                        elevation: 3.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.pushNamed('PaymentsList');
+                    },
+                    child: Material(
+                      color: Colors.transparent,
+                      elevation: 3.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      child: Container(
+                        width: 119.0,
+                        height: 119.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          borderRadius: BorderRadius.circular(30.0),
+                          shape: BoxShape.rectangle,
                         ),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.2,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            borderRadius: BorderRadius.circular(20.0),
-                            shape: BoxShape.rectangle,
-                          ),
-                          alignment:
-                              AlignmentDirectional(0.0, 0.30000000000000004),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 15.0, 0.0, 0.0),
                           child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Icon(
                                 Icons.payments_outlined,
@@ -244,10 +236,13 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                               Text(
                                 'Payments',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .titleMedium
                                     .override(
-                                      fontFamily: 'Roboto',
-                                      color: Colors.white,
+                                      fontFamily: 'Open Sans',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.w500,
                                     ),
                               ),
                             ],
@@ -257,46 +252,46 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                     ),
                   ),
                 ),
-                Expanded(
-                  flex: 1,
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        FFAppState().update(() {
-                          FFAppState().allCategories = true;
-                          FFAppState().allPackageCategories = true;
-                        });
-                        await showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          barrierColor: Colors.white,
-                          context: context,
-                          builder: (bottomSheetContext) {
-                            return Padding(
-                              padding:
-                                  MediaQuery.of(bottomSheetContext).viewInsets,
-                              child: TestListCatalogWidget(),
-                            );
-                          },
-                        ).then((value) => setState(() {}));
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.2,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20.0),
-                          shape: BoxShape.rectangle,
-                        ),
-                        alignment:
-                            AlignmentDirectional(0.0, 0.30000000000000004),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      FFAppState().update(() {
+                        FFAppState().allCategories = true;
+                        FFAppState().allPackageCategories = true;
+                      });
+                      await showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        barrierColor: Colors.white,
+                        context: context,
+                        builder: (bottomSheetContext) {
+                          return Padding(
+                            padding:
+                                MediaQuery.of(bottomSheetContext).viewInsets,
+                            child: TestListCatalogWidget(),
+                          );
+                        },
+                      ).then((value) => setState(() {}));
+                    },
+                    child: Container(
+                      width: 119.0,
+                      height: 119.0,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30.0),
+                        shape: BoxShape.rectangle,
+                      ),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                         child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             FaIcon(
                               FontAwesomeIcons.flask,
@@ -307,11 +302,11 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                               'Catalog',
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
+                                  .titleMedium
                                   .override(
-                                    fontFamily: 'Roboto',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
+                                    fontFamily: 'Open Sans',
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w500,
                                   ),
                             ),
                           ],

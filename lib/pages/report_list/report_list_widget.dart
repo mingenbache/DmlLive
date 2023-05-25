@@ -202,7 +202,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          if (bookingsItem.completed!) {
+                                          if (bookingsItem.completed) {
                                             context.pushNamed(
                                               'LabReport',
                                               queryParams: {
@@ -360,7 +360,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                             4.0),
                                                                     child: Text(
                                                                       bookingsItem
-                                                                          .bookingstatus!,
+                                                                          .bookingstatus,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodySmall
@@ -519,7 +519,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                                                     child: Padding(
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(10.0, 7.0, 5.0, 5.0),
                                                                                                       child: Text(
-                                                                                                        containerTestsRecord.name!,
+                                                                                                        containerTestsRecord.name,
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                               fontFamily: 'Open Sans',
                                                                                                               color: FlutterFlowTheme.of(context).secondary,
@@ -533,7 +533,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                                                     height: 100.0,
                                                                                                     decoration: BoxDecoration(),
                                                                                                     child: Visibility(
-                                                                                                      visible: testsItem.isVerified ?? true,
+                                                                                                      visible: testsItem.isVerified,
                                                                                                       child: Padding(
                                                                                                         padding: EdgeInsetsDirectional.fromSTEB(10.0, 8.0, 5.0, 5.0),
                                                                                                         child: Text(

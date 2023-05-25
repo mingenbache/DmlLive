@@ -579,7 +579,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                   controller:
                                       _model.sexChoiceChipsValueController ??=
                                           FormFieldController<List<String>>(
-                                    [editUserDetailsUsersRecord.sex!],
+                                    [editUserDetailsUsersRecord.sex],
                                   ),
                                 ),
                               ),

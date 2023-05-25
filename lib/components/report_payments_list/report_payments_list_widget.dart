@@ -76,7 +76,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
           final listViewBookingsRecord = snapshot.data!;
           return Builder(
             builder: (context) {
-              final payments = listViewBookingsRecord.payments!.toList();
+              final payments = listViewBookingsRecord.payments.toList();
               return ListView.builder(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.vertical,
@@ -178,7 +178,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                     child: Align(
                                       alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Text(
-                                        containerPaymentsRecord.transactionCode!
+                                        containerPaymentsRecord.transactionCode
                                             .maybeHandleOverflow(maxChars: 8),
                                         maxLines: 1,
                                         style: FlutterFlowTheme.of(context)
@@ -208,7 +208,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                     child: Align(
                                       alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Text(
-                                        containerPaymentsRecord.type!,
+                                        containerPaymentsRecord.type,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -231,7 +231,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                       alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         formatNumber(
-                                          containerPaymentsRecord.amount!,
+                                          containerPaymentsRecord.amount,
                                           formatType: FormatType.decimal,
                                           decimalType:
                                               DecimalType.periodDecimal,

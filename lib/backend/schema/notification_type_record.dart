@@ -1,54 +1,65 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'notification_type_record.g.dart';
+class NotificationTypeRecord extends FirestoreRecord {
+  NotificationTypeRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class NotificationTypeRecord
-    implements Built<NotificationTypeRecord, NotificationTypeRecordBuilder> {
-  static Serializer<NotificationTypeRecord> get serializer =>
-      _$notificationTypeRecordSerializer;
+  // "context" field.
+  String? _context;
+  String get context => _context ?? '';
+  bool hasContext() => _context != null;
 
-  String? get context;
+  // "page_to_open" field.
+  String? _pageToOpen;
+  String get pageToOpen => _pageToOpen ?? '';
+  bool hasPageToOpen() => _pageToOpen != null;
 
-  @BuiltValueField(wireName: 'page_to_open')
-  String? get pageToOpen;
+  // "type" field.
+  String? _type;
+  String get type => _type ?? '';
+  bool hasType() => _type != null;
 
-  String? get type;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(NotificationTypeRecordBuilder builder) =>
-      builder
-        ..context = ''
-        ..pageToOpen = ''
-        ..type = '';
+  void _initializeFields() {
+    _context = snapshotData['context'] as String?;
+    _pageToOpen = snapshotData['page_to_open'] as String?;
+    _type = snapshotData['type'] as String?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('notification_type');
 
   static Stream<NotificationTypeRecord> getDocument(DocumentReference ref) =>
-      ref.snapshots().map(
-          (s) => serializers.deserializeWith(serializer, serializedData(s))!);
+      ref.snapshots().map((s) => NotificationTypeRecord.fromSnapshot(s));
 
   static Future<NotificationTypeRecord> getDocumentOnce(
           DocumentReference ref) =>
-      ref.get().then(
-          (s) => serializers.deserializeWith(serializer, serializedData(s))!);
+      ref.get().then((s) => NotificationTypeRecord.fromSnapshot(s));
 
-  NotificationTypeRecord._();
-  factory NotificationTypeRecord(
-          [void Function(NotificationTypeRecordBuilder) updates]) =
-      _$NotificationTypeRecord;
+  static NotificationTypeRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      NotificationTypeRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static NotificationTypeRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      NotificationTypeRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'NotificationTypeRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createNotificationTypeRecordData({
@@ -56,14 +67,12 @@ Map<String, dynamic> createNotificationTypeRecordData({
   String? pageToOpen,
   String? type,
 }) {
-  final firestoreData = serializers.toFirestore(
-    NotificationTypeRecord.serializer,
-    NotificationTypeRecord(
-      (n) => n
-        ..context = context
-        ..pageToOpen = pageToOpen
-        ..type = type,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'context': context,
+      'page_to_open': pageToOpen,
+      'type': type,
+    }.withoutNulls,
   );
 
   return firestoreData;

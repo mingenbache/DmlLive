@@ -465,7 +465,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                         builder: (context) {
                                           final packageCategories =
                                               listViewCategoriesRecord!
-                                                  .categories!
+                                                  .categories
                                                   .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,

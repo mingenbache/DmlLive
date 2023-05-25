@@ -75,6 +75,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
             child: Scaffold(
               key: scaffoldKey,
               body: SafeArea(
+                top: true,
                 child: Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Container(
@@ -325,7 +326,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                         child:
                                                                             Text(
                                                                           bookingInvoicingBookingsRecord
-                                                                              .bookingstatus!,
+                                                                              .bookingstatus,
                                                                           textAlign:
                                                                               TextAlign.center,
                                                                           style: FlutterFlowTheme.of(context)
@@ -463,7 +464,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                             0.0),
                                                                 child: Text(
                                                                   bookingInvoicingBookingsRecord
-                                                                      .labRefNum!,
+                                                                      .labRefNum,
                                                                   textAlign:
                                                                       TextAlign
                                                                           .end,
@@ -721,7 +722,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                             0.0),
                                                                     child: Text(
                                                                       bookingInvoicingBookingsRecord
-                                                                          .docNameAddress!,
+                                                                          .docNameAddress,
                                                                       textAlign:
                                                                           TextAlign
                                                                               .end,
@@ -1008,7 +1009,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                                     child: Padding(
                                                                                       padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 3.0, 3.0),
                                                                                       child: Text(
-                                                                                        bookingInvoicingBookingsRecord.emailaddress!,
+                                                                                        bookingInvoicingBookingsRecord.emailaddress,
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: 'Open Sans',
                                                                                               color: FlutterFlowTheme.of(context).primaryText,
@@ -1075,7 +1076,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                                     child: Padding(
                                                                                       padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 3.0, 3.0),
                                                                                       child: Text(
-                                                                                        bookingInvoicingBookingsRecord.phonenumber!,
+                                                                                        bookingInvoicingBookingsRecord.phonenumber,
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: 'Open Sans',
                                                                                               color: FlutterFlowTheme.of(context).primaryText,
@@ -1189,7 +1190,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                         child: Text(
-                                                                                          bookingInvoicingBookingsRecord.sex!,
+                                                                                          bookingInvoicingBookingsRecord.sex,
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
@@ -1281,7 +1282,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                     4.0),
                                                         child: Text(
                                                           bookingInvoicingBookingsRecord
-                                                              .diagnosis!,
+                                                              .diagnosis,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -1401,7 +1402,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                     builder:
                                                                         (context) {
                                                                       final tests = bookingInvoicingBookingsRecord
-                                                                          .testsIncluded!
+                                                                          .testsIncluded
                                                                           .toList();
                                                                       return ListView
                                                                           .builder(
@@ -1455,7 +1456,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                       children: [
                                                                                         Text(
-                                                                                          containerTestsRecord.name!,
+                                                                                          containerTestsRecord.name,
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
@@ -1477,7 +1478,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                                               ),
                                                                                             ),
                                                                                             Text(
-                                                                                              containerTestsRecord.price!.toString(),
+                                                                                              containerTestsRecord.price.toString(),
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                     fontFamily: 'Open Sans',
                                                                                                     color: FlutterFlowTheme.of(context).primaryText,
@@ -1857,7 +1858,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                           .text),
                                                       bookingInvoicingBookingsRecord
                                                           .totalPrice
-                                                          ?.toDouble()),
+                                                          .toDouble()),
                                               labRefNum:
                                                   bookingInvoicingBookingsRecord
                                                       .labRefNum,

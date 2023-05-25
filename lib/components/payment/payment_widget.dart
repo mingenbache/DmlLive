@@ -83,12 +83,13 @@ class _PaymentWidgetState extends State<PaymentWidget> {
             final verifyPaymentContainerBookingsRecord = snapshot.data!;
             return Container(
               constraints: BoxConstraints(
+                maxWidth: 440.0,
                 maxHeight: 550.0,
               ),
               decoration: BoxDecoration(),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Material(
                     color: Colors.transparent,
@@ -102,7 +103,6 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                       ),
                     ),
                     child: Container(
-                      width: MediaQuery.of(context).size.width * 1.0,
                       height: MediaQuery.of(context).size.height * 0.5,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondary,
@@ -366,7 +366,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                             Text(
                                                                           widget
                                                                               .paymentRef!
-                                                                              .type!,
+                                                                              .type,
                                                                           textAlign:
                                                                               TextAlign.center,
                                                                           style: FlutterFlowTheme.of(context)
@@ -597,7 +597,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                 child: Text(
                                                                   widget
                                                                       .paymentRef!
-                                                                      .transactionCode!,
+                                                                      .transactionCode,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -824,7 +824,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                   formatNumber(
                                                                     widget
                                                                         .paymentRef!
-                                                                        .amount!,
+                                                                        .amount,
                                                                     formatType:
                                                                         FormatType
                                                                             .decimal,
@@ -997,8 +997,6 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                             CrossAxisAlignment.center,
                                                                         children: [
                                                                           Container(
-                                                                            width:
-                                                                                MediaQuery.of(context).size.width * 0.25,
                                                                             height:
                                                                                 MediaQuery.of(context).size.height * 0.04,
                                                                             constraints:
@@ -1089,8 +1087,6 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                             CrossAxisAlignment.center,
                                                                         children: [
                                                                           Container(
-                                                                            width:
-                                                                                MediaQuery.of(context).size.width * 0.25,
                                                                             height:
                                                                                 MediaQuery.of(context).size.height * 0.04,
                                                                             constraints:
@@ -1107,7 +1103,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                               padding: EdgeInsetsDirectional.fromSTEB(3.0, 7.0, 0.0, 0.0),
                                                                               child: Text(
                                                                                 formatNumber(
-                                                                                  verifyPaymentContainerBookingsRecord.totalPrice!,
+                                                                                  verifyPaymentContainerBookingsRecord.totalPrice,
                                                                                   formatType: FormatType.decimal,
                                                                                   decimalType: DecimalType.periodDecimal,
                                                                                   currency: 'Ksh ',
@@ -1183,8 +1179,6 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                             CrossAxisAlignment.center,
                                                                         children: [
                                                                           Container(
-                                                                            width:
-                                                                                MediaQuery.of(context).size.width * 0.25,
                                                                             height:
                                                                                 MediaQuery.of(context).size.height * 0.04,
                                                                             constraints:
@@ -1201,7 +1195,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                               padding: EdgeInsetsDirectional.fromSTEB(3.0, 7.0, 0.0, 0.0),
                                                                               child: Text(
                                                                                 formatNumber(
-                                                                                  verifyPaymentContainerBookingsRecord.paymentBalance!,
+                                                                                  verifyPaymentContainerBookingsRecord.paymentBalance,
                                                                                   formatType: FormatType.decimal,
                                                                                   decimalType: DecimalType.periodDecimal,
                                                                                   currency: 'Ksh ',
@@ -1278,7 +1272,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                             child:
                                                                                 Builder(
                                                                               builder: (context) {
-                                                                                final tests = verifyPaymentContainerBookingsRecord.testsIncluded!.toList();
+                                                                                final tests = verifyPaymentContainerBookingsRecord.testsIncluded.toList();
                                                                                 return ListView.builder(
                                                                                   padding: EdgeInsets.zero,
                                                                                   scrollDirection: Axis.vertical,
@@ -1317,7 +1311,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                 children: [
                                                                                                   Text(
-                                                                                                    containerTestsRecord.name!,
+                                                                                                    containerTestsRecord.name,
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                           fontFamily: 'Open Sans',
                                                                                                           color: FlutterFlowTheme.of(context).primaryText,
@@ -1340,7 +1334,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                                       ),
                                                                                                       Text(
                                                                                                         formatNumber(
-                                                                                                          containerTestsRecord.price!,
+                                                                                                          containerTestsRecord.price,
                                                                                                           formatType: FormatType.decimal,
                                                                                                           decimalType: DecimalType.periodDecimal,
                                                                                                         ),
@@ -1484,7 +1478,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         .max,
                                                                 mainAxisAlignment:
                                                                     MainAxisAlignment
-                                                                        .center,
+                                                                        .start,
                                                                 children: [
                                                                   Container(
                                                                     width: MediaQuery.of(context)
@@ -1521,41 +1515,38 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Container(
-                                                                    width: MediaQuery.of(context)
-                                                                            .size
-                                                                            .width *
-                                                                        0.65,
-                                                                    height: MediaQuery.of(context)
-                                                                            .size
-                                                                            .height *
-                                                                        0.04,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryBackground,
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              7.0),
-                                                                    ),
+                                                                  Expanded(
                                                                     child:
-                                                                        Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          6.0,
-                                                                          6.0,
-                                                                          3.0,
-                                                                          3.0),
+                                                                        Container(
+                                                                      height: MediaQuery.of(context)
+                                                                              .size
+                                                                              .height *
+                                                                          0.04,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(7.0),
+                                                                      ),
                                                                       child:
-                                                                          Text(
-                                                                        '${verifyPaymentContainerBookingsRecord.firstname} ${verifyPaymentContainerBookingsRecord.lastname}',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Open Sans',
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                              fontWeight: FontWeight.w500,
-                                                                            ),
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            6.0,
+                                                                            6.0,
+                                                                            3.0,
+                                                                            3.0),
+                                                                        child:
+                                                                            Text(
+                                                                          '${verifyPaymentContainerBookingsRecord.firstname} ${verifyPaymentContainerBookingsRecord.lastname}',
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Open Sans',
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
+                                                                                fontWeight: FontWeight.w500,
+                                                                              ),
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1585,7 +1576,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         .max,
                                                                 mainAxisAlignment:
                                                                     MainAxisAlignment
-                                                                        .center,
+                                                                        .start,
                                                                 children: [
                                                                   Container(
                                                                     width: MediaQuery.of(context)
@@ -1622,42 +1613,39 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Container(
-                                                                    width: MediaQuery.of(context)
-                                                                            .size
-                                                                            .width *
-                                                                        0.65,
-                                                                    height: MediaQuery.of(context)
-                                                                            .size
-                                                                            .height *
-                                                                        0.04,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryBackground,
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              7.0),
-                                                                    ),
+                                                                  Expanded(
                                                                     child:
-                                                                        Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          6.0,
-                                                                          6.0,
-                                                                          3.0,
-                                                                          3.0),
+                                                                        Container(
+                                                                      height: MediaQuery.of(context)
+                                                                              .size
+                                                                              .height *
+                                                                          0.04,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(7.0),
+                                                                      ),
                                                                       child:
-                                                                          Text(
-                                                                        verifyPaymentContainerBookingsRecord
-                                                                            .emailaddress!,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Open Sans',
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                              fontWeight: FontWeight.w500,
-                                                                            ),
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            6.0,
+                                                                            6.0,
+                                                                            3.0,
+                                                                            3.0),
+                                                                        child:
+                                                                            Text(
+                                                                          verifyPaymentContainerBookingsRecord
+                                                                              .emailaddress,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Open Sans',
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
+                                                                                fontWeight: FontWeight.w500,
+                                                                              ),
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1696,7 +1684,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         .max,
                                                                 mainAxisAlignment:
                                                                     MainAxisAlignment
-                                                                        .center,
+                                                                        .start,
                                                                 children: [
                                                                   Container(
                                                                     width: MediaQuery.of(context)
@@ -1733,42 +1721,39 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Container(
-                                                                    width: MediaQuery.of(context)
-                                                                            .size
-                                                                            .width *
-                                                                        0.65,
-                                                                    height: MediaQuery.of(context)
-                                                                            .size
-                                                                            .height *
-                                                                        0.04,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryBackground,
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              7.0),
-                                                                    ),
+                                                                  Expanded(
                                                                     child:
-                                                                        Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          6.0,
-                                                                          6.0,
-                                                                          3.0,
-                                                                          3.0),
+                                                                        Container(
+                                                                      height: MediaQuery.of(context)
+                                                                              .size
+                                                                              .height *
+                                                                          0.04,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(7.0),
+                                                                      ),
                                                                       child:
-                                                                          Text(
-                                                                        verifyPaymentContainerBookingsRecord
-                                                                            .phonenumber!,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Open Sans',
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                              fontWeight: FontWeight.w500,
-                                                                            ),
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            6.0,
+                                                                            6.0,
+                                                                            3.0,
+                                                                            3.0),
+                                                                        child:
+                                                                            Text(
+                                                                          verifyPaymentContainerBookingsRecord
+                                                                              .phonenumber,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Open Sans',
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
+                                                                                fontWeight: FontWeight.w500,
+                                                                              ),
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1809,10 +1794,6 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                             0.0),
                                                                     child:
                                                                         Container(
-                                                                      width: MediaQuery.of(context)
-                                                                              .size
-                                                                              .width *
-                                                                          0.25,
                                                                       height: MediaQuery.of(context)
                                                                               .size
                                                                               .height *
@@ -1846,57 +1827,48 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0),
+                                                                  Expanded(
                                                                     child:
-                                                                        Container(
-                                                                      width: MediaQuery.of(context)
-                                                                              .size
-                                                                              .width *
-                                                                          0.25,
-                                                                      height: MediaQuery.of(context)
-                                                                              .size
-                                                                              .height *
-                                                                          0.04,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryBackground,
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(7.0),
-                                                                      ),
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
                                                                       child:
-                                                                          Column(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        mainAxisAlignment:
-                                                                            MainAxisAlignment.center,
-                                                                        children: [
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                3.0,
-                                                                                5.0,
-                                                                                3.0,
-                                                                                0.0),
-                                                                            child:
-                                                                                Text(
-                                                                              dateTimeFormat(
-                                                                                'd/M/y',
-                                                                                verifyPaymentContainerBookingsRecord.dOB!,
-                                                                                locale: FFLocalizations.of(context).languageCode,
+                                                                          Container(
+                                                                        height: MediaQuery.of(context).size.height *
+                                                                            0.04,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(7.0),
+                                                                        ),
+                                                                        child:
+                                                                            Column(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.center,
+                                                                          children: [
+                                                                            Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(3.0, 5.0, 3.0, 0.0),
+                                                                              child: Text(
+                                                                                dateTimeFormat(
+                                                                                  'd/M/y',
+                                                                                  verifyPaymentContainerBookingsRecord.dOB!,
+                                                                                  locale: FFLocalizations.of(context).languageCode,
+                                                                                ),
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: 'Open Sans',
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
+                                                                                    ),
                                                                               ),
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Open Sans',
-                                                                                    color: FlutterFlowTheme.of(context).primaryText,
-                                                                                  ),
                                                                             ),
-                                                                          ),
-                                                                        ],
+                                                                          ],
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1909,10 +1881,6 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                             0.0),
                                                                     child:
                                                                         Container(
-                                                                      width: MediaQuery.of(context)
-                                                                              .size
-                                                                              .width *
-                                                                          0.08,
                                                                       height: MediaQuery.of(context)
                                                                               .size
                                                                               .height *
@@ -1946,58 +1914,54 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0),
+                                                                  Expanded(
                                                                     child:
-                                                                        Container(
-                                                                      width: MediaQuery.of(context)
-                                                                              .size
-                                                                              .width *
-                                                                          0.18,
-                                                                      height: MediaQuery.of(context)
-                                                                              .size
-                                                                              .height *
-                                                                          0.04,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryBackground,
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(7.0),
-                                                                      ),
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
                                                                       child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            5.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
+                                                                          Container(
+                                                                        height: MediaQuery.of(context).size.height *
+                                                                            0.04,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(7.0),
+                                                                        ),
                                                                         child:
-                                                                            Column(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.center,
-                                                                          crossAxisAlignment:
-                                                                              CrossAxisAlignment.start,
-                                                                          children: [
                                                                             Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
-                                                                              child: Text(
-                                                                                verifyPaymentContainerBookingsRecord.sex!,
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Open Sans',
-                                                                                      color: FlutterFlowTheme.of(context).primaryText,
-                                                                                      fontWeight: FontWeight.w500,
-                                                                                    ),
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              5.0,
+                                                                              0.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              Column(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.center,
+                                                                            crossAxisAlignment:
+                                                                                CrossAxisAlignment.start,
+                                                                            children: [
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                                                                                child: Text(
+                                                                                  verifyPaymentContainerBookingsRecord.sex,
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Open Sans',
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                        fontWeight: FontWeight.w500,
+                                                                                      ),
+                                                                                ),
                                                                               ),
-                                                                            ),
-                                                                          ],
+                                                                            ],
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     ),
@@ -2075,6 +2039,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                             wrapWithModel(
                               model: _model.paymentActionsWidgetModel,
                               updateCallback: () => setState(() {}),
+                              updateOnChange: true,
                               child: PaymentActionsWidgetWidget(
                                 paymentRef: widget.paymentRef!.reference,
                               ),

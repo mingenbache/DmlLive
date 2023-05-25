@@ -470,8 +470,6 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                               FormFieldController<String>(null),
                                           options: pathologistStaffRecordList
                                               .map((e) => e.displayName)
-                                              .withoutNulls
-                                              .toList()
                                               .toList(),
                                           onChanged: (val) => setState(() =>
                                               _model.pathologistValue = val),
@@ -575,7 +573,7 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                                         builder: (context) {
                                                           final individualTests =
                                                               confirmTestsSheetBookingsRecord
-                                                                  .testsIncluded!
+                                                                  .testsIncluded
                                                                   .toList();
                                                           return ListView
                                                               .builder(
@@ -663,8 +661,7 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                                                       onTap:
                                                                           () async {
                                                                         if (confirmTestsSheetBookingsRecord
-                                                                            .bookedTests!
-                                                                            .toList()
+                                                                            .bookedTests
                                                                             .contains(individualTestsItem)) {
                                                                           var confirmDialogResponse = await showDialog<bool>(
                                                                                 context: context,
@@ -824,7 +821,7 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                                                                               }
                                                                                               final textTestsRecord = snapshot.data!;
                                                                                               return Text(
-                                                                                                textTestsRecord.name!,
+                                                                                                textTestsRecord.name,
                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                       fontFamily: 'Open Sans',
                                                                                                       color: FlutterFlowTheme.of(context).primaryText,
@@ -909,7 +906,7 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                                                                             onChanged: (newValue) async {
                                                                                               setState(() => _model.checkboxValueMap1[individualTestsItem] = newValue!);
                                                                                               if (newValue!) {
-                                                                                                if (confirmTestsSheetBookingsRecord.bookedTests!.toList().contains(individualTestsItem)) {
+                                                                                                if (confirmTestsSheetBookingsRecord.bookedTests.contains(individualTestsItem)) {
                                                                                                   var confirmDialogResponse = await showDialog<bool>(
                                                                                                         context: context,
                                                                                                         builder: (alertDialogContext) {
@@ -977,7 +974,7 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
 
                                                                                                 setState(() {});
                                                                                               } else {
-                                                                                                if (confirmTestsSheetBookingsRecord.bookedTests!.toList().contains(individualTestsItem)) {
+                                                                                                if (confirmTestsSheetBookingsRecord.bookedTests.contains(individualTestsItem)) {
                                                                                                   var confirmDialogResponse = await showDialog<bool>(
                                                                                                         context: context,
                                                                                                         builder: (alertDialogContext) {
@@ -1058,7 +1055,7 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                                                                         hoverColor: Colors.transparent,
                                                                                         highlightColor: Colors.transparent,
                                                                                         onTap: () async {
-                                                                                          if (confirmTestsSheetBookingsRecord.bookedTests!.toList().contains(individualTestsItem)) {
+                                                                                          if (confirmTestsSheetBookingsRecord.bookedTests.contains(individualTestsItem)) {
                                                                                             var confirmDialogResponse = await showDialog<bool>(
                                                                                                   context: context,
                                                                                                   builder: (alertDialogContext) {
@@ -1184,7 +1181,7 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                                         builder: (context) {
                                                           final testPackages =
                                                               confirmTestsSheetBookingsRecord
-                                                                  .testPackages!
+                                                                  .testPackages
                                                                   .toList();
                                                           return ListView
                                                               .builder(
@@ -1286,7 +1283,7 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                           children: [
                                                                                             Text(
-                                                                                              testPackageCardTestPackagesRecord.packageName!,
+                                                                                              testPackageCardTestPackagesRecord.packageName,
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                     fontFamily: 'Open Sans',
                                                                                                     color: FlutterFlowTheme.of(context).primaryText,
@@ -1300,7 +1297,7 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                                                                           children: [
                                                                                             Text(
                                                                                               valueOrDefault<String>(
-                                                                                                '${testPackageCardTestPackagesRecord.testsIncluded!.toList().length.toString()} Tests',
+                                                                                                '${testPackageCardTestPackagesRecord.testsIncluded.length.toString()} Tests',
                                                                                                 '0 ',
                                                                                               ),
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1338,7 +1335,7 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                                                           Builder(
                                                                             builder:
                                                                                 (context) {
-                                                                              final packageTests = testPackageCardTestPackagesRecord.testsIncluded!.toList();
+                                                                              final packageTests = testPackageCardTestPackagesRecord.testsIncluded.toList();
                                                                               return ListView.builder(
                                                                                 padding: EdgeInsets.zero,
                                                                                 shrinkWrap: true,
@@ -1493,7 +1490,7 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                                                                                                 }
                                                                                                                 final textTestsRecord = snapshot.data!;
                                                                                                                 return Text(
-                                                                                                                  textTestsRecord.name!,
+                                                                                                                  textTestsRecord.name,
                                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                         fontFamily: 'Open Sans',
                                                                                                                         color: FlutterFlowTheme.of(context).primaryText,
@@ -1789,7 +1786,7 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                                         builder: (context) {
                                                           final specialTests =
                                                               confirmTestsSheetBookingsRecord
-                                                                  .specialTests!
+                                                                  .specialTests
                                                                   .toList();
                                                           return ListView
                                                               .builder(
@@ -1996,7 +1993,7 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                         children: [
                                                                                           Text(
-                                                                                            specialTestsItem.name!,
+                                                                                            specialTestsItem.name,
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Open Sans',
                                                                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -2353,10 +2350,10 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                         });
                                         if (functions.checktestsListsEqual(
                                             confirmTestsSheetBookingsRecord
-                                                .testsIncluded!
+                                                .testsIncluded
                                                 .toList(),
                                             confirmTestsSheetBookingsRecord
-                                                .bookedTests!
+                                                .bookedTests
                                                 .toList())) {
                                           if (FFAppState()
                                               .proceedconfirmation) {

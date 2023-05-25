@@ -1135,7 +1135,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           return;
                                         }
 
-                                        context.goNamedAuth('checkup', mounted);
+                                        context.goNamedAuth(
+                                            'checkup', context.mounted);
                                       },
                                       child: Card(
                                         clipBehavior:
@@ -1165,7 +1166,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               }
 
                                               context.goNamedAuth(
-                                                  'checkup', mounted);
+                                                  'checkup', context.mounted);
                                             },
                                             child: FaIcon(
                                               FontAwesomeIcons.google,
@@ -1192,7 +1193,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                         return;
                                       }
 
-                                      context.goNamedAuth('checkup', mounted);
+                                      context.goNamedAuth(
+                                          'checkup', context.mounted);
                                     },
                                     child: Card(
                                       clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -1224,7 +1226,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               }
 
                                               context.goNamedAuth(
-                                                  'checkup', mounted);
+                                                  'checkup', context.mounted);
                                             },
                                             child: FaIcon(
                                               FontAwesomeIcons.apple,

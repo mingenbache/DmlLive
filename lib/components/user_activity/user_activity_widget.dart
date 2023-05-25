@@ -319,7 +319,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        columnUsersRecord.role!,
+                                                        columnUsersRecord.role,
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium
@@ -1223,7 +1223,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   children: [
                                                                                     Text(
-                                                                                      columnUsersRecord.displayName!,
+                                                                                      columnUsersRecord.displayName,
                                                                                       textAlign: TextAlign.start,
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Open Sans',
@@ -1290,7 +1290,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   children: [
                                                                                     Text(
-                                                                                      columnUsersRecord.email!,
+                                                                                      columnUsersRecord.email,
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).primaryText,
@@ -1364,7 +1364,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   children: [
                                                                                     Text(
-                                                                                      columnUsersRecord.phoneNumber!,
+                                                                                      columnUsersRecord.phoneNumber,
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).primaryText,
@@ -1488,7 +1488,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
                                                                                       Text(
-                                                                                        columnUsersRecord.sex!,
+                                                                                        columnUsersRecord.sex,
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: 'Open Sans',
                                                                                               color: FlutterFlowTheme.of(context).primaryText,
@@ -1821,7 +1821,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                     child: Padding(
                                                                                       padding: EdgeInsetsDirectional.fromSTEB(7.0, 9.0, 5.0, 5.0),
                                                                                       child: Text(
-                                                                                        containerPaymentsRecord.transactionCode!.maybeHandleOverflow(maxChars: 8),
+                                                                                        containerPaymentsRecord.transactionCode.maybeHandleOverflow(maxChars: 8),
                                                                                         maxLines: 1,
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: 'Open Sans',
@@ -1844,7 +1844,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                     child: Padding(
                                                                                       padding: EdgeInsetsDirectional.fromSTEB(9.0, 9.0, 5.0, 5.0),
                                                                                       child: Text(
-                                                                                        containerPaymentsRecord.type!,
+                                                                                        containerPaymentsRecord.type,
                                                                                         maxLines: 1,
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: 'Open Sans',
@@ -1865,7 +1865,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                       padding: EdgeInsetsDirectional.fromSTEB(5.0, 9.0, 5.0, 5.0),
                                                                                       child: Text(
                                                                                         formatNumber(
-                                                                                          containerPaymentsRecord.amount!,
+                                                                                          containerPaymentsRecord.amount,
                                                                                           formatType: FormatType.decimal,
                                                                                           decimalType: DecimalType.periodDecimal,
                                                                                           currency: 'Ksh ',
@@ -2117,7 +2117,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                                     child: Padding(
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 4.0, 0.0),
                                                                                                       child: Text(
-                                                                                                        columnChatsRecord.lastMessage!,
+                                                                                                        columnChatsRecord.lastMessage,
                                                                                                         style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                               fontFamily: 'Lexend Deca',
                                                                                                               color: FlutterFlowTheme.of(context).secondary,

@@ -131,7 +131,7 @@ class _ReportWidgetBookedTestWidgetState
                   ),
                 ),
               ),
-              if (!reportwidgetBookedTestBookedTestsRecord.hasResult!)
+              if (!reportwidgetBookedTestBookedTestsRecord.hasResult)
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 10.0, 5.0),
                   child: Material(

@@ -1,122 +1,190 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'tested_tests_record.g.dart';
+class TestedTestsRecord extends FirestoreRecord {
+  TestedTestsRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class TestedTestsRecord
-    implements Built<TestedTestsRecord, TestedTestsRecordBuilder> {
-  static Serializer<TestedTestsRecord> get serializer =>
-      _$testedTestsRecordSerializer;
+  // "test_ref" field.
+  DocumentReference? _testRef;
+  DocumentReference? get testRef => _testRef;
+  bool hasTestRef() => _testRef != null;
 
-  @BuiltValueField(wireName: 'test_ref')
-  DocumentReference? get testRef;
+  // "booking_ref" field.
+  DocumentReference? _bookingRef;
+  DocumentReference? get bookingRef => _bookingRef;
+  bool hasBookingRef() => _bookingRef != null;
 
-  @BuiltValueField(wireName: 'booking_ref')
-  DocumentReference? get bookingRef;
+  // "is_verified" field.
+  bool? _isVerified;
+  bool get isVerified => _isVerified ?? false;
+  bool hasIsVerified() => _isVerified != null;
 
-  @BuiltValueField(wireName: 'is_verified')
-  bool? get isVerified;
+  // "is_flagged" field.
+  bool? _isFlagged;
+  bool get isFlagged => _isFlagged ?? false;
+  bool hasIsFlagged() => _isFlagged != null;
 
-  @BuiltValueField(wireName: 'is_flagged')
-  bool? get isFlagged;
+  // "pathologist_Ref" field.
+  DocumentReference? _pathologistRef;
+  DocumentReference? get pathologistRef => _pathologistRef;
+  bool hasPathologistRef() => _pathologistRef != null;
 
-  @BuiltValueField(wireName: 'pathologist_Ref')
-  DocumentReference? get pathologistRef;
+  // "date_conducted" field.
+  DateTime? _dateConducted;
+  DateTime? get dateConducted => _dateConducted;
+  bool hasDateConducted() => _dateConducted != null;
 
-  @BuiltValueField(wireName: 'date_conducted')
-  DateTime? get dateConducted;
+  // "results_positive" field.
+  bool? _resultsPositive;
+  bool get resultsPositive => _resultsPositive ?? false;
+  bool hasResultsPositive() => _resultsPositive != null;
 
-  @BuiltValueField(wireName: 'results_positive')
-  bool? get resultsPositive;
+  // "results_attachment" field.
+  List<String>? _resultsAttachment;
+  List<String> get resultsAttachment => _resultsAttachment ?? const [];
+  bool hasResultsAttachment() => _resultsAttachment != null;
 
-  @BuiltValueField(wireName: 'results_attachment')
-  BuiltList<String>? get resultsAttachment;
+  // "sample_released" field.
+  bool? _sampleReleased;
+  bool get sampleReleased => _sampleReleased ?? false;
+  bool hasSampleReleased() => _sampleReleased != null;
 
-  @BuiltValueField(wireName: 'sample_released')
-  bool? get sampleReleased;
+  // "booked_test_Ref" field.
+  DocumentReference? _bookedTestRef;
+  DocumentReference? get bookedTestRef => _bookedTestRef;
+  bool hasBookedTestRef() => _bookedTestRef != null;
 
-  @BuiltValueField(wireName: 'booked_test_Ref')
-  DocumentReference? get bookedTestRef;
+  // "machine_used" field.
+  DocumentReference? _machineUsed;
+  DocumentReference? get machineUsed => _machineUsed;
+  bool hasMachineUsed() => _machineUsed != null;
 
-  @BuiltValueField(wireName: 'machine_used')
-  DocumentReference? get machineUsed;
+  // "flagged_date" field.
+  DateTime? _flaggedDate;
+  DateTime? get flaggedDate => _flaggedDate;
+  bool hasFlaggedDate() => _flaggedDate != null;
 
-  @BuiltValueField(wireName: 'flagged_date')
-  DateTime? get flaggedDate;
+  // "date_sample_collected" field.
+  DateTime? _dateSampleCollected;
+  DateTime? get dateSampleCollected => _dateSampleCollected;
+  bool hasDateSampleCollected() => _dateSampleCollected != null;
 
-  @BuiltValueField(wireName: 'date_sample_collected')
-  DateTime? get dateSampleCollected;
+  // "labRefNum" field.
+  String? _labRefNum;
+  String get labRefNum => _labRefNum ?? '';
+  bool hasLabRefNum() => _labRefNum != null;
 
-  String? get labRefNum;
+  // "test_note" field.
+  String? _testNote;
+  String get testNote => _testNote ?? '';
+  bool hasTestNote() => _testNote != null;
 
-  @BuiltValueField(wireName: 'test_note')
-  String? get testNote;
+  // "pathologist_note" field.
+  String? _pathologistNote;
+  String get pathologistNote => _pathologistNote ?? '';
+  bool hasPathologistNote() => _pathologistNote != null;
 
-  @BuiltValueField(wireName: 'pathologist_note')
-  String? get pathologistNote;
+  // "test_result" field.
+  String? _testResult;
+  String get testResult => _testResult ?? '';
+  bool hasTestResult() => _testResult != null;
 
-  @BuiltValueField(wireName: 'test_result')
-  String? get testResult;
+  // "flag_notes" field.
+  String? _flagNotes;
+  String get flagNotes => _flagNotes ?? '';
+  bool hasFlagNotes() => _flagNotes != null;
 
-  @BuiltValueField(wireName: 'flag_notes')
-  String? get flagNotes;
+  // "resultPosted" field.
+  bool? _resultPosted;
+  bool get resultPosted => _resultPosted ?? false;
+  bool hasResultPosted() => _resultPosted != null;
 
-  bool? get resultPosted;
+  // "staff_Reference" field.
+  DocumentReference? _staffReference;
+  DocumentReference? get staffReference => _staffReference;
+  bool hasStaffReference() => _staffReference != null;
 
-  @BuiltValueField(wireName: 'staff_Reference')
-  DocumentReference? get staffReference;
+  // "verified_Date" field.
+  DateTime? _verifiedDate;
+  DateTime? get verifiedDate => _verifiedDate;
+  bool hasVerifiedDate() => _verifiedDate != null;
 
-  @BuiltValueField(wireName: 'verified_Date')
-  DateTime? get verifiedDate;
+  // "batchNum" field.
+  String? _batchNum;
+  String get batchNum => _batchNum ?? '';
+  bool hasBatchNum() => _batchNum != null;
 
-  String? get batchNum;
+  // "has_test_pack" field.
+  bool? _hasTestPack;
+  bool get hasTestPack => _hasTestPack ?? false;
+  bool hasHasTestPack() => _hasTestPack != null;
 
-  @BuiltValueField(wireName: 'has_test_pack')
-  bool? get hasTestPack;
+  // "testPackRef" field.
+  DocumentReference? _testPackRef;
+  DocumentReference? get testPackRef => _testPackRef;
+  bool hasTestPackRef() => _testPackRef != null;
 
-  DocumentReference? get testPackRef;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(TestedTestsRecordBuilder builder) => builder
-    ..isVerified = false
-    ..isFlagged = false
-    ..resultsPositive = false
-    ..resultsAttachment = ListBuilder()
-    ..sampleReleased = false
-    ..labRefNum = ''
-    ..testNote = ''
-    ..pathologistNote = ''
-    ..testResult = ''
-    ..flagNotes = ''
-    ..resultPosted = false
-    ..batchNum = ''
-    ..hasTestPack = false;
+  void _initializeFields() {
+    _testRef = snapshotData['test_ref'] as DocumentReference?;
+    _bookingRef = snapshotData['booking_ref'] as DocumentReference?;
+    _isVerified = snapshotData['is_verified'] as bool?;
+    _isFlagged = snapshotData['is_flagged'] as bool?;
+    _pathologistRef = snapshotData['pathologist_Ref'] as DocumentReference?;
+    _dateConducted = snapshotData['date_conducted'] as DateTime?;
+    _resultsPositive = snapshotData['results_positive'] as bool?;
+    _resultsAttachment = getDataList(snapshotData['results_attachment']);
+    _sampleReleased = snapshotData['sample_released'] as bool?;
+    _bookedTestRef = snapshotData['booked_test_Ref'] as DocumentReference?;
+    _machineUsed = snapshotData['machine_used'] as DocumentReference?;
+    _flaggedDate = snapshotData['flagged_date'] as DateTime?;
+    _dateSampleCollected = snapshotData['date_sample_collected'] as DateTime?;
+    _labRefNum = snapshotData['labRefNum'] as String?;
+    _testNote = snapshotData['test_note'] as String?;
+    _pathologistNote = snapshotData['pathologist_note'] as String?;
+    _testResult = snapshotData['test_result'] as String?;
+    _flagNotes = snapshotData['flag_notes'] as String?;
+    _resultPosted = snapshotData['resultPosted'] as bool?;
+    _staffReference = snapshotData['staff_Reference'] as DocumentReference?;
+    _verifiedDate = snapshotData['verified_Date'] as DateTime?;
+    _batchNum = snapshotData['batchNum'] as String?;
+    _hasTestPack = snapshotData['has_test_pack'] as bool?;
+    _testPackRef = snapshotData['testPackRef'] as DocumentReference?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('tested_tests');
 
-  static Stream<TestedTestsRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<TestedTestsRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => TestedTestsRecord.fromSnapshot(s));
 
-  static Future<TestedTestsRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Future<TestedTestsRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => TestedTestsRecord.fromSnapshot(s));
 
-  TestedTestsRecord._();
-  factory TestedTestsRecord([void Function(TestedTestsRecordBuilder) updates]) =
-      _$TestedTestsRecord;
+  static TestedTestsRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      TestedTestsRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static TestedTestsRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      TestedTestsRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'TestedTestsRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createTestedTestsRecordData({
@@ -144,35 +212,32 @@ Map<String, dynamic> createTestedTestsRecordData({
   bool? hasTestPack,
   DocumentReference? testPackRef,
 }) {
-  final firestoreData = serializers.toFirestore(
-    TestedTestsRecord.serializer,
-    TestedTestsRecord(
-      (t) => t
-        ..testRef = testRef
-        ..bookingRef = bookingRef
-        ..isVerified = isVerified
-        ..isFlagged = isFlagged
-        ..pathologistRef = pathologistRef
-        ..dateConducted = dateConducted
-        ..resultsPositive = resultsPositive
-        ..resultsAttachment = null
-        ..sampleReleased = sampleReleased
-        ..bookedTestRef = bookedTestRef
-        ..machineUsed = machineUsed
-        ..flaggedDate = flaggedDate
-        ..dateSampleCollected = dateSampleCollected
-        ..labRefNum = labRefNum
-        ..testNote = testNote
-        ..pathologistNote = pathologistNote
-        ..testResult = testResult
-        ..flagNotes = flagNotes
-        ..resultPosted = resultPosted
-        ..staffReference = staffReference
-        ..verifiedDate = verifiedDate
-        ..batchNum = batchNum
-        ..hasTestPack = hasTestPack
-        ..testPackRef = testPackRef,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'test_ref': testRef,
+      'booking_ref': bookingRef,
+      'is_verified': isVerified,
+      'is_flagged': isFlagged,
+      'pathologist_Ref': pathologistRef,
+      'date_conducted': dateConducted,
+      'results_positive': resultsPositive,
+      'sample_released': sampleReleased,
+      'booked_test_Ref': bookedTestRef,
+      'machine_used': machineUsed,
+      'flagged_date': flaggedDate,
+      'date_sample_collected': dateSampleCollected,
+      'labRefNum': labRefNum,
+      'test_note': testNote,
+      'pathologist_note': pathologistNote,
+      'test_result': testResult,
+      'flag_notes': flagNotes,
+      'resultPosted': resultPosted,
+      'staff_Reference': staffReference,
+      'verified_Date': verifiedDate,
+      'batchNum': batchNum,
+      'has_test_pack': hasTestPack,
+      'testPackRef': testPackRef,
+    }.withoutNulls,
   );
 
   return firestoreData;

@@ -132,7 +132,7 @@ class _ReportwizardspecialTestWidgetState
                   ),
                 ),
               ),
-              if (!widget.specialTest!.isVerified!)
+              if (!widget.specialTest!.isVerified)
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 10.0, 5.0),
                   child: Material(
@@ -197,7 +197,7 @@ class _ReportwizardspecialTestWidgetState
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            widget.specialTest!.name!,
+                            widget.specialTest!.name,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(

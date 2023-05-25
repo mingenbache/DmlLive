@@ -1,60 +1,69 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'machines_record.g.dart';
+class MachinesRecord extends FirestoreRecord {
+  MachinesRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class MachinesRecord
-    implements Built<MachinesRecord, MachinesRecordBuilder> {
-  static Serializer<MachinesRecord> get serializer =>
-      _$machinesRecordSerializer;
+  // "name" field.
+  String? _name;
+  String get name => _name ?? '';
+  bool hasName() => _name != null;
 
-  String? get name;
+  // "metadata" field.
+  String? _metadata;
+  String get metadata => _metadata ?? '';
+  bool hasMetadata() => _metadata != null;
 
-  String? get metadata;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(MachinesRecordBuilder builder) => builder
-    ..name = ''
-    ..metadata = '';
+  void _initializeFields() {
+    _name = snapshotData['name'] as String?;
+    _metadata = snapshotData['metadata'] as String?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('machines');
 
-  static Stream<MachinesRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<MachinesRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => MachinesRecord.fromSnapshot(s));
 
-  static Future<MachinesRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Future<MachinesRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => MachinesRecord.fromSnapshot(s));
 
-  MachinesRecord._();
-  factory MachinesRecord([void Function(MachinesRecordBuilder) updates]) =
-      _$MachinesRecord;
+  static MachinesRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      MachinesRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static MachinesRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      MachinesRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'MachinesRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createMachinesRecordData({
   String? name,
   String? metadata,
 }) {
-  final firestoreData = serializers.toFirestore(
-    MachinesRecord.serializer,
-    MachinesRecord(
-      (m) => m
-        ..name = name
-        ..metadata = metadata,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'name': name,
+      'metadata': metadata,
+    }.withoutNulls,
   );
 
   return firestoreData;

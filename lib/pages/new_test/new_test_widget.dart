@@ -82,6 +82,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).tertiary,
               body: SafeArea(
+                top: true,
                 child: Form(
                   key: _model.formKey,
                   autovalidateMode: AutovalidateMode.always,
@@ -332,10 +333,8 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                       controller:
                                           _model.dropDownValueController ??=
                                               FormFieldController<String>(null),
-                                      options: dropDownCategoriesRecord!
-                                          .categories!
-                                          .toList()
-                                          .toList(),
+                                      options:
+                                          dropDownCategoriesRecord!.categories,
                                       onChanged: (val) => setState(
                                           () => _model.dropDownValue = val),
                                       width: MediaQuery.of(context).size.width *

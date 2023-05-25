@@ -495,7 +495,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                               padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
                                                                               child: Text(
                                                                                 formatNumber(
-                                                                                  invoiceListItemInvoicesRecord.invoiceAmount!,
+                                                                                  invoiceListItemInvoicesRecord.invoiceAmount,
                                                                                   formatType: FormatType.decimal,
                                                                                   decimalType: DecimalType.periodDecimal,
                                                                                   currency: 'Ksh ',
@@ -542,7 +542,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                           child:
                                                                               Stack(
                                                                             children: [
-                                                                              if (!invoiceListItemInvoicesRecord.isPaid!)
+                                                                              if (!invoiceListItemInvoicesRecord.isPaid)
                                                                                 Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                   child: Text(
@@ -555,7 +555,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                                         ),
                                                                                   ),
                                                                                 ),
-                                                                              if (invoiceListItemInvoicesRecord.fullAmount ?? true)
+                                                                              if (invoiceListItemInvoicesRecord.fullAmount)
                                                                                 Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                   child: Text(
@@ -668,7 +668,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                                                   child: Padding(
                                                                                                     padding: EdgeInsetsDirectional.fromSTEB(7.0, 9.0, 5.0, 5.0),
                                                                                                     child: Text(
-                                                                                                      paymentOnInvoiceItem.transactionCode!,
+                                                                                                      paymentOnInvoiceItem.transactionCode,
                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                             fontFamily: 'Open Sans',
                                                                                                             color: FlutterFlowTheme.of(context).secondary,
@@ -687,7 +687,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                                                     padding: EdgeInsetsDirectional.fromSTEB(9.0, 9.0, 5.0, 5.0),
                                                                                                     child: Text(
                                                                                                       formatNumber(
-                                                                                                        paymentOnInvoiceItem.amount!,
+                                                                                                        paymentOnInvoiceItem.amount,
                                                                                                         formatType: FormatType.decimal,
                                                                                                         decimalType: DecimalType.periodDecimal,
                                                                                                         currency: 'Kshs',
@@ -708,7 +708,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                                                     padding: EdgeInsetsDirectional.fromSTEB(5.0, 9.0, 5.0, 5.0),
                                                                                                     child: Text(
                                                                                                       formatNumber(
-                                                                                                        paymentOnInvoiceItem.amount!,
+                                                                                                        paymentOnInvoiceItem.amount,
                                                                                                         formatType: FormatType.decimal,
                                                                                                         decimalType: DecimalType.periodDecimal,
                                                                                                       ),

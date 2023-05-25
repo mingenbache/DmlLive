@@ -904,8 +904,6 @@ class _AddSpecialTestWidgetState extends State<AddSpecialTestWidget>
                                                       technologistStaffRecordList
                                                           .map((e) =>
                                                               e.displayName)
-                                                          .withoutNulls
-                                                          .toList()
                                                           .toList(),
                                                   onChanged: (val) => setState(
                                                       () => _model

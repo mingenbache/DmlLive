@@ -74,6 +74,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).tertiary,
               body: SafeArea(
+                top: true,
                 child: Container(
                   decoration: BoxDecoration(),
                   child: Column(
@@ -212,7 +213,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                     0.0),
                                                         child: Text(
                                                           bookingUpdatesBookingsRecord
-                                                              .bookingstatus!,
+                                                              .bookingstatus,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -320,7 +321,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                           0.0, 8.0, 16.0, 0.0),
                                                   child: Text(
                                                     bookingUpdatesBookingsRecord
-                                                        .labRefNum!,
+                                                        .labRefNum,
                                                     textAlign: TextAlign.end,
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -529,7 +530,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                 0.0, 0.0),
                                                     child: Text(
                                                       bookingUpdatesBookingsRecord
-                                                          .docNameAddress!,
+                                                          .docNameAddress,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -892,7 +893,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                       child:
                                                                           Text(
                                                                         bookingUpdatesBookingsRecord
-                                                                            .emailaddress!,
+                                                                            .emailaddress,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
@@ -992,7 +993,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                       child:
                                                                           Text(
                                                                         bookingUpdatesBookingsRecord
-                                                                            .phonenumber!,
+                                                                            .phonenumber,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
@@ -1188,7 +1189,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                         child:
                                                                             Text(
                                                                           bookingUpdatesBookingsRecord
-                                                                              .sex!,
+                                                                              .sex,
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
@@ -1253,7 +1254,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                   4.0, 4.0, 4.0, 4.0),
                                           child: Text(
                                             bookingUpdatesBookingsRecord
-                                                .diagnosis!,
+                                                .diagnosis,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -1430,7 +1431,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                       onTap:
                                                                           () async {
                                                                         if (bookingTestsItem
-                                                                            .sampleCollected!) {
+                                                                            .sampleCollected) {
                                                                           context
                                                                               .pushNamed(
                                                                             'TestDeck',
@@ -1520,7 +1521,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                                       }
                                                                                       final textTestsRecord = snapshot.data!;
                                                                                       return Text(
-                                                                                        textTestsRecord.name!,
+                                                                                        textTestsRecord.name,
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: 'Open Sans',
                                                                                               color: FlutterFlowTheme.of(context).secondary,
@@ -1627,7 +1628,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                                                               ),
                                                                                                             ),
                                                                                                           ),
-                                                                                                          if (bookingTestsItem.sampleCollected ?? true)
+                                                                                                          if (bookingTestsItem.sampleCollected)
                                                                                                             Container(
                                                                                                               decoration: BoxDecoration(
                                                                                                                 shape: BoxShape.circle,
@@ -1661,7 +1662,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                                                               ),
                                                                                                             ),
                                                                                                           ),
-                                                                                                          if (containerTestedTestsRecord!.resultPosted ?? true)
+                                                                                                          if (containerTestedTestsRecord!.resultPosted)
                                                                                                             Container(
                                                                                                               decoration: BoxDecoration(
                                                                                                                 shape: BoxShape.circle,
@@ -1695,7 +1696,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                                                               ),
                                                                                                             ),
                                                                                                           ),
-                                                                                                          if (containerTestedTestsRecord!.isVerified ?? true)
+                                                                                                          if (containerTestedTestsRecord!.isVerified)
                                                                                                             Container(
                                                                                                               decoration: BoxDecoration(
                                                                                                                 shape: BoxShape.circle,

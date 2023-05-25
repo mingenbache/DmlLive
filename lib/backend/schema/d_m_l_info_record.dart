@@ -1,63 +1,88 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'd_m_l_info_record.g.dart';
+class DMLInfoRecord extends FirestoreRecord {
+  DMLInfoRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class DMLInfoRecord
-    implements Built<DMLInfoRecord, DMLInfoRecordBuilder> {
-  static Serializer<DMLInfoRecord> get serializer => _$dMLInfoRecordSerializer;
+  // "url" field.
+  String? _url;
+  String get url => _url ?? '';
+  bool hasUrl() => _url != null;
 
-  String? get url;
+  // "primaryEmail" field.
+  String? _primaryEmail;
+  String get primaryEmail => _primaryEmail ?? '';
+  bool hasPrimaryEmail() => _primaryEmail != null;
 
-  String? get primaryEmail;
+  // "phone_numbers" field.
+  List<String>? _phoneNumbers;
+  List<String> get phoneNumbers => _phoneNumbers ?? const [];
+  bool hasPhoneNumbers() => _phoneNumbers != null;
 
-  @BuiltValueField(wireName: 'phone_numbers')
-  BuiltList<String>? get phoneNumbers;
+  // "DML_Logo" field.
+  String? _dMLLogo;
+  String get dMLLogo => _dMLLogo ?? '';
+  bool hasDMLLogo() => _dMLLogo != null;
 
-  @BuiltValueField(wireName: 'DML_Logo')
-  String? get dMLLogo;
+  // "footerReferences" field.
+  List<String>? _footerReferences;
+  List<String> get footerReferences => _footerReferences ?? const [];
+  bool hasFooterReferences() => _footerReferences != null;
 
-  BuiltList<String>? get footerReferences;
+  // "location" field.
+  String? _location;
+  String get location => _location ?? '';
+  bool hasLocation() => _location != null;
 
-  String? get location;
+  // "isMain" field.
+  bool? _isMain;
+  bool get isMain => _isMain ?? false;
+  bool hasIsMain() => _isMain != null;
 
-  bool? get isMain;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(DMLInfoRecordBuilder builder) => builder
-    ..url = ''
-    ..primaryEmail = ''
-    ..phoneNumbers = ListBuilder()
-    ..dMLLogo = ''
-    ..footerReferences = ListBuilder()
-    ..location = ''
-    ..isMain = false;
+  void _initializeFields() {
+    _url = snapshotData['url'] as String?;
+    _primaryEmail = snapshotData['primaryEmail'] as String?;
+    _phoneNumbers = getDataList(snapshotData['phone_numbers']);
+    _dMLLogo = snapshotData['DML_Logo'] as String?;
+    _footerReferences = getDataList(snapshotData['footerReferences']);
+    _location = snapshotData['location'] as String?;
+    _isMain = snapshotData['isMain'] as bool?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('DML_Info');
 
-  static Stream<DMLInfoRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<DMLInfoRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => DMLInfoRecord.fromSnapshot(s));
 
-  static Future<DMLInfoRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Future<DMLInfoRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => DMLInfoRecord.fromSnapshot(s));
 
-  DMLInfoRecord._();
-  factory DMLInfoRecord([void Function(DMLInfoRecordBuilder) updates]) =
-      _$DMLInfoRecord;
+  static DMLInfoRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      DMLInfoRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static DMLInfoRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      DMLInfoRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'DMLInfoRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createDMLInfoRecordData({
@@ -67,18 +92,14 @@ Map<String, dynamic> createDMLInfoRecordData({
   String? location,
   bool? isMain,
 }) {
-  final firestoreData = serializers.toFirestore(
-    DMLInfoRecord.serializer,
-    DMLInfoRecord(
-      (d) => d
-        ..url = url
-        ..primaryEmail = primaryEmail
-        ..phoneNumbers = null
-        ..dMLLogo = dMLLogo
-        ..footerReferences = null
-        ..location = location
-        ..isMain = isMain,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'url': url,
+      'primaryEmail': primaryEmail,
+      'DML_Logo': dMLLogo,
+      'location': location,
+      'isMain': isMain,
+    }.withoutNulls,
   );
 
   return firestoreData;

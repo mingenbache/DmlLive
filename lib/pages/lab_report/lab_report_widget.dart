@@ -83,6 +83,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).tertiary,
               body: SafeArea(
+                top: true,
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -336,7 +337,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                 0.0, 0.0),
                                                     child: Text(
                                                       labReportBookingsRecord
-                                                          .bookingstatus!,
+                                                          .bookingstatus,
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
@@ -430,7 +431,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                       0.0, 8.0, 16.0, 0.0),
                                               child: Text(
                                                 labReportBookingsRecord
-                                                    .labRefNum!,
+                                                    .labRefNum,
                                                 textAlign: TextAlign.end,
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -710,7 +711,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                           0.0, 6.0, 0.0, 0.0),
                                                   child: Text(
                                                     labReportBookingsRecord
-                                                        .docNameAddress!,
+                                                        .docNameAddress,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -1104,7 +1105,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                       child:
                                                                           Text(
                                                                         labReportBookingsRecord
-                                                                            .emailaddress!,
+                                                                            .emailaddress,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
@@ -1202,7 +1203,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                       child:
                                                                           Text(
                                                                         labReportBookingsRecord
-                                                                            .phonenumber!,
+                                                                            .phonenumber,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
@@ -1391,7 +1392,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                               List<String>>(
                                                                         [
                                                                           labReportBookingsRecord
-                                                                              .sex!
+                                                                              .sex
                                                                         ],
                                                                       ),
                                                                     ),
@@ -1484,7 +1485,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                 14.0),
                                                     child: Text(
                                                       labReportBookingsRecord
-                                                          .diagnosis!,
+                                                          .diagnosis,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1747,7 +1748,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                           14.0, 14.0),
                                                   child: Text(
                                                     labReportBookingsRecord
-                                                        .diagnosis!,
+                                                        .diagnosis,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -1773,7 +1774,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                           },
                         ),
                       ),
-                      if (labReportBookingsRecord.completed ?? true)
+                      if (labReportBookingsRecord.completed)
                         Align(
                           alignment: AlignmentDirectional(0.0, 0.05),
                           child: Padding(

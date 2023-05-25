@@ -707,7 +707,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                             builder: (context) {
                                                               final testCategories =
                                                                   listViewCategoriesRecord!
-                                                                      .categories!
+                                                                      .categories
                                                                       .toList();
                                                               return ListView
                                                                   .builder(
@@ -1447,7 +1447,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                             builder: (context) {
                                                               final packagecategories =
                                                                   listViewCategoriesRecord!
-                                                                      .categories!
+                                                                      .categories
                                                                       .toList();
                                                               return ListView
                                                                   .builder(

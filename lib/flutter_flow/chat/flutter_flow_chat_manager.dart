@@ -225,7 +225,10 @@ class FFChatManager {
       return chat;
     }
     await chat.reference.update({'users': newUsers});
-    return chat.rebuild((c) => c.users.replace(newUsers));
+    chat.users
+      ..clear()
+      ..addAll(newUsers);
+    return chat;
   }
 
   Future<ChatsRecord> removeGroupMembers(
@@ -236,6 +239,9 @@ class FFChatManager {
       return chat;
     }
     await chat.reference.update({'users': newUsers});
-    return chat.rebuild((c) => c.users.replace(newUsers));
+    chat.users
+      ..clear()
+      ..addAll(newUsers);
+    return chat;
   }
 }

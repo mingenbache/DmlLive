@@ -208,7 +208,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   6.0, 3.0, 6.0, 3.0),
                                           child: Text(
-                                            widget.test!.category!,
+                                            widget.test!.category,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -243,7 +243,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                         size: 20.0,
                                       ),
                                       Text(
-                                        '${widget.test!.durationResults?.toString()} Hrs',
+                                        '${widget.test!.durationResults.toString()} Hrs',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -304,7 +304,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                           height: 20.0,
                                           child: Stack(
                                             children: [
-                                              if (widget.test!.homeTest ?? true)
+                                              if (widget.test!.homeTest)
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(
@@ -317,7 +317,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                                     size: 16.0,
                                                   ),
                                                 ),
-                                              if (!widget.test!.homeTest!)
+                                              if (!widget.test!.homeTest)
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(
@@ -356,7 +356,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                                   5.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             formatNumber(
-                                              widget.test!.price!,
+                                              widget.test!.price,
                                               formatType: FormatType.decimal,
                                               decimalType:
                                                   DecimalType.periodDecimal,

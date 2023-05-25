@@ -111,7 +111,7 @@ class _InvoiceViewContainerWidgetState
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 4.0, 4.0, 4.0),
                             child: Text(
-                              widget.invoice!.amountDue!.toString(),
+                              widget.invoice!.amountDue.toString(),
                               style: FlutterFlowTheme.of(context)
                                   .titleMedium
                                   .override(
@@ -138,7 +138,7 @@ class _InvoiceViewContainerWidgetState
                               ),
                             ),
                             child: Visibility(
-                              visible: !widget.invoice!.isPaid!,
+                              visible: !widget.invoice!.isPaid,
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     7.0, 3.0, 0.0, 3.0),
@@ -494,7 +494,7 @@ class _InvoiceViewContainerWidgetState
                                                       .fromSTEB(
                                                           0.0, 0.0, 4.0, 0.0),
                                                   child: Text(
-                                                    widget.invoice!.labRefNum!,
+                                                    widget.invoice!.labRefNum,
                                                     textAlign: TextAlign.end,
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -703,7 +703,7 @@ class _InvoiceViewContainerWidgetState
                                                                             0.0),
                                                                     child: Text(
                                                                       paymentsListViewPaymentsRecord
-                                                                          .transactionCode!,
+                                                                          .transactionCode,
                                                                       maxLines:
                                                                           1,
                                                                       style: FlutterFlowTheme.of(
@@ -753,7 +753,7 @@ class _InvoiceViewContainerWidgetState
                                                                           0.0),
                                                                   child: Text(
                                                                     paymentsListViewPaymentsRecord
-                                                                        .type!,
+                                                                        .type,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
@@ -790,8 +790,7 @@ class _InvoiceViewContainerWidgetState
                                                                         .max,
                                                                 children: [
                                                                   if (paymentsListViewPaymentsRecord
-                                                                          .isApproved ??
-                                                                      true)
+                                                                      .isApproved)
                                                                     Padding(
                                                                       padding: EdgeInsetsDirectional.fromSTEB(
                                                                           5.0,
@@ -802,7 +801,7 @@ class _InvoiceViewContainerWidgetState
                                                                           Text(
                                                                         formatNumber(
                                                                           paymentsListViewPaymentsRecord
-                                                                              .amount!,
+                                                                              .amount,
                                                                           formatType:
                                                                               FormatType.decimal,
                                                                           decimalType:
@@ -1101,7 +1100,7 @@ class _InvoiceViewContainerWidgetState
                                                                       3.0),
                                                           child: Text(
                                                             containerBookingsRecord
-                                                                .emailaddress!,
+                                                                .emailaddress,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
@@ -1205,7 +1204,7 @@ class _InvoiceViewContainerWidgetState
                                                                       0.0),
                                                           child: Text(
                                                             containerBookingsRecord
-                                                                .phonenumber!,
+                                                                .phonenumber,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
@@ -1440,7 +1439,7 @@ class _InvoiceViewContainerWidgetState
                                                                             0.0),
                                                                 child: Text(
                                                                   containerBookingsRecord
-                                                                      .sex!,
+                                                                      .sex,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium

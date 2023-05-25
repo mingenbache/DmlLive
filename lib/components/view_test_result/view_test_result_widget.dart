@@ -249,8 +249,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                       .fromSTEB(
                                                           5.0, 15.0, 0.0, 0.0),
                                                   child: Text(
-                                                    testResultsTestsRecord
-                                                        .name!,
+                                                    testResultsTestsRecord.name,
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -273,7 +272,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                           Stack(
                                             children: [
                                               if (!viewResultsTestedTestsRecord
-                                                  .resultPosted!)
+                                                  .resultPosted)
                                                 Container(
                                                   width: 145.0,
                                                   height: 32.0,
@@ -514,8 +513,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                             ],
                                           ),
                                           if (viewResultsTestedTestsRecord
-                                                  .isFlagged ??
-                                              true)
+                                              .isFlagged)
                                             InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,
@@ -828,7 +826,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 children: [
                                                                                   Text(
-                                                                                    tabBarBookingsRecord.labRefNum!,
+                                                                                    tabBarBookingsRecord.labRefNum,
                                                                                     style: FlutterFlowTheme.of(context).titleMedium,
                                                                                   ),
                                                                                 ],
@@ -1417,8 +1415,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                         Visibility(
                                                           visible:
                                                               viewResultsTestedTestsRecord
-                                                                      .resultPosted ??
-                                                                  true,
+                                                                  .resultPosted,
                                                           child:
                                                               SingleChildScrollView(
                                                             child: Column(
@@ -1497,7 +1494,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                           Stack(
                                                                             children: [
                                                                               Visibility(
-                                                                                visible: viewResultsTestedTestsRecord.resultsPositive ?? true,
+                                                                                visible: viewResultsTestedTestsRecord.resultsPositive,
                                                                                 child: Container(
                                                                                   width: 116.0,
                                                                                   height: 32.0,
@@ -1544,7 +1541,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                 ),
                                                                               ),
                                                                               Visibility(
-                                                                                visible: !viewResultsTestedTestsRecord.resultsPositive!,
+                                                                                visible: !viewResultsTestedTestsRecord.resultsPositive,
                                                                                 child: Container(
                                                                                   width: 116.0,
                                                                                   height: 32.0,
@@ -1684,7 +1681,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                 Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7.0, 7.0, 7.0, 4.0),
                                                                                   child: Text(
-                                                                                    viewResultsTestedTestsRecord.testResult!,
+                                                                                    viewResultsTestedTestsRecord.testResult,
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).secondary,
@@ -1793,7 +1790,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                   Padding(
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(7.0, 7.0, 7.0, 4.0),
                                                                                     child: Text(
-                                                                                      viewResultsTestedTestsRecord.pathologistNote!,
+                                                                                      viewResultsTestedTestsRecord.pathologistNote,
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondary,
@@ -1903,7 +1900,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                   Padding(
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(7.0, 7.0, 7.0, 4.0),
                                                                                     child: Text(
-                                                                                      viewResultsTestedTestsRecord.testNote!,
+                                                                                      viewResultsTestedTestsRecord.testNote,
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondary,
@@ -2050,7 +2047,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                   Padding(
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                                                                                     child: Text(
-                                                                                      testResultsTestsRecord.varianceMale!,
+                                                                                      testResultsTestsRecord.varianceMale,
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Open Sans',
                                                                                             color: Colors.white,
@@ -2082,7 +2079,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                   Padding(
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                                                                                     child: Text(
-                                                                                      testResultsTestsRecord.varianceUnitsMale!,
+                                                                                      testResultsTestsRecord.varianceUnitsMale,
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Open Sans',
                                                                                             color: Colors.white,
@@ -2186,7 +2183,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                 Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
-                                                                                    testResultsTestsRecord.varianceFemale!,
+                                                                                    testResultsTestsRecord.varianceFemale,
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
                                                                                           color: Colors.white,
@@ -2223,7 +2220,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                 Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
-                                                                                    testResultsTestsRecord.varianceUnitsMale!,
+                                                                                    testResultsTestsRecord.varianceUnitsMale,
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
                                                                                           color: Colors.white,
@@ -2316,7 +2313,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                               children: [
                                                                                 Text(
-                                                                                  testResultsTestsRecord.equipmentInfo!,
+                                                                                  testResultsTestsRecord.equipmentInfo,
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondary,
@@ -2351,7 +2348,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                       (context) {
                                                                     final resultAttachments =
                                                                         viewResultsTestedTestsRecord
-                                                                            .resultsAttachment!
+                                                                            .resultsAttachment
                                                                             .toList();
                                                                     return ListView
                                                                         .builder(

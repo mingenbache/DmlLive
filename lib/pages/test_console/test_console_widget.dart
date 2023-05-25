@@ -48,6 +48,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiary,
           body: SafeArea(
+            top: true,
             child: Stack(
               children: [
                 Container(

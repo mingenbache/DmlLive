@@ -115,6 +115,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).tertiary,
               body: SafeArea(
+                top: true,
                 child: StreamBuilder<TestsRecord>(
                   stream: TestsRecord.getDocument(widget.testId!),
                   builder: (context, snapshot) {
@@ -175,7 +176,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   15.0, 0.0, 0.0, 0.0),
                                           child: Text(
-                                            columnTestsRecord.name!,
+                                            columnTestsRecord.name,
                                             textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)
                                                 .displaySmall
@@ -312,7 +313,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                                   0.0),
                                                       child: Text(
                                                         columnTestsRecord
-                                                            .description!,
+                                                            .description,
                                                         textAlign:
                                                             TextAlign.start,
                                                         style:
@@ -838,7 +839,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                               ),
                                               Text(
                                                 formatNumber(
-                                                  columnTestsRecord.price!,
+                                                  columnTestsRecord.price,
                                                   formatType:
                                                       FormatType.decimal,
                                                   decimalType:
@@ -864,7 +865,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                       .fromSTEB(
                                                           8.0, 4.0, 8.0, 4.0),
                                                   child: Text(
-                                                    columnTestsRecord.category!,
+                                                    columnTestsRecord.category,
                                                     textAlign: TextAlign.center,
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -968,8 +969,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                       FFButtonWidget(
                                         onPressed: () async {
                                           if (!containerBookingsRecord
-                                              .testsIncluded!
-                                              .toList()
+                                              .testsIncluded
                                               .contains(columnTestsRecord
                                                   .reference)) {
                                             final bookingsUpdateData = {
@@ -996,7 +996,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                               .showSnackBar(
                                             SnackBar(
                                               content: Text(
-                                                'Test Added! ${containerBookingsRecord.totalTests?.toString()}Tests in total.',
+                                                'Test Added! ${containerBookingsRecord.totalTests.toString()}Tests in total.',
                                                 style: TextStyle(
                                                   color: Color(0x00000000),
                                                 ),

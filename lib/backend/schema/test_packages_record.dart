@@ -1,79 +1,112 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'test_packages_record.g.dart';
+class TestPackagesRecord extends FirestoreRecord {
+  TestPackagesRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class TestPackagesRecord
-    implements Built<TestPackagesRecord, TestPackagesRecordBuilder> {
-  static Serializer<TestPackagesRecord> get serializer =>
-      _$testPackagesRecordSerializer;
+  // "PackageName" field.
+  String? _packageName;
+  String get packageName => _packageName ?? '';
+  bool hasPackageName() => _packageName != null;
 
-  @BuiltValueField(wireName: 'PackageName')
-  String? get packageName;
+  // "Price" field.
+  int? _price;
+  int get price => _price ?? 0;
+  bool hasPrice() => _price != null;
 
-  @BuiltValueField(wireName: 'Price')
-  int? get price;
+  // "TestsIncluded" field.
+  List<DocumentReference>? _testsIncluded;
+  List<DocumentReference> get testsIncluded => _testsIncluded ?? const [];
+  bool hasTestsIncluded() => _testsIncluded != null;
 
-  @BuiltValueField(wireName: 'TestsIncluded')
-  BuiltList<DocumentReference>? get testsIncluded;
+  // "description" field.
+  String? _description;
+  String get description => _description ?? '';
+  bool hasDescription() => _description != null;
 
-  String? get description;
+  // "duration" field.
+  double? _duration;
+  double get duration => _duration ?? 0.0;
+  bool hasDuration() => _duration != null;
 
-  double? get duration;
+  // "duration_results" field.
+  double? _durationResults;
+  double get durationResults => _durationResults ?? 0.0;
+  bool hasDurationResults() => _durationResults != null;
 
-  @BuiltValueField(wireName: 'duration_results')
-  double? get durationResults;
+  // "category" field.
+  String? _category;
+  String get category => _category ?? '';
+  bool hasCategory() => _category != null;
 
-  String? get category;
+  // "atHome" field.
+  bool? _atHome;
+  bool get atHome => _atHome ?? false;
+  bool hasAtHome() => _atHome != null;
 
-  bool? get atHome;
+  // "isAvailable" field.
+  bool? _isAvailable;
+  bool get isAvailable => _isAvailable ?? false;
+  bool hasIsAvailable() => _isAvailable != null;
 
-  bool? get isAvailable;
+  // "create_Staff" field.
+  DocumentReference? _createStaff;
+  DocumentReference? get createStaff => _createStaff;
+  bool hasCreateStaff() => _createStaff != null;
 
-  @BuiltValueField(wireName: 'create_Staff')
-  DocumentReference? get createStaff;
+  // "create_date" field.
+  DateTime? _createDate;
+  DateTime? get createDate => _createDate;
+  bool hasCreateDate() => _createDate != null;
 
-  @BuiltValueField(wireName: 'create_date')
-  DateTime? get createDate;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(TestPackagesRecordBuilder builder) => builder
-    ..packageName = ''
-    ..price = 0
-    ..testsIncluded = ListBuilder()
-    ..description = ''
-    ..duration = 0.0
-    ..durationResults = 0.0
-    ..category = ''
-    ..atHome = false
-    ..isAvailable = false;
+  void _initializeFields() {
+    _packageName = snapshotData['PackageName'] as String?;
+    _price = snapshotData['Price'] as int?;
+    _testsIncluded = getDataList(snapshotData['TestsIncluded']);
+    _description = snapshotData['description'] as String?;
+    _duration = castToType<double>(snapshotData['duration']);
+    _durationResults = castToType<double>(snapshotData['duration_results']);
+    _category = snapshotData['category'] as String?;
+    _atHome = snapshotData['atHome'] as bool?;
+    _isAvailable = snapshotData['isAvailable'] as bool?;
+    _createStaff = snapshotData['create_Staff'] as DocumentReference?;
+    _createDate = snapshotData['create_date'] as DateTime?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('test_Packages');
 
-  static Stream<TestPackagesRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<TestPackagesRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => TestPackagesRecord.fromSnapshot(s));
 
   static Future<TestPackagesRecord> getDocumentOnce(DocumentReference ref) =>
-      ref.get().then(
-          (s) => serializers.deserializeWith(serializer, serializedData(s))!);
+      ref.get().then((s) => TestPackagesRecord.fromSnapshot(s));
 
-  TestPackagesRecord._();
-  factory TestPackagesRecord(
-          [void Function(TestPackagesRecordBuilder) updates]) =
-      _$TestPackagesRecord;
+  static TestPackagesRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      TestPackagesRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static TestPackagesRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      TestPackagesRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'TestPackagesRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createTestPackagesRecordData({
@@ -88,22 +121,19 @@ Map<String, dynamic> createTestPackagesRecordData({
   DocumentReference? createStaff,
   DateTime? createDate,
 }) {
-  final firestoreData = serializers.toFirestore(
-    TestPackagesRecord.serializer,
-    TestPackagesRecord(
-      (t) => t
-        ..packageName = packageName
-        ..price = price
-        ..testsIncluded = null
-        ..description = description
-        ..duration = duration
-        ..durationResults = durationResults
-        ..category = category
-        ..atHome = atHome
-        ..isAvailable = isAvailable
-        ..createStaff = createStaff
-        ..createDate = createDate,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'PackageName': packageName,
+      'Price': price,
+      'description': description,
+      'duration': duration,
+      'duration_results': durationResults,
+      'category': category,
+      'atHome': atHome,
+      'isAvailable': isAvailable,
+      'create_Staff': createStaff,
+      'create_date': createDate,
+    }.withoutNulls,
   );
 
   return firestoreData;

@@ -67,6 +67,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
             ),
           ),
           body: SafeArea(
+            top: true,
             child: Align(
               alignment: AlignmentDirectional(0.0, 0.0),
               child: Container(

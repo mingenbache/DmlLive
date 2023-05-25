@@ -134,7 +134,7 @@ class _NotificationListItemWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 5.0, 5.0, 5.0),
                                           child: Text(
-                                            widget.notificationRef!.message!,
+                                            widget.notificationRef!.message,
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -244,7 +244,7 @@ class _NotificationListItemWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 5.0, 5.0, 5.0),
                                           child: Text(
-                                            widget.notificationRef!.message!,
+                                            widget.notificationRef!.message,
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -360,7 +360,7 @@ class _NotificationListItemWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 5.0, 5.0, 5.0),
                                           child: Text(
-                                            widget.notificationRef!.message!,
+                                            widget.notificationRef!.message,
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -493,8 +493,7 @@ class _NotificationListItemWidgetState
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(5.0, 5.0, 5.0, 5.0),
                                               child: Text(
-                                                widget
-                                                    .notificationRef!.message!,
+                                                widget.notificationRef!.message,
                                                 maxLines: 1,
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -637,8 +636,7 @@ class _NotificationListItemWidgetState
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(5.0, 5.0, 5.0, 5.0),
                                               child: Text(
-                                                widget
-                                                    .notificationRef!.message!,
+                                                widget.notificationRef!.message,
                                                 maxLines: 1,
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -756,7 +754,7 @@ class _NotificationListItemWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 5.0, 5.0, 5.0),
                                           child: Text(
-                                            widget.notificationRef!.message!,
+                                            widget.notificationRef!.message,
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -866,7 +864,7 @@ class _NotificationListItemWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 5.0, 5.0, 5.0),
                                           child: Text(
-                                            widget.notificationRef!.message!,
+                                            widget.notificationRef!.message,
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -976,7 +974,7 @@ class _NotificationListItemWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 5.0, 5.0, 5.0),
                                           child: Text(
-                                            widget.notificationRef!.message!,
+                                            widget.notificationRef!.message,
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1086,7 +1084,7 @@ class _NotificationListItemWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 5.0, 5.0, 5.0),
                                           child: Text(
-                                            widget.notificationRef!.message!,
+                                            widget.notificationRef!.message,
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1196,7 +1194,7 @@ class _NotificationListItemWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 5.0, 5.0, 5.0),
                                           child: Text(
-                                            widget.notificationRef!.message!,
+                                            widget.notificationRef!.message,
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium

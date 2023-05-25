@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'backend/backend.dart';
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
@@ -185,6 +186,13 @@ class FFAppState extends ChangeNotifier {
     _reportEmails.removeAt(_index);
   }
 
+  void updateReportEmailsAtIndex(
+    int _index,
+    Function(String) updateFn,
+  ) {
+    updateFn(_reportEmails[_index]);
+  }
+
   List<DocumentReference> _testPackTests = [];
   List<DocumentReference> get testPackTests => _testPackTests;
   set testPackTests(List<DocumentReference> _value) {
@@ -206,6 +214,15 @@ class FFAppState extends ChangeNotifier {
 
   void removeAtIndexFromTestPackTests(int _index) {
     _testPackTests.removeAt(_index);
+    prefs.setStringList(
+        'ff_testPackTests', _testPackTests.map((x) => x.path).toList());
+  }
+
+  void updateTestPackTestsAtIndex(
+    int _index,
+    Function(DocumentReference) updateFn,
+  ) {
+    updateFn(_testPackTests[_index]);
     prefs.setStringList(
         'ff_testPackTests', _testPackTests.map((x) => x.path).toList());
   }
@@ -245,6 +262,13 @@ class FFAppState extends ChangeNotifier {
 
   void removeAtIndexFromDuplicateTests(int _index) {
     _duplicateTests.removeAt(_index);
+  }
+
+  void updateDuplicateTestsAtIndex(
+    int _index,
+    Function(DocumentReference) updateFn,
+  ) {
+    updateFn(_duplicateTests[_index]);
   }
 
   DocumentReference? _duplicateTest;
@@ -290,6 +314,13 @@ class FFAppState extends ChangeNotifier {
     _images.removeAt(_index);
   }
 
+  void updateImagesAtIndex(
+    int _index,
+    Function(String) updateFn,
+  ) {
+    updateFn(_images[_index]);
+  }
+
   int _specialTestsIndex = 0;
   int get specialTestsIndex => _specialTestsIndex;
   set specialTestsIndex(int _value) {
@@ -312,6 +343,13 @@ class FFAppState extends ChangeNotifier {
 
   void removeAtIndexFromUpdatedSpecialTests(int _index) {
     _updatedSpecialTests.removeAt(_index);
+  }
+
+  void updateUpdatedSpecialTestsAtIndex(
+    int _index,
+    Function(String) updateFn,
+  ) {
+    updateFn(_updatedSpecialTests[_index]);
   }
 
   bool _specialTestsAdded = false;

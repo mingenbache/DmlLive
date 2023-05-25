@@ -1,4 +1,4 @@
-import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -122,7 +122,7 @@ class _ViewSpecialTestWidgetState extends State<ViewSpecialTestWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 0.0),
                                       child: Text(
-                                        widget.specialTest!.name!,
+                                        widget.specialTest!.name,
                                         style: FlutterFlowTheme.of(context)
                                             .titleMedium
                                             .override(
@@ -158,7 +158,7 @@ class _ViewSpecialTestWidgetState extends State<ViewSpecialTestWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Text(
-                            widget.specialTest!.description!,
+                            widget.specialTest!.description,
                             style: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(

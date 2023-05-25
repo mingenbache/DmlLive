@@ -1,52 +1,57 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'references_record.g.dart';
+class ReferencesRecord extends FirestoreRecord {
+  ReferencesRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class ReferencesRecord
-    implements Built<ReferencesRecord, ReferencesRecordBuilder> {
-  static Serializer<ReferencesRecord> get serializer =>
-      _$referencesRecordSerializer;
+  // "doctors" field.
+  List<DocumentReference>? _doctors;
+  List<DocumentReference> get doctors => _doctors ?? const [];
+  bool hasDoctors() => _doctors != null;
 
-  BuiltList<DocumentReference>? get doctors;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(ReferencesRecordBuilder builder) =>
-      builder..doctors = ListBuilder();
+  void _initializeFields() {
+    _doctors = getDataList(snapshotData['doctors']);
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('references');
 
-  static Stream<ReferencesRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<ReferencesRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => ReferencesRecord.fromSnapshot(s));
 
-  static Future<ReferencesRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Future<ReferencesRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => ReferencesRecord.fromSnapshot(s));
 
-  ReferencesRecord._();
-  factory ReferencesRecord([void Function(ReferencesRecordBuilder) updates]) =
-      _$ReferencesRecord;
+  static ReferencesRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      ReferencesRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static ReferencesRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      ReferencesRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'ReferencesRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createReferencesRecordData() {
-  final firestoreData = serializers.toFirestore(
-    ReferencesRecord.serializer,
-    ReferencesRecord(
-      (r) => r..doctors = null,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{}.withoutNulls,
   );
 
   return firestoreData;

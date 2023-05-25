@@ -140,6 +140,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
         child: Scaffold(
           key: scaffoldKey,
           body: SafeArea(
+            top: true,
             child: Align(
               alignment: AlignmentDirectional(0.0, 0.0),
               child: Container(
@@ -1173,7 +1174,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                             child: Stack(
                                                               children: [
                                                                 if (!formBookingsRecord
-                                                                    .userPatient!)
+                                                                    .userPatient)
                                                                   AuthUserStreamWidget(
                                                                     builder:
                                                                         (context) =>
@@ -1240,8 +1241,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                     ),
                                                                   ),
                                                                 if (formBookingsRecord
-                                                                        .userPatient ??
-                                                                    true)
+                                                                    .userPatient)
                                                                   Align(
                                                                     alignment:
                                                                         AlignmentDirectional(
@@ -1286,7 +1286,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                                       mainAxisAlignment: MainAxisAlignment.center,
                                                                                       children: [
                                                                                         Text(
-                                                                                          formBookingsRecord.sex!,
+                                                                                          formBookingsRecord.sex,
                                                                                           textAlign: TextAlign.start,
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
@@ -1622,7 +1622,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                     builder: (context) {
                                                       final bookingImages =
                                                           formBookingsRecord
-                                                              .formImages!
+                                                              .formImages
                                                               .toList();
                                                       return Wrap(
                                                         spacing: 5.0,
@@ -2318,8 +2318,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                 0.0, 5.0),
                                                     child: Container(
                                                       height: formBookingsRecord
-                                                                  .testPackages!
-                                                                  .toList()
+                                                                  .testPackages
                                                                   .length <
                                                               1
                                                           ? 100.0
@@ -2364,8 +2363,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                     ),
                                                               ),
                                                               if (formBookingsRecord
-                                                                      .testPackages!
-                                                                      .toList()
+                                                                      .testPackages
                                                                       .length >
                                                                   0)
                                                                 Container(
@@ -2392,8 +2390,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                       children: [
                                                                         Text(
                                                                           formBookingsRecord
-                                                                              .testPackages!
-                                                                              .toList()
+                                                                              .testPackages
                                                                               .length
                                                                               .toString(),
                                                                           textAlign:
@@ -2427,7 +2424,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                     (context) {
                                                                   final packagesList =
                                                                       formBookingsRecord
-                                                                          .testPackages!
+                                                                          .testPackages
                                                                           .toList();
                                                                   if (packagesList
                                                                       .isEmpty) {
@@ -2526,7 +2523,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                 children: [
                                                                                                   Text(
-                                                                                                    bookingTestPackageItemTestPackagesRecord.packageName!,
+                                                                                                    bookingTestPackageItemTestPackagesRecord.packageName,
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                           fontFamily: 'Open Sans',
                                                                                                           color: FlutterFlowTheme.of(context).primaryBackground,
@@ -2551,7 +2548,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                                                   ),
                                                                                                 ),
                                                                                                 Text(
-                                                                                                  bookingTestPackageItemTestPackagesRecord.price!.toString(),
+                                                                                                  bookingTestPackageItemTestPackagesRecord.price.toString(),
                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                         fontFamily: 'Open Sans',
                                                                                                         color: FlutterFlowTheme.of(context).primaryBackground,
@@ -2573,15 +2570,15 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                                                             ),
                                                                                                             bookingTestPackageItemTestPackagesRecord.price),
                                                                                                         paymentBalance: functions.returnBookingBalance(
-                                                                                                            bookingTestPackageItemTestPackagesRecord.price?.toDouble(),
+                                                                                                            bookingTestPackageItemTestPackagesRecord.price.toDouble(),
                                                                                                             valueOrDefault<double>(
                                                                                                               _model.booking!.paymentBalance,
                                                                                                               0.0,
                                                                                                             )),
                                                                                                       ),
-                                                                                                      'total_tests': FieldValue.increment(-(bookingTestPackageItemTestPackagesRecord.testsIncluded!.toList().length)),
+                                                                                                      'total_tests': FieldValue.increment(-(bookingTestPackageItemTestPackagesRecord.testsIncluded.length)),
                                                                                                       'testPackages': FieldValue.arrayRemove([packagesListItem]),
-                                                                                                      'testPackTests': functions.removeTestsfromList(bookingTestPackageItemTestPackagesRecord.testsIncluded!.toList(), _model.booking!.testPackTests!.toList()),
+                                                                                                      'testPackTests': functions.removeTestsfromList(bookingTestPackageItemTestPackagesRecord.testsIncluded.toList(), _model.booking!.testPackTests.toList()),
                                                                                                     };
                                                                                                     await widget.bookingRef!.update(bookingsUpdateData);
                                                                                                     ScaffoldMessenger.of(context).showSnackBar(
@@ -2609,7 +2606,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                                     ),
                                                                                     Builder(
                                                                                       builder: (context) {
-                                                                                        final packageTests = bookingTestPackageItemTestPackagesRecord.testsIncluded!.toList();
+                                                                                        final packageTests = bookingTestPackageItemTestPackagesRecord.testsIncluded.toList();
                                                                                         return ListView.builder(
                                                                                           padding: EdgeInsets.zero,
                                                                                           shrinkWrap: true,
@@ -2767,8 +2764,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                     ),
                                                               ),
                                                               if (formBookingsRecord
-                                                                      .testsIncluded!
-                                                                      .toList()
+                                                                      .testsIncluded
                                                                       .length >
                                                                   0)
                                                                 Container(
@@ -2795,8 +2791,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                       children: [
                                                                         Text(
                                                                           formBookingsRecord
-                                                                              .testsIncluded!
-                                                                              .toList()
+                                                                              .testsIncluded
                                                                               .length
                                                                               .toString(),
                                                                           textAlign:
@@ -2830,7 +2825,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                     (context) {
                                                                   final testsList =
                                                                       formBookingsRecord
-                                                                          .testsIncluded!
+                                                                          .testsIncluded
                                                                           .toList();
                                                                   if (testsList
                                                                       .isEmpty) {
@@ -2948,7 +2943,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                                               ),
                                                                                             ),
                                                                                             Text(
-                                                                                              bookingTestItemTestsRecord.price!.toString(),
+                                                                                              bookingTestItemTestsRecord.price.toString(),
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                     fontFamily: 'Open Sans',
                                                                                                     color: FlutterFlowTheme.of(context).primaryText,
@@ -2965,7 +2960,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                                                   ...createBookingsRecordData(
                                                                                                     totalPrice: functions.removeFromCart(_model.booking!.totalPrice, bookingTestItemTestsRecord.price),
                                                                                                     paymentBalance: functions.returnBookingBalance(
-                                                                                                        bookingTestItemTestsRecord.price?.toDouble(),
+                                                                                                        bookingTestItemTestsRecord.price.toDouble(),
                                                                                                         valueOrDefault<double>(
                                                                                                           _model.booking!.paymentBalance,
                                                                                                           0.0,
@@ -3021,8 +3016,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                   Stack(
                                                     children: [
                                                       if (formBookingsRecord
-                                                              .specialTests!
-                                                              .toList()
+                                                              .specialTests
                                                               .length >
                                                           0)
                                                         Padding(
@@ -3096,8 +3090,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           ),
                                                         ),
                                                       if (formBookingsRecord
-                                                              .specialTests!
-                                                              .toList()
+                                                              .specialTests
                                                               .length >
                                                           0)
                                                         Padding(
@@ -3149,8 +3142,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                           ),
                                                                     ),
                                                                     if (formBookingsRecord
-                                                                            .specialTests!
-                                                                            .toList()
+                                                                            .specialTests
                                                                             .length >
                                                                         0)
                                                                       Container(
@@ -3174,7 +3166,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Text(
-                                                                                formBookingsRecord.specialTests!.toList().length.toString(),
+                                                                                formBookingsRecord.specialTests.length.toString(),
                                                                                 textAlign: TextAlign.center,
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       fontFamily: 'Open Sans',
@@ -3203,7 +3195,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                       builder:
                                                                           (context) {
                                                                         final specialtestsList = formBookingsRecord
-                                                                            .specialTests!
+                                                                            .specialTests
                                                                             .toList();
                                                                         return ListView
                                                                             .builder(
@@ -3534,7 +3526,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         child: Text(
                                                           formatNumber(
                                                             formBookingsRecord
-                                                                .totalPrice!,
+                                                                .totalPrice,
                                                             formatType:
                                                                 FormatType
                                                                     .decimal,
@@ -3634,7 +3626,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                   locale: FFLocalizations.of(
                                                                           context)
                                                                       .languageCode,
-                                                                )} with  ${formBookingsRecord.testsIncluded!.toList().length.toString()} tests and ${formBookingsRecord.testPackages!.toList().length.toString()} test packages.'),
+                                                                )} with  ${formBookingsRecord.testsIncluded.length.toString()} tests and ${formBookingsRecord.testPackages.length.toString()} test packages.'),
                                                                 actions: [
                                                                   TextButton(
                                                                     onPressed: () =>

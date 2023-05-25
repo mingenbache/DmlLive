@@ -112,6 +112,9 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
         }
         final containerBookingsRecord = snapshot.data!;
         return Container(
+          constraints: BoxConstraints(
+            maxWidth: 440.0,
+          ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
@@ -744,7 +747,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                       (context) {
                                                                     final testCategories =
                                                                         containerCategoriesRecord!
-                                                                            .categories!
+                                                                            .categories
                                                                             .toList();
                                                                     return ListView
                                                                         .builder(
@@ -1464,7 +1467,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                     builder:
                                                                         (context) {
                                                                       final packageCategories = containerCategoriesRecord!
-                                                                          .categories!
+                                                                          .categories
                                                                           .toList();
                                                                       return ListView
                                                                           .builder(

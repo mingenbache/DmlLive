@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/components/admin_actions_widget/admin_actions_widget_widget.dart';
 import '/components/empty_list/empty_list_widget.dart';
 import '/components/notification_list_item/notification_list_item_widget.dart';
+import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -74,13 +75,34 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                   children: [
                     Align(
                       alignment: Alignment(0.0, 0),
-                      child: TabBar(
+                      child: FlutterFlowButtonTabBar(
+                        useToggleButtonStyle: false,
                         isScrollable: true,
-                        labelColor: FlutterFlowTheme.of(context).secondary,
+                        labelStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.override(
+                                  fontFamily: 'Open Sans',
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                        unselectedLabelStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.override(
+                                  fontFamily: 'Open Sans',
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                        labelColor: FlutterFlowTheme.of(context).primaryText,
                         unselectedLabelColor:
                             FlutterFlowTheme.of(context).secondaryBackground,
-                        labelStyle: FlutterFlowTheme.of(context).bodyMedium,
-                        indicatorColor: Colors.white,
+                        backgroundColor:
+                            FlutterFlowTheme.of(context).primaryBackground,
+                        borderColor: FlutterFlowTheme.of(context).accent1,
+                        borderWidth: 0.0,
+                        borderRadius: 12.0,
+                        elevation: 0.0,
+                        labelPadding:
+                            EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                        buttonMargin:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 2.0),
                         tabs: [
                           Tab(
                             text: 'Notifications',
@@ -429,7 +451,7 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                                 Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 4.0, 0.0),
                                                                               child: Text(
-                                                                                columnChatsRecord.lastMessage!,
+                                                                                columnChatsRecord.lastMessage,
                                                                                 style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                       fontFamily: 'Lexend Deca',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
@@ -485,13 +507,10 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
-                  child: Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
-                    child: wrapWithModel(
-                      model: _model.adminActionsWidgetModel,
-                      updateCallback: () => setState(() {}),
-                      child: AdminActionsWidgetWidget(),
-                    ),
+                  child: wrapWithModel(
+                    model: _model.adminActionsWidgetModel,
+                    updateCallback: () => setState(() {}),
+                    child: AdminActionsWidgetWidget(),
                   ),
                 ),
               ],

@@ -78,6 +78,7 @@ class _MyPaymentsWidgetState extends State<MyPaymentsWidget> {
             ),
           ),
           body: SafeArea(
+            top: true,
             child: Align(
               alignment: AlignmentDirectional(0.0, 0.0),
               child: Container(
@@ -388,7 +389,7 @@ class _MyPaymentsWidgetState extends State<MyPaymentsWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
                                                                                   child: Text(
                                                                                     formatNumber(
-                                                                                      columnPaymentsRecord.amount!,
+                                                                                      columnPaymentsRecord.amount,
                                                                                       formatType: FormatType.decimal,
                                                                                       decimalType: DecimalType.periodDecimal,
                                                                                       currency: 'Ksh ',
@@ -412,7 +413,7 @@ class _MyPaymentsWidgetState extends State<MyPaymentsWidget> {
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                   child: Text(
-                                                                                    columnPaymentsRecord.type!,
+                                                                                    columnPaymentsRecord.type,
                                                                                     style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                           fontFamily: 'Lexend Deca',
                                                                                           color: Colors.white,
@@ -564,7 +565,7 @@ class _MyPaymentsWidgetState extends State<MyPaymentsWidget> {
                                                                                             child: Padding(
                                                                                               padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                               child: Text(
-                                                                                                columnPaymentsRecord.transactionCode!,
+                                                                                                columnPaymentsRecord.transactionCode,
                                                                                                 style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                       fontFamily: 'Lexend Deca',
                                                                                                       color: FlutterFlowTheme.of(context).primaryText,
@@ -953,7 +954,7 @@ class _MyPaymentsWidgetState extends State<MyPaymentsWidget> {
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
                                                                                           child: Text(
                                                                                             formatNumber(
-                                                                                              columnPaymentsRecord.amount!,
+                                                                                              columnPaymentsRecord.amount,
                                                                                               formatType: FormatType.decimal,
                                                                                               decimalType: DecimalType.periodDecimal,
                                                                                               currency: 'Ksh ',
@@ -977,7 +978,7 @@ class _MyPaymentsWidgetState extends State<MyPaymentsWidget> {
                                                                                         child: Padding(
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                           child: Text(
-                                                                                            columnPaymentsRecord.type!,
+                                                                                            columnPaymentsRecord.type,
                                                                                             style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                   fontFamily: 'Lexend Deca',
                                                                                                   color: Colors.white,
@@ -1059,7 +1060,7 @@ class _MyPaymentsWidgetState extends State<MyPaymentsWidget> {
                                                                                                       child: Padding(
                                                                                                         padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 0.0),
                                                                                                         child: Text(
-                                                                                                          columnPaymentsRecord.transactionCode!,
+                                                                                                          columnPaymentsRecord.transactionCode,
                                                                                                           style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                 fontFamily: 'Lexend Deca',
                                                                                                                 color: FlutterFlowTheme.of(context).secondaryBackground,

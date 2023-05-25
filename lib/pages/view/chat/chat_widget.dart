@@ -140,6 +140,7 @@ class _ChatWidgetState extends State<ChatWidget> {
             elevation: 2.0,
           ),
           body: SafeArea(
+            top: true,
             child: StreamBuilder<FFChatInfo>(
               stream: FFChatManager.instance.getChatInfo(
                 otherUserRecord: widget.chatUser,

@@ -154,8 +154,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                       children: [
                         Stack(
                           children: [
-                            if (widget.booking!.testsIncluded!
-                                .toList()
+                            if (widget.booking!.testsIncluded
                                 .contains(widget.test))
                               InkWell(
                                 splashColor: Colors.transparent,
@@ -163,8 +162,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  if (widget.booking!.testsIncluded!
-                                      .toList()
+                                  if (widget.booking!.testsIncluded
                                       .contains(widget.test)) {
                                     final bookingsUpdateData = {
                                       ...createBookingsRecordData(
@@ -182,7 +180,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'Test Removed.${widget.booking!.testsIncluded!.toList().length.toString()} Tests in Total.',
+                                        'Test Removed.${widget.booking!.testsIncluded.length.toString()} Tests in Total.',
                                         style: TextStyle(),
                                       ),
                                       duration: Duration(milliseconds: 4000),
@@ -237,8 +235,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                   animationsMap[
                                       'containerOnActionTriggerAnimation1']!,
                                   hasBeenTriggered: hasContainerTriggered1),
-                            if (!widget.booking!.testsIncluded!
-                                .toList()
+                            if (!widget.booking!.testsIncluded
                                 .contains(widget.test))
                               InkWell(
                                 splashColor: Colors.transparent,
@@ -246,8 +243,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  if (!widget.booking!.testsIncluded!
-                                      .toList()
+                                  if (!widget.booking!.testsIncluded
                                       .contains(widget.test)) {
                                     final bookingsUpdateData = {
                                       ...createBookingsRecordData(
@@ -265,7 +261,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'Test Added.${widget.booking!.testsIncluded!.toList().length.toString()} Tests in Total.',
+                                        'Test Added.${widget.booking!.testsIncluded.length.toString()} Tests in Total.',
                                         style: TextStyle(),
                                       ),
                                       duration: Duration(milliseconds: 4000),
@@ -551,7 +547,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                                         4.0),
                                                             child: Text(
                                                               stackTestsRecord
-                                                                  .category!,
+                                                                  .category,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -597,7 +593,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                           size: 20.0,
                                                         ),
                                                         Text(
-                                                          '${stackTestsRecord.durationResults?.toString()} Hrs',
+                                                          '${stackTestsRecord.durationResults.toString()} Hrs',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -690,8 +686,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                               child: Stack(
                                                                 children: [
                                                                   if (stackTestsRecord
-                                                                          .homeTest ??
-                                                                      true)
+                                                                      .homeTest)
                                                                     Align(
                                                                       alignment:
                                                                           AlignmentDirectional(
@@ -708,8 +703,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                                       ),
                                                                     ),
                                                                   if (stackTestsRecord
-                                                                          .homeTest ??
-                                                                      true)
+                                                                      .homeTest)
                                                                     Align(
                                                                       alignment:
                                                                           AlignmentDirectional(
@@ -777,7 +771,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                                 child: Text(
                                                                   formatNumber(
                                                                     stackTestsRecord
-                                                                        .price!,
+                                                                        .price,
                                                                     formatType:
                                                                         FormatType
                                                                             .decimal,

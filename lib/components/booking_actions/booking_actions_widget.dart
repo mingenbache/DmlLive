@@ -226,7 +226,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                 height: 60.0,
                 child: Stack(
                   children: [
-                    if (widget.bookingRef!.resultPublished ?? true)
+                    if (widget.bookingRef!.resultPublished)
                       InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -290,7 +290,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                           ),
                         ),
                       ),
-                    if (!widget.bookingRef!.resultPublished!)
+                    if (!widget.bookingRef!.resultPublished)
                       InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,

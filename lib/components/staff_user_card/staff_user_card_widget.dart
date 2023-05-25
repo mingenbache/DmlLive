@@ -184,7 +184,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                 ),
                               ),
                             ),
-                            if (widget.userRecord!.isStaff ?? true)
+                            if (widget.userRecord!.isStaff)
                               Expanded(
                                 flex: 4,
                                 child: Padding(
@@ -225,7 +225,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   3.0, 0.0, 0.0, 0.0),
                                           child: Text(
-                                            widget.userRecord!.role!,
+                                            widget.userRecord!.role,
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -290,7 +290,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                           ),
                                         ),
                                         Text(
-                                          widget.userRecord!.email!,
+                                          widget.userRecord!.email,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -340,7 +340,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                           ),
                                         ),
                                         Text(
-                                          widget.userRecord!.phoneNumber!,
+                                          widget.userRecord!.phoneNumber,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
