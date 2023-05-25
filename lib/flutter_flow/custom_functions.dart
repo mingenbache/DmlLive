@@ -159,6 +159,7 @@ String datetoString(DateTime? dateGiven) {
 
 DateTime returntheDay(DateTime? date) {
   // Add your function code here!
+  date = date ?? DateTime.now();
   var newDate = DateTime(date!.year, date.month, date.day);
   return newDate;
 }
@@ -752,55 +753,6 @@ int testsConfirmed(
   return numTests;
 }
 
-DocumentReference returnBookedTest(
-  DocumentReference? bookingRef,
-  DocumentReference? testRef,
-) {
-  // query firebase collection for document that matches parameters
-  var docs = FirebaseFirestore.instance
-      .collection('booked-tests')
-      .where(
-        'bookingRef',
-        isEqualTo: bookingRef,
-      )
-      .where(
-        'testRef',
-        isEqualTo: testRef,
-      )
-      .get()
-      .then((snap) {
-    return BookedTestsRecord().reference!;
-  });
-
-  return BookedTestsRecord().reference!;
-}
-
-bool returnBookedTestExists(
-  DocumentReference? bookingRef,
-  DocumentReference? testRef,
-) {
-  // query firebase collection for document that matches parameters
-  var docs = FirebaseFirestore.instance
-      .collection('booked-tests')
-      .where(
-        'bookingRef',
-        isEqualTo: bookingRef,
-      )
-      .where(
-        'testRef',
-        isEqualTo: testRef,
-      )
-      .get()
-      .then((snap) {
-    return BookedTestsRecord();
-  });
-  if (BookedTestsRecord() != null) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
 int stringToInt(String? string) {
   // parse string to integer
   return int.parse(string!);
@@ -1209,41 +1161,6 @@ bool isTestnotVerifiedorFlagged(TestedTestsRecord? testedTest) {
   }
 }
 
-String? returnTestName(DocumentReference? testRef) {
-  // retrieve firestore document and return property
-  var test = FirebaseFirestore.instance
-      .collection('Tests')
-      .doc('testRef')
-      .get()
-      .then((snap) {
-    return TestsRecord().reference!.toString;
-  });
-}
-
-DocumentReference? returnstaffRef(DocumentReference? userRef) {
-  var docs = FirebaseFirestore.instance
-      .collection('staff')
-      .where(
-        'UserRef',
-        isEqualTo: userRef,
-      )
-      .get()
-      .then((snap) {
-    return StaffRecord().reference;
-  });
-}
-
-String? returnTestNotes(DocumentReference? testRef) {
-  // retrieve firestore document and return property
-  var test = FirebaseFirestore.instance
-      .collection('Tests')
-      .doc('testRef')
-      .get()
-      .then((snap) {
-    return TestsRecord().name.toString;
-  });
-}
-
 bool isListEmpty(List<DocumentReference>? tests) {
   // check if list is empty
   if (tests!.length != 0) {
@@ -1290,7 +1207,7 @@ List<DocumentReference>? filterTestPackTests(
         .then((snap) {
       // testPackTests.addAll(TestPackagesRecord().testsIncluded);
       // testPackTests. (TestPackagesRecord().testsIncluded!.asList);
-      return TestPackagesRecord().testsIncluded!;
+      return testPacks[i];
       // return testPackTests;
     });
 

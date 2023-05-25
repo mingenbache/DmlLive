@@ -3202,109 +3202,163 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 24.0, 0.0, 10.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              var _shouldSetState = false;
-
-                              final reportsCreateData = {
-                                ...createReportsRecordData(
-                                  booking: widget.booking!.reference,
-                                  pathologist: widget.booking!.pathologist,
-                                  bookinguser: widget.booking!.user,
-                                  doctor: widget.booking!.docRef,
-                                  pathologistComments:
-                                      widget.booking!.testNotes,
-                                  createdDate: getCurrentTimestamp,
-                                  createdUser: functions
-                                      .returnstaffRef(currentUserReference),
-                                  isComplete: false,
-                                  patientName:
-                                      '${widget.booking!.firstname} ${widget.booking!.lastname}',
-                                  patientSex: widget.booking!.sex,
-                                  labRefNum: widget.booking!.labRefNum,
-                                  patientAge: functions
-                                      .calculateAge(widget.booking!.dOB),
-                                ),
-                                'testedTests': widget.booking!.verifiedTests,
-                              };
-                              var reportsRecordReference =
-                                  ReportsRecord.collection.doc();
-                              await reportsRecordReference
-                                  .set(reportsCreateData);
-                              _model.reportRef =
-                                  ReportsRecord.getDocumentFromData(
-                                      reportsCreateData,
-                                      reportsRecordReference);
-                              _shouldSetState = true;
-                              if (_model.reportRef!.reference != null) {
-                                await _model.pageViewController?.nextPage(
-                                  duration: Duration(milliseconds: 300),
-                                  curve: Curves.ease,
-                                );
-                                triggerPushNotification(
-                                  notificationTitle:
-                                      'Your Test Results are Ready',
-                                  notificationText: 'Click here to view report',
-                                  userRefs: [widget.booking!.user!],
-                                  initialPageName: 'BookingReport',
-                                  parameterData: {},
-                                );
-                                FFAppState().update(() {
-                                  FFAppState().reportLastPage = false;
-                                });
-                                if (_shouldSetState) setState(() {});
-                                return;
-                              } else {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('Error'),
-                                      content: Text('Document Unavailable'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Okay'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                                Navigator.pop(context);
-                                if (_shouldSetState) setState(() {});
-                                return;
-                              }
-
-                              if (_shouldSetState) setState(() {});
-                            },
-                            text: 'Confirm and Proceed',
-                            options: FFButtonOptions(
-                              width: 260.0,
-                              height: 60.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Roboto',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              elevation: 2.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(25.0),
+                          child: FutureBuilder<List<StaffRecord>>(
+                            future: queryStaffRecordOnce(
+                              queryBuilder: (staffRecord) => staffRecord.where(
+                                  'UserRef',
+                                  isEqualTo: currentUserReference),
+                              singleRecord: true,
                             ),
-                          ).animateOnPageLoad(
-                              animationsMap['buttonOnPageLoadAnimation']!),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: SpinKitRipple(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 50.0,
+                                    ),
+                                  ),
+                                );
+                              }
+                              List<StaffRecord> buttonStaffRecordList =
+                                  snapshot.data!;
+                              final buttonStaffRecord =
+                                  buttonStaffRecordList.isNotEmpty
+                                      ? buttonStaffRecordList.first
+                                      : null;
+                              return FFButtonWidget(
+                                onPressed: () async {
+                                  var _shouldSetState = false;
+                                  if ((buttonStaffRecord != null) == true) {
+                                    final reportsCreateData = {
+                                      ...createReportsRecordData(
+                                        booking: widget.booking!.reference,
+                                        pathologist:
+                                            widget.booking!.pathologist,
+                                        bookinguser: widget.booking!.user,
+                                        doctor: widget.booking!.docRef,
+                                        pathologistComments:
+                                            widget.booking!.testNotes,
+                                        createdDate: getCurrentTimestamp,
+                                        createdUser:
+                                            buttonStaffRecord!.reference,
+                                        isComplete: false,
+                                        patientName:
+                                            '${widget.booking!.firstname} ${widget.booking!.lastname}',
+                                        patientSex: widget.booking!.sex,
+                                        labRefNum: widget.booking!.labRefNum,
+                                        patientAge: functions
+                                            .calculateAge(widget.booking!.dOB),
+                                      ),
+                                      'testedTests':
+                                          widget.booking!.verifiedTests,
+                                    };
+                                    var reportsRecordReference =
+                                        ReportsRecord.collection.doc();
+                                    await reportsRecordReference
+                                        .set(reportsCreateData);
+                                    _model.reportRef =
+                                        ReportsRecord.getDocumentFromData(
+                                            reportsCreateData,
+                                            reportsRecordReference);
+                                    _shouldSetState = true;
+                                    if (_model.reportRef!.reference != null) {
+                                      await _model.pageViewController?.nextPage(
+                                        duration: Duration(milliseconds: 300),
+                                        curve: Curves.ease,
+                                      );
+                                      triggerPushNotification(
+                                        notificationTitle:
+                                            'Your Test Results are Ready',
+                                        notificationText:
+                                            'Click here to view report',
+                                        userRefs: [widget.booking!.user!],
+                                        initialPageName: 'BookingReport',
+                                        parameterData: {},
+                                      );
+                                      FFAppState().update(() {
+                                        FFAppState().reportLastPage = false;
+                                      });
+                                      if (_shouldSetState) setState(() {});
+                                      return;
+                                    } else {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Error'),
+                                            content:
+                                                Text('Document Unavailable'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Okay'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      Navigator.pop(context);
+                                      if (_shouldSetState) setState(() {});
+                                      return;
+                                    }
+                                  } else {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text('Error'),
+                                          content: Text(
+                                              'Staff Record not found. Please Retry'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  }
+
+                                  if (_shouldSetState) setState(() {});
+                                },
+                                text: 'Confirm and Proceed',
+                                options: FFButtonOptions(
+                                  width: 260.0,
+                                  height: 60.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        fontSize: 16.0,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                  elevation: 2.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(25.0),
+                                ),
+                              ).animateOnPageLoad(
+                                  animationsMap['buttonOnPageLoadAnimation']!);
+                            },
+                          ),
                         ),
                       ),
                     ),
