@@ -11,12 +11,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ScheduledTestsModel extends FlutterFlowModel {
+  ///  Local state fields for this page.
+
+  DateTime? selectedDate;
+
   ///  State fields for stateful widgets in this page.
 
   // Model for TopActions component.
   late TopActionsModel topActionsModel;
-  // State field(s) for UICalendar widget.
-  DateTimeRange? uICalendarSelectedDay;
+  // State field(s) for Calendar widget.
+  DateTimeRange? calendarSelectedDay;
   // Models for TestItemWidget dynamic component.
   late FlutterFlowDynamicModels<TestItemWidgetModel> testItemWidgetModels;
 
@@ -24,7 +28,7 @@ class ScheduledTestsModel extends FlutterFlowModel {
 
   void initState(BuildContext context) {
     topActionsModel = createModel(context, () => TopActionsModel());
-    uICalendarSelectedDay = DateTimeRange(
+    calendarSelectedDay = DateTimeRange(
       start: DateTime.now().startOfDay,
       end: DateTime.now().endOfDay,
     );

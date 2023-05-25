@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +31,13 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BookingsScheduleModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.selectedDate = functions.getDayToday();
+      });
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -339,71 +347,67 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                           BorderRadius.circular(
                                                               12.0),
                                                     ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  6.0,
-                                                                  0.0,
-                                                                  6.0,
-                                                                  0.0),
-                                                      child:
-                                                          FlutterFlowCalendar(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        iconColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        weekFormat: true,
-                                                        weekStartsMonday: true,
-                                                        initialDate: functions
-                                                            .returntheDay(
-                                                                getCurrentTimestamp),
-                                                        rowHeight: 50.0,
-                                                        onChange: (DateTimeRange?
-                                                            newSelectedDate) {
-                                                          setState(() => _model
-                                                                  .uICalendarSelectedDay =
-                                                              newSelectedDate);
-                                                        },
-                                                        titleStyle: TextStyle(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                        dayOfWeekStyle:
-                                                            TextStyle(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                    child: FlutterFlowCalendar(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .primaryText,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                        dateStyle: TextStyle(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                        selectedDateStyle:
-                                                            TextStyle(),
-                                                        inactiveDateStyle:
-                                                            TextStyle(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondary,
-                                                        ),
-                                                        locale:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .languageCode,
-                                                      ),
+                                                      iconColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      weekFormat: true,
+                                                      weekStartsMonday: true,
+                                                      initialDate:
+                                                          _model.selectedDate,
+                                                      rowHeight: 50.0,
+                                                      onChange: (DateTimeRange?
+                                                          newSelectedDate) async {
+                                                        _model.calendarSelectedDay =
+                                                            newSelectedDate;
+                                                        setState(() {
+                                                          _model.selectedDate =
+                                                              _model
+                                                                  .calendarSelectedDay
+                                                                  ?.start;
+                                                        });
+                                                        setState(() {});
+                                                      },
+                                                      titleStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Open Sans',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBackground,
+                                                              ),
+                                                      dayOfWeekStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelLarge
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Open Sans',
+                                                              ),
+                                                      dateStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                      selectedDateStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall,
+                                                      inactiveDateStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium,
+                                                      locale:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .languageCode,
                                                     ),
                                                   ),
                                                 ),
@@ -432,10 +436,10 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                       children: [
                                                         Text(
                                                           functions.datetoString(
-                                                              functions.returntheDay(
-                                                                  _model
-                                                                      .uICalendarSelectedDay
-                                                                      ?.start)),
+                                                              functions
+                                                                  .returntheDay(
+                                                                      _model
+                                                                          .selectedDate)),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .titleSmall
@@ -517,18 +521,20 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                               StreamBuilder<
                                                   List<BookingsRecord>>(
                                                 stream: queryBookingsRecord(
-                                                  queryBuilder: (bookingsRecord) => bookingsRecord
-                                                      .where('scheduled_date',
-                                                          isGreaterThanOrEqualTo:
-                                                              functions.returntheDay(
-                                                                  _model
-                                                                      .uICalendarSelectedDay
-                                                                      ?.start))
-                                                      .where(
-                                                          'booking_confirmed',
-                                                          isEqualTo: true)
-                                                      .orderBy(
-                                                          'scheduled_date'),
+                                                  queryBuilder: (bookingsRecord) =>
+                                                      bookingsRecord
+                                                          .where(
+                                                              'scheduled_date',
+                                                              isGreaterThanOrEqualTo:
+                                                                  functions
+                                                                      .returntheDay(
+                                                                          _model
+                                                                              .selectedDate))
+                                                          .where(
+                                                              'booking_confirmed',
+                                                              isEqualTo: true)
+                                                          .orderBy(
+                                                              'scheduled_date'),
                                                 ),
                                                 builder: (context, snapshot) {
                                                   // Customize what your widget looks like when it's loading.
@@ -579,8 +585,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                                   calendarBookingsBookingsRecordList
                                                                       .toList(),
                                                                   _model
-                                                                      .uICalendarSelectedDay
-                                                                      ?.start)
+                                                                      .selectedDate)
                                                               .toList();
                                                           return SingleChildScrollView(
                                                             child: Column(
