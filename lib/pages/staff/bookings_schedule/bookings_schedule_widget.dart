@@ -380,10 +380,9 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                               12.0),
                                                     ),
                                                     child: FlutterFlowCalendar(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondary,
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .primaryBackground,
                                                       iconColor:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -412,8 +411,9 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Open Sans',
-                                                                color: Color(
-                                                                    0xCBF1F4F8),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBackground,
                                                               ),
                                                       dayOfWeekStyle:
                                                           FlutterFlowTheme.of(
@@ -444,7 +444,14 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                       inactiveDateStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .labelMedium,
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Montserrat',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                              ),
                                                       locale:
                                                           FFLocalizations.of(
                                                                   context)

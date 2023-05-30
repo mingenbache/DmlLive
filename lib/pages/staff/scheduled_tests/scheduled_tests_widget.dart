@@ -207,7 +207,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                             child: FlutterFlowCalendar(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondary,
+                                                      .primaryBackground,
                                               iconColor:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryBackground,
@@ -259,7 +259,15 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                       ),
                                               inactiveDateStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Montserrat',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary,
+                                                      ),
                                               locale:
                                                   FFLocalizations.of(context)
                                                       .languageCode,

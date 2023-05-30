@@ -142,7 +142,7 @@ class _BookingViewWidgetCopyWidgetState
                                   height: 20.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
-                                        .primaryText,
+                                        .secondaryBackground,
                                     shape: BoxShape.circle,
                                   ),
                                   child: Padding(
@@ -161,7 +161,7 @@ class _BookingViewWidgetCopyWidgetState
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
+                                                .accent1,
                                             fontWeight: FontWeight.w500,
                                             fontSize: 14.0,
                                           ),
@@ -325,8 +325,8 @@ class _BookingViewWidgetCopyWidgetState
                                     ),
                                     child: FaIcon(
                                       FontAwesomeIcons.flask,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
+                                      color:
+                                          FlutterFlowTheme.of(context).accent1,
                                       size: 14.0,
                                     ),
                                   ),
@@ -337,7 +337,7 @@ class _BookingViewWidgetCopyWidgetState
                                     height: 20.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
-                                          .primaryText,
+                                          .secondaryBackground,
                                       shape: BoxShape.circle,
                                     ),
                                     child: Padding(
@@ -362,7 +362,7 @@ class _BookingViewWidgetCopyWidgetState
                                                 style: TextStyle(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryBackground,
+                                                      .accent1,
                                                   fontWeight: FontWeight.w500,
                                                   fontSize: 14.0,
                                                 ),
@@ -398,8 +398,8 @@ class _BookingViewWidgetCopyWidgetState
                                     ),
                                     child: Icon(
                                       Icons.local_police_sharp,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
+                                      color:
+                                          FlutterFlowTheme.of(context).accent1,
                                       size: 14.0,
                                     ),
                                   ),
@@ -410,7 +410,7 @@ class _BookingViewWidgetCopyWidgetState
                                     height: 20.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
-                                          .primaryText,
+                                          .secondaryBackground,
                                       shape: BoxShape.circle,
                                     ),
                                     child: Padding(
@@ -432,7 +432,7 @@ class _BookingViewWidgetCopyWidgetState
                                               style: TextStyle(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                        .accent1,
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: 14.0,
                                               ),
