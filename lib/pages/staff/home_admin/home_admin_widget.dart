@@ -256,11 +256,10 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                           ),
                                                           AuthUserStreamWidget(
                                                             builder: (context) =>
-                                                                StreamBuilder<
-                                                                    List<
-                                                                        ChatsRecord>>(
-                                                              stream:
-                                                                  queryChatsRecord(
+                                                                FutureBuilder<
+                                                                    int>(
+                                                              future:
+                                                                  queryChatsRecordCount(
                                                                 queryBuilder: (chatsRecord) => chatsRecord
                                                                     .where(
                                                                         'user_a',
@@ -270,8 +269,6 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                                         'last_message_time',
                                                                         isGreaterThan:
                                                                             currentUserDocument!.lastLogin),
-                                                                singleRecord:
-                                                                    true,
                                                               ),
                                                               builder: (context,
                                                                   snapshot) {
@@ -295,21 +292,15 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                                     ),
                                                                   );
                                                                 }
-                                                                List<ChatsRecord>
-                                                                    badgeChatsRecordList =
+                                                                int badgeCount =
                                                                     snapshot
                                                                         .data!;
-                                                                final badgeChatsRecord =
-                                                                    badgeChatsRecordList
-                                                                            .isNotEmpty
-                                                                        ? badgeChatsRecordList
-                                                                            .first
-                                                                        : null;
                                                                 return badges
                                                                     .Badge(
                                                                   badgeContent:
                                                                       Text(
-                                                                    '1',
+                                                                    badgeCount
+                                                                        .toString(),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
@@ -318,11 +309,13 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                                               'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).primaryText,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
                                                                         ),
                                                                   ),
                                                                   showBadge:
-                                                                      badgeChatsRecord !=
-                                                                          null,
+                                                                      badgeCount >
+                                                                          0,
                                                                   shape: badges
                                                                       .BadgeShape
                                                                       .circle,
@@ -339,7 +332,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                                           8.0),
                                                                   position: badges
                                                                           .BadgePosition
-                                                                      .topEnd(),
+                                                                      .topStart(),
                                                                   animationType:
                                                                       badges
                                                                           .BadgeAnimationType
