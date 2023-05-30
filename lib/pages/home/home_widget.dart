@@ -826,7 +826,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                       image: DecorationImage(
                                                         fit: BoxFit.cover,
                                                         image: Image.asset(
-                                                          'assets/images/IMG_4444_reduced.jpg',
+                                                          'assets/images/reportDoc.png',
                                                         ).image,
                                                       ),
                                                       borderRadius:
@@ -1012,122 +1012,135 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondary,
+                                                        image: DecorationImage(
+                                                          fit: BoxFit.cover,
+                                                          image: Image.asset(
+                                                            'assets/images/IMG_4444_reduced.jpg',
+                                                          ).image,
+                                                        ),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(12.0),
                                                       ),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    10.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child:
-                                                            SingleChildScrollView(
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8.0,
-                                                                            0.0,
-                                                                            8.0,
-                                                                            0.0),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .min,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .center,
-                                                                  children: [
-                                                                    Container(
-                                                                      decoration:
-                                                                          BoxDecoration(),
-                                                                      child:
-                                                                          AutoSizeText(
-                                                                        'TESTS',
-                                                                        maxLines:
-                                                                            1,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .headlineMedium
-                                                                            .override(
-                                                                              fontFamily: 'Open Sans',
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                              fontSize: 20.0,
-                                                                              fontWeight: FontWeight.w600,
-                                                                            ),
+                                                      child: Container(
+                                                        width: 100.0,
+                                                        height: 100.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Color(0x746CD7B7),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.0),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0,
+                                                                      10.0),
+                                                          child:
+                                                              SingleChildScrollView(
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          8.0,
+                                                                          0.0,
+                                                                          8.0,
+                                                                          0.0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .min,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .start,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .center,
+                                                                    children: [
+                                                                      Container(
+                                                                        decoration:
+                                                                            BoxDecoration(),
+                                                                        child:
+                                                                            AutoSizeText(
+                                                                          'TESTS',
+                                                                          maxLines:
+                                                                              1,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .headlineMedium
+                                                                              .override(
+                                                                                fontFamily: 'Open Sans',
+                                                                                color: FlutterFlowTheme.of(context).alternate,
+                                                                                fontSize: 20.0,
+                                                                                fontWeight: FontWeight.w600,
+                                                                              ),
+                                                                        ),
                                                                       ),
-                                                                    ),
-                                                                  ],
+                                                                    ],
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8.0,
-                                                                            0.0,
-                                                                            8.0,
-                                                                            0.0),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .min,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .center,
-                                                                  children: [
-                                                                    Container(
-                                                                      decoration:
-                                                                          BoxDecoration(),
-                                                                      child:
-                                                                          AutoSizeText(
-                                                                        'TODAY',
-                                                                        maxLines:
-                                                                            1,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .headlineMedium
-                                                                            .override(
-                                                                              fontFamily: 'Open Sans',
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                              fontSize: 20.0,
-                                                                              fontWeight: FontWeight.w600,
-                                                                            ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          8.0,
+                                                                          0.0,
+                                                                          8.0,
+                                                                          0.0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .min,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .start,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .center,
+                                                                    children: [
+                                                                      Container(
+                                                                        decoration:
+                                                                            BoxDecoration(),
+                                                                        child:
+                                                                            AutoSizeText(
+                                                                          'TODAY',
+                                                                          maxLines:
+                                                                              1,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .headlineMedium
+                                                                              .override(
+                                                                                fontFamily: 'Open Sans',
+                                                                                color: FlutterFlowTheme.of(context).alternate,
+                                                                                fontSize: 20.0,
+                                                                                fontWeight: FontWeight.w600,
+                                                                              ),
+                                                                        ),
                                                                       ),
-                                                                    ),
-                                                                  ],
+                                                                    ],
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                child:
-                                                                    SingleChildScrollView(
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          8.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child: Column(
                                                                     mainAxisSize:
                                                                         MainAxisSize
-                                                                            .max,
+                                                                            .min,
                                                                     children: [
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -1138,7 +1151,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         child:
                                                                             Container(
                                                                           width:
-                                                                              100.0,
+                                                                              130.0,
                                                                           decoration:
                                                                               BoxDecoration(),
                                                                           child:
@@ -1178,8 +1191,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                     ],
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ],
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
                                                       ),

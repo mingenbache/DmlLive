@@ -213,11 +213,6 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                       .fromSTEB(
                                                           0.0, 0.0, 10.0, 0.0),
                                                   child: Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.4,
                                                     constraints: BoxConstraints(
                                                       maxWidth: 200.0,
                                                       maxHeight: 40.0,
@@ -235,24 +230,33 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
+                                                                  16.0,
                                                                   0.0,
-                                                                  0.0,
-                                                                  5.0,
+                                                                  12.0,
                                                                   0.0),
                                                       child: Row(
                                                         mainAxisSize:
-                                                            MainAxisSize.max,
+                                                            MainAxisSize.min,
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
                                                                 .spaceEvenly,
                                                         children: [
-                                                          FaIcon(
-                                                            FontAwesomeIcons
-                                                                .solidBell,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondary,
-                                                            size: 18.0,
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        6.0,
+                                                                        0.0),
+                                                            child: FaIcon(
+                                                              FontAwesomeIcons
+                                                                  .solidBell,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondary,
+                                                              size: 18.0,
+                                                            ),
                                                           ),
                                                           AuthUserStreamWidget(
                                                             builder: (context) =>
@@ -326,10 +330,10 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                                       4.0,
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          8.0,
-                                                                          8.0,
-                                                                          8.0,
-                                                                          8.0),
+                                                                          2.0,
+                                                                          2.0,
+                                                                          2.0,
+                                                                          2.0),
                                                                   position: badges
                                                                           .BadgePosition
                                                                       .topStart(),
