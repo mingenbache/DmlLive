@@ -147,7 +147,7 @@ class _DashboardMenuWidgetLightWidgetState
                       ),
                       child: Container(
                         width: 100.0,
-                        height: 148.0,
+                        height: 119.0,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryText,
                           boxShadow: [
@@ -162,7 +162,7 @@ class _DashboardMenuWidgetLightWidgetState
                         ),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 20.0, 0.0, 3.0),
+                              0.0, 10.0, 0.0, 3.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -234,7 +234,7 @@ class _DashboardMenuWidgetLightWidgetState
                       ),
                       child: Container(
                         width: 100.0,
-                        height: 148.0,
+                        height: 119.0,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryText,
                           boxShadow: [
@@ -249,7 +249,7 @@ class _DashboardMenuWidgetLightWidgetState
                         ),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 20.0, 0.0, 3.0),
+                              0.0, 10.0, 0.0, 3.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -312,7 +312,7 @@ class _DashboardMenuWidgetLightWidgetState
                       ),
                       child: Container(
                         width: 100.0,
-                        height: 148.0,
+                        height: 119.0,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryText,
                           boxShadow: [
@@ -327,7 +327,7 @@ class _DashboardMenuWidgetLightWidgetState
                         ),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 20.0, 0.0, 3.0),
+                              0.0, 10.0, 0.0, 3.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -370,7 +370,7 @@ class _DashboardMenuWidgetLightWidgetState
                   padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
                   child: Container(
                     width: 100.0,
-                    height: 148.0,
+                    height: 119.0,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       boxShadow: [
@@ -385,7 +385,7 @@ class _DashboardMenuWidgetLightWidgetState
                     ),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 3.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 3.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

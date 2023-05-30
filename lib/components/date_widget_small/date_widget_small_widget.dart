@@ -89,14 +89,13 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 3.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(
                       child: Container(
-                        height: 12.0,
                         decoration: BoxDecoration(),
                         child: Text(
                           functions.dateMonth(widget.date),
@@ -114,9 +113,6 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
                     ),
                     Expanded(
                       child: Container(
-                        constraints: BoxConstraints(
-                          maxHeight: 12.0,
-                        ),
                         decoration: BoxDecoration(),
                         child: Text(
                           functions.dateYear(widget.date),

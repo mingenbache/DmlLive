@@ -167,8 +167,6 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                     calendarScheduleContainerBookedTestsRecordList =
                                     snapshot.data!;
                                 return Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.8,
                                   decoration: BoxDecoration(),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
@@ -191,19 +189,28 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                     .width *
                                                 0.8,
                                             decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
+                                              gradient: LinearGradient(
+                                                colors: [
+                                                  Color(0x95012030),
+                                                  Color(0x8745A287),
+                                                  Color(0x7E3D806B)
+                                                ],
+                                                stops: [0.0, 0.6, 0.8],
+                                                begin: AlignmentDirectional(
+                                                    1.0, -1.0),
+                                                end: AlignmentDirectional(
+                                                    -1.0, 1.0),
+                                              ),
                                               borderRadius:
                                                   BorderRadius.circular(12.0),
                                             ),
                                             child: FlutterFlowCalendar(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                                      .secondary,
                                               iconColor:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                                      .primaryBackground,
                                               weekFormat: true,
                                               weekStartsMonday: true,
                                               initialDate: _model.selectedDate,
@@ -233,13 +240,23 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                       .labelLarge
                                                       .override(
                                                         fontFamily: 'Open Sans',
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryBackground,
                                                       ),
                                               dateStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
                                               selectedDateStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .titleSmall,
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
                                               inactiveDateStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium,
@@ -321,9 +338,25 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                       child: Container(
                                                         decoration:
                                                             BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
+                                                          gradient:
+                                                              LinearGradient(
+                                                            colors: [
+                                                              Color(0x95012030),
+                                                              Color(0x8745A287),
+                                                              Color(0x7E3D806B)
+                                                            ],
+                                                            stops: [
+                                                              0.0,
+                                                              0.6,
+                                                              0.8
+                                                            ],
+                                                            begin:
+                                                                AlignmentDirectional(
+                                                                    1.0, -1.0),
+                                                            end:
+                                                                AlignmentDirectional(
+                                                                    -1.0, 1.0),
+                                                          ),
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
@@ -369,10 +402,6 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 0.0, 0.0),
                                           child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.8,
                                             height: MediaQuery.of(context)
                                                     .size
                                                     .height *
@@ -400,24 +429,34 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                     final bookedTestsItem =
                                                         bookedTests[
                                                             bookedTestsIndex];
-                                                    return wrapWithModel(
-                                                      model: _model
-                                                          .testItemWidgetModels
-                                                          .getModel(
-                                                        bookedTestsItem
-                                                            .reference.id,
-                                                        bookedTestsIndex,
-                                                      ),
-                                                      updateCallback: () =>
-                                                          setState(() {}),
-                                                      child:
-                                                          TestItemWidgetWidget(
-                                                        key: Key(
-                                                          'Keyjr0_${bookedTestsItem.reference.id}',
+                                                    return Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: wrapWithModel(
+                                                        model: _model
+                                                            .testItemWidgetModels
+                                                            .getModel(
+                                                          bookedTestsItem
+                                                              .reference.id,
+                                                          bookedTestsIndex,
                                                         ),
-                                                        index: bookedTestsIndex,
-                                                        bookedTest:
-                                                            bookedTestsItem,
+                                                        updateCallback: () =>
+                                                            setState(() {}),
+                                                        child:
+                                                            TestItemWidgetWidget(
+                                                          key: Key(
+                                                            'Keyjr0_${bookedTestsItem.reference.id}',
+                                                          ),
+                                                          index:
+                                                              bookedTestsIndex,
+                                                          bookedTest:
+                                                              bookedTestsItem,
+                                                        ),
                                                       ),
                                                     );
                                                   },

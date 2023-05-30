@@ -151,7 +151,16 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                           maxHeight: 40.0,
                         ),
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryText,
+                          gradient: LinearGradient(
+                            colors: [
+                              Color(0x95012030),
+                              Color(0x8745A287),
+                              Color(0x7E3D806B)
+                            ],
+                            stops: [0.0, 0.6, 0.8],
+                            begin: AlignmentDirectional(1.0, -1.0),
+                            end: AlignmentDirectional(-1.0, 1.0),
+                          ),
                           borderRadius: BorderRadius.circular(25.0),
                         ),
                         child: Padding(

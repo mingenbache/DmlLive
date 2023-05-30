@@ -70,8 +70,11 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
             maxWidth: 500.0,
           ),
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).secondary,
+            color: FlutterFlowTheme.of(context).primaryBackground,
             borderRadius: BorderRadius.circular(16.0),
+            border: Border.all(
+              color: Color(0xA36CD7B7),
+            ),
           ),
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
@@ -159,11 +162,11 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                         replacement: '…',
                                       ),
                                   style: GoogleFonts.getFont(
-                                    'Roboto',
+                                    'Lexend Deca',
                                     color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+                                        .primaryText,
                                     fontWeight: FontWeight.w500,
-                                    fontSize: 15.0,
+                                    fontSize: 24.0,
                                   ),
                                 ),
                               ),

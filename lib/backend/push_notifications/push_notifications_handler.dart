@@ -159,7 +159,6 @@ final parametersBuilderMap =
       ),
   'InvoiceList': ParameterData.none(),
   'editUser': ParameterData.none(),
-  'TestedTests': ParameterData.none(),
   'Login': ParameterData.none(),
   'checkup': ParameterData.none(),
   'MyBookings': ParameterData.none(),

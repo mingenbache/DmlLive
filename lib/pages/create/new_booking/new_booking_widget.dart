@@ -216,11 +216,13 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          wrapWithModel(
-                                            model: _model.topActionsModel,
-                                            updateCallback: () =>
-                                                setState(() {}),
-                                            child: TopActionsWidget(),
+                                          Flexible(
+                                            child: wrapWithModel(
+                                              model: _model.topActionsModel,
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              child: TopActionsWidget(),
+                                            ),
                                           ),
                                         ],
                                       ),
