@@ -65,21 +65,34 @@ class _DateWidgetVerticalWidgetState extends State<DateWidgetVerticalWidget> {
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 2.0, 2.0),
           child: Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Expanded(
-                flex: 1,
+              Container(
+                decoration: BoxDecoration(),
+                child: Text(
+                  functions.upperCase(functions.dateMonth(widget.date)),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Open Sans',
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500,
+                        lineHeight: 1.0,
+                      ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
                 child: Container(
                   decoration: BoxDecoration(),
                   child: Text(
-                    functions.upperCase(functions.dateMonth(widget.date)),
+                    functions.dateDay(widget.date),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Open Sans',
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          fontSize: 12.0,
-                          fontWeight: FontWeight.w500,
-                          lineHeight: 1.0,
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.w600,
+                          lineHeight: 0.8,
                         ),
                   ),
                 ),
@@ -87,30 +100,14 @@ class _DateWidgetVerticalWidgetState extends State<DateWidgetVerticalWidget> {
               Container(
                 decoration: BoxDecoration(),
                 child: Text(
-                  functions.dateDay(widget.date),
+                  functions.dateYear(widget.date),
+                  maxLines: 1,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Open Sans',
                         color: FlutterFlowTheme.of(context).secondary,
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.w600,
-                        lineHeight: 1.0,
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500,
                       ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  decoration: BoxDecoration(),
-                  child: Text(
-                    functions.dateYear(widget.date),
-                    maxLines: 1,
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Open Sans',
-                          color: FlutterFlowTheme.of(context).secondary,
-                          fontSize: 12.0,
-                          fontWeight: FontWeight.w500,
-                        ),
-                  ),
                 ),
               ),
             ],

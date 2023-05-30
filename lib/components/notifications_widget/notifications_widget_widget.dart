@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'notifications_widget_model.dart';
@@ -332,13 +333,12 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                           children: [
                                                             Expanded(
                                                               child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0,
-                                                                            0.0),
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        10.0,
+                                                                        0.0,
+                                                                        10.0),
                                                                 child: Column(
                                                                   mainAxisSize:
                                                                       MainAxisSize
@@ -347,26 +347,30 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                       MainAxisAlignment
                                                                           .start,
                                                                   children: [
-                                                                    Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        Expanded(
-                                                                          child:
-                                                                              Container(
-                                                                            decoration:
-                                                                                BoxDecoration(
-                                                                              color: FlutterFlowTheme.of(context).primary,
-                                                                              borderRadius: BorderRadius.circular(12.0),
-                                                                            ),
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.spaceBetween,
+                                                                        children: [
+                                                                          Expanded(
                                                                             child:
-                                                                                Row(
-                                                                              mainAxisSize: MainAxisSize.max,
-                                                                              mainAxisAlignment: MainAxisAlignment.center,
-                                                                              children: [
-                                                                                Expanded(
-                                                                                  child: StreamBuilder<UsersRecord>(
+                                                                                Container(
+                                                                              decoration: BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(12.0),
+                                                                              ),
+                                                                              child: Row(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                                                children: [
+                                                                                  StreamBuilder<UsersRecord>(
                                                                                     stream: UsersRecord.getDocument(columnChatsRecord.lastMessageSentBy!),
                                                                                     builder: (context, snapshot) {
                                                                                       // Customize what your widget looks like when it's loading.
@@ -385,49 +389,62 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                                       final textUsersRecord = snapshot.data!;
                                                                                       return Text(
                                                                                         '${textUsersRecord.firstName} ${textUsersRecord.lastName}',
-                                                                                        textAlign: TextAlign.center,
+                                                                                        textAlign: TextAlign.start,
                                                                                         maxLines: 1,
                                                                                         style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                               fontFamily: 'Open Sans',
-                                                                                              fontSize: 12.0,
-                                                                                              fontWeight: FontWeight.normal,
+                                                                                              color: FlutterFlowTheme.of(context).primaryText,
+                                                                                              fontSize: 14.0,
+                                                                                              fontWeight: FontWeight.w800,
+                                                                                              lineHeight: 1.0,
                                                                                             ),
                                                                                       );
                                                                                     },
                                                                                   ),
+                                                                                ],
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                          Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.min,
+                                                                            children: [
+                                                                              Text(
+                                                                                dateTimeFormat(
+                                                                                  'MMMEd',
+                                                                                  columnChatsRecord.lastMessageTime!,
+                                                                                  locale: FFLocalizations.of(context).languageCode,
                                                                                 ),
-                                                                              ],
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                        Expanded(
-                                                                          child:
-                                                                              Align(
-                                                                            alignment:
-                                                                                AlignmentDirectional(0.7, 0.0),
-                                                                            child:
-                                                                                Text(
-                                                                              dateTimeFormat(
-                                                                                'd/M H:mm',
-                                                                                columnChatsRecord.lastMessageTime!,
-                                                                                locale: FFLocalizations.of(context).languageCode,
+                                                                                textAlign: TextAlign.end,
+                                                                                style: TextStyle(
+                                                                                  color: Color(0xFF57636C),
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                  fontSize: 10.0,
+                                                                                ),
                                                                               ),
-                                                                              textAlign: TextAlign.end,
-                                                                              style: TextStyle(
-                                                                                color: Color(0xFF57636C),
-                                                                                fontWeight: FontWeight.w500,
-                                                                                fontSize: 10.0,
+                                                                              Text(
+                                                                                dateTimeFormat(
+                                                                                  'Hm',
+                                                                                  columnChatsRecord.lastMessageTime!,
+                                                                                  locale: FFLocalizations.of(context).languageCode,
+                                                                                ),
+                                                                                textAlign: TextAlign.end,
+                                                                                style: TextStyle(
+                                                                                  color: Color(0xFF57636C),
+                                                                                  fontWeight: FontWeight.w500,
+                                                                                  fontSize: 10.0,
+                                                                                ),
                                                                               ),
-                                                                            ),
+                                                                            ],
                                                                           ),
-                                                                        ),
-                                                                      ],
+                                                                        ],
+                                                                      ),
                                                                     ),
                                                                     Padding(
                                                                       padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
-                                                                          0.0,
-                                                                          0.0,
+                                                                          5.0,
+                                                                          5.0,
                                                                           5.0),
                                                                       child:
                                                                           Row(
@@ -438,26 +455,24 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                         crossAxisAlignment:
                                                                             CrossAxisAlignment.start,
                                                                         children: [
-                                                                          Container(
-                                                                            width:
-                                                                                MediaQuery.of(context).size.width * 0.72,
-                                                                            constraints:
-                                                                                BoxConstraints(
-                                                                              maxWidth: 290.0,
-                                                                            ),
-                                                                            decoration:
-                                                                                BoxDecoration(),
+                                                                          Flexible(
                                                                             child:
-                                                                                Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 4.0, 0.0),
-                                                                              child: Text(
-                                                                                columnChatsRecord.lastMessage,
-                                                                                style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                      fontFamily: 'Lexend Deca',
-                                                                                      color: FlutterFlowTheme.of(context).primaryText,
-                                                                                      fontSize: 12.0,
-                                                                                      fontWeight: FontWeight.normal,
-                                                                                    ),
+                                                                                Container(
+                                                                              constraints: BoxConstraints(
+                                                                                maxWidth: 290.0,
+                                                                              ),
+                                                                              decoration: BoxDecoration(),
+                                                                              child: Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 4.0, 0.0),
+                                                                                child: Text(
+                                                                                  columnChatsRecord.lastMessage,
+                                                                                  style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                        fontFamily: 'Lexend Deca',
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                        fontSize: 12.0,
+                                                                                        fontWeight: FontWeight.normal,
+                                                                                      ),
+                                                                                ),
                                                                               ),
                                                                             ),
                                                                           ),
@@ -465,10 +480,10 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                             decoration:
                                                                                 BoxDecoration(),
                                                                             child:
-                                                                                Icon(
-                                                                              Icons.keyboard_arrow_right,
-                                                                              color: FlutterFlowTheme.of(context).primary,
-                                                                              size: 24.0,
+                                                                                FaIcon(
+                                                                              FontAwesomeIcons.arrowCircleRight,
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
+                                                                              size: 16.0,
                                                                             ),
                                                                           ),
                                                                         ],

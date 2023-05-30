@@ -1,12 +1,13 @@
 import '/backend/backend.dart';
-import '/components/booking_view_widget/booking_view_widget_widget.dart';
-import '/components/booking_widget/booking_widget_widget.dart';
+import '/components/booking_update/booking_update_widget.dart';
+import '/components/booking_view_widget_copy/booking_view_widget_copy_widget.dart';
 import '/components/top_actions/top_actions_widget.dart';
 import '/components/unconfirmed_booking_widget/unconfirmed_booking_widget_widget.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -287,22 +288,43 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                             child: Container(
                                                               decoration:
                                                                   BoxDecoration(),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            3.0,
-                                                                            0.0,
-                                                                            0.0),
+                                                              child:
+                                                                  wrapWithModel(
+                                                                model: _model
+                                                                    .bookingViewWidgetCopyModels1
+                                                                    .getModel(
+                                                                  pastbookingsItem
+                                                                      .reference
+                                                                      .id,
+                                                                  pastbookingsIndex,
+                                                                ),
+                                                                updateCallback:
+                                                                    () => setState(
+                                                                        () {}),
                                                                 child:
-                                                                    BookingWidgetWidget(
+                                                                    BookingViewWidgetCopyWidget(
                                                                   key: Key(
-                                                                      'Key9ju_${pastbookingsIndex}_of_${pastbookings.length}'),
+                                                                    'Key6dn_${pastbookingsItem.reference.id}',
+                                                                  ),
                                                                   index:
                                                                       pastbookingsIndex,
-                                                                  booking:
+                                                                  isExpanded: _model
+                                                                          .expandedBooking
+                                                                          ?.id ==
+                                                                      pastbookingsItem
+                                                                          .reference
+                                                                          .id,
+                                                                  bookingRef:
                                                                       pastbookingsItem,
+                                                                  expand:
+                                                                      () async {
+                                                                    setState(
+                                                                        () {
+                                                                      _model.expandedBooking =
+                                                                          pastbookingsItem
+                                                                              .reference;
+                                                                    });
+                                                                  },
                                                                 ),
                                                               ),
                                                             ),
@@ -339,23 +361,32 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                   ),
                                                   child: Container(
                                                     decoration: BoxDecoration(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondary,
+                                                      gradient: LinearGradient(
+                                                        colors: [
+                                                          Color(0x95012030),
+                                                          Color(0x8745A287),
+                                                          Color(0x7E3D806B)
+                                                        ],
+                                                        stops: [0.0, 0.6, 0.8],
+                                                        begin:
+                                                            AlignmentDirectional(
+                                                                1.0, -1.0),
+                                                        end:
+                                                            AlignmentDirectional(
+                                                                -1.0, 1.0),
+                                                      ),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               12.0),
                                                     ),
                                                     child: FlutterFlowCalendar(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .primaryBackground,
                                                       iconColor:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .primaryText,
+                                                              .primaryBackground,
                                                       weekFormat: true,
                                                       weekStartsMonday: true,
                                                       initialDate:
@@ -391,6 +422,9 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Open Sans',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBackground,
                                                               ),
                                                       dateStyle:
                                                           FlutterFlowTheme.of(
@@ -399,11 +433,25 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                       selectedDateStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .titleSmall,
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Open Sans',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
                                                       inactiveDateStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .labelMedium,
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Montserrat',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                              ),
                                                       locale:
                                                           FFLocalizations.of(
                                                                   context)
@@ -478,9 +526,30 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                             child: Container(
                                                               decoration:
                                                                   BoxDecoration(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondary,
+                                                                gradient:
+                                                                    LinearGradient(
+                                                                  colors: [
+                                                                    Color(
+                                                                        0x95012030),
+                                                                    Color(
+                                                                        0x8745A287),
+                                                                    Color(
+                                                                        0x7E3D806B)
+                                                                  ],
+                                                                  stops: [
+                                                                    0.0,
+                                                                    0.6,
+                                                                    0.8
+                                                                  ],
+                                                                  begin:
+                                                                      AlignmentDirectional(
+                                                                          1.0,
+                                                                          -1.0),
+                                                                  end:
+                                                                      AlignmentDirectional(
+                                                                          -1.0,
+                                                                          1.0),
+                                                                ),
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
@@ -614,18 +683,89 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                                           15.0),
                                                                   child:
                                                                       Container(
-                                                                    height:
-                                                                        205.0,
                                                                     decoration:
                                                                         BoxDecoration(),
                                                                     child:
-                                                                        BookingViewWidgetWidget(
-                                                                      key: Key(
-                                                                          'Keyvp0_${bookingsIndex}_of_${bookings.length}'),
-                                                                      index:
+                                                                        InkWell(
+                                                                      splashColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      focusColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      hoverColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      highlightColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      onTap:
+                                                                          () async {
+                                                                        if (_model.expandedBooking?.id ==
+                                                                            bookingsItem.reference.id) {
+                                                                          await showModalBottomSheet(
+                                                                            isScrollControlled:
+                                                                                true,
+                                                                            backgroundColor:
+                                                                                Colors.transparent,
+                                                                            enableDrag:
+                                                                                false,
+                                                                            context:
+                                                                                context,
+                                                                            builder:
+                                                                                (bottomSheetContext) {
+                                                                              return Padding(
+                                                                                padding: MediaQuery.of(bottomSheetContext).viewInsets,
+                                                                                child: BookingUpdateWidget(
+                                                                                  bookingRef: bookingsItem,
+                                                                                ),
+                                                                              );
+                                                                            },
+                                                                          ).then((value) =>
+                                                                              setState(() {}));
+                                                                        } else {
+                                                                          setState(
+                                                                              () {
+                                                                            _model.expandedBooking =
+                                                                                bookingsItem.reference;
+                                                                          });
+                                                                        }
+                                                                      },
+                                                                      child:
+                                                                          wrapWithModel(
+                                                                        model: _model
+                                                                            .bookingViewWidgetCopyModels2
+                                                                            .getModel(
+                                                                          bookingsItem
+                                                                              .reference
+                                                                              .id,
                                                                           bookingsIndex,
-                                                                      bookingRef:
-                                                                          bookingsItem,
+                                                                        ),
+                                                                        updateCallback:
+                                                                            () =>
+                                                                                setState(() {}),
+                                                                        updateOnChange:
+                                                                            true,
+                                                                        child:
+                                                                            BookingViewWidgetCopyWidget(
+                                                                          key:
+                                                                              Key(
+                                                                            'Keyg6q_${bookingsItem.reference.id}',
+                                                                          ),
+                                                                          index:
+                                                                              bookingsIndex,
+                                                                          bookingRef:
+                                                                              bookingsItem,
+                                                                          isExpanded:
+                                                                              _model.expandedBooking?.id == bookingsItem.reference.id,
+                                                                          expand:
+                                                                              () async {
+                                                                            setState(() {
+                                                                              _model.expandedBooking = bookingsItem.reference;
+                                                                            });
+                                                                          },
+                                                                        ),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 );

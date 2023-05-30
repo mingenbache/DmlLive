@@ -182,7 +182,9 @@ class _BookingTestListItemWidgetState extends State<BookingTestListItemWidget> {
                                   Container(
                                     width: 25.0,
                                     height: 25.0,
-                                    decoration: BoxDecoration(),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                    ),
                                     child: Stack(
                                       children: [
                                         Container(
@@ -203,90 +205,100 @@ class _BookingTestListItemWidgetState extends State<BookingTestListItemWidget> {
                                       ],
                                     ),
                                   ),
-                                  Container(
-                                    width: 25.0,
-                                    height: 25.0,
-                                    decoration: BoxDecoration(),
-                                    child: Stack(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    2.0, 2.0, 2.0, 2.0),
-                                            child: FaIcon(
-                                              FontAwesomeIcons
-                                                  .handHoldingMedical,
-                                              color: Color(0x34FFFFFF),
-                                              size: 20.0,
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        3.0, 0.0, 0.0, 0.0),
+                                    child: Container(
+                                      width: 25.0,
+                                      height: 25.0,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Stack(
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(2.0, 2.0, 2.0, 2.0),
+                                              child: FaIcon(
+                                                FontAwesomeIcons
+                                                    .handHoldingMedical,
+                                                color: Color(0x34FFFFFF),
+                                                size: 20.0,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    2.0, 2.0, 2.0, 2.0),
-                                            child: FaIcon(
-                                              FontAwesomeIcons
-                                                  .handHoldingMedical,
-                                              color: Color(0xFFF3F3F3),
-                                              size: 20.0,
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(2.0, 2.0, 2.0, 2.0),
+                                              child: FaIcon(
+                                                FontAwesomeIcons
+                                                    .handHoldingMedical,
+                                                color: Color(0xFFF3F3F3),
+                                                size: 20.0,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        3.0, 0.0, 0.0, 0.0),
+                                    child: Container(
+                                      width: 25.0,
+                                      height: 25.0,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Stack(
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(2.0, 2.0, 2.0, 2.0),
+                                              child: FaIcon(
+                                                FontAwesomeIcons.flask,
+                                                color: Color(0x33FFFFFF),
+                                                size: 20.0,
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(2.0, 2.0, 2.0, 2.0),
+                                              child: FaIcon(
+                                                FontAwesomeIcons.flask,
+                                                color: Color(0xFFF3F3F3),
+                                                size: 20.0,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   Container(
                                     width: 25.0,
                                     height: 25.0,
-                                    decoration: BoxDecoration(),
-                                    child: Stack(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    2.0, 2.0, 2.0, 2.0),
-                                            child: FaIcon(
-                                              FontAwesomeIcons.flask,
-                                              color: Color(0x33FFFFFF),
-                                              size: 20.0,
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    2.0, 2.0, 2.0, 2.0),
-                                            child: FaIcon(
-                                              FontAwesomeIcons.flask,
-                                              color: Color(0xFFF3F3F3),
-                                              size: 20.0,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
                                     ),
-                                  ),
-                                  Container(
-                                    width: 25.0,
-                                    height: 25.0,
-                                    decoration: BoxDecoration(),
                                     child: Stack(
                                       children: [
                                         Container(

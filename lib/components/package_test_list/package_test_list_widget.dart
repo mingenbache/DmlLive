@@ -86,20 +86,49 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
     context.watch<FFAppState>();
 
     return Container(
-      decoration: BoxDecoration(),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(0.0),
+          bottomRight: Radius.circular(0.0),
+          topLeft: Radius.circular(30.0),
+          topRight: Radius.circular(30.0),
+        ),
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
           Stack(
             children: [
-              Container(
-                height: MediaQuery.of(context).size.height * 0.6,
-                decoration: BoxDecoration(
-                  color: Color(0xFFEEEEEE),
+              ClipRRect(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(0.0),
+                  bottomRight: Radius.circular(0.0),
+                  topLeft: Radius.circular(30.0),
+                  topRight: Radius.circular(30.0),
                 ),
-                child: Image.asset(
-                  'assets/images/cdc-XLhDvfz0sUM-unsplash-reducedBW.jpg',
-                  fit: BoxFit.cover,
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.6,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFEEEEEE),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(0.0),
+                      bottomRight: Radius.circular(0.0),
+                      topLeft: Radius.circular(30.0),
+                      topRight: Radius.circular(30.0),
+                    ),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(0.0),
+                      bottomRight: Radius.circular(0.0),
+                      topLeft: Radius.circular(30.0),
+                      topRight: Radius.circular(30.0),
+                    ),
+                    child: Image.asset(
+                      'assets/images/cdc-XLhDvfz0sUM-unsplash-reducedBW.jpg',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
               ),
               Container(
@@ -108,19 +137,15 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      Color(0x552F2F2F),
-                      FlutterFlowTheme.of(context).tertiary
+                      Color(0x95012030),
+                      Color(0xFF45A287),
+                      FlutterFlowTheme.of(context).secondaryBackground
                     ],
-                    stops: [0.0, 0.4],
-                    begin: AlignmentDirectional(0.0, -1.0),
-                    end: AlignmentDirectional(0, 1.0),
+                    stops: [0.0, 0.3, 0.4],
+                    begin: AlignmentDirectional(0.21, -1.0),
+                    end: AlignmentDirectional(-0.21, 1.0),
                   ),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(16.0),
-                    bottomRight: Radius.circular(16.0),
-                    topLeft: Radius.circular(0.0),
-                    topRight: Radius.circular(0.0),
-                  ),
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
@@ -190,7 +215,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                         decoration: BoxDecoration(),
                         child: Card(
                           clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: Color(0x91FFFFFF),
+                          color: Color(0xDDFFFFFF),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
                           ),
@@ -205,8 +230,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                       4.0, 0.0, 4.0, 0.0),
                                   child: Icon(
                                     Icons.search_rounded,
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
+                                    color: FlutterFlowTheme.of(context).accent1,
                                     size: 24.0,
                                   ),
                                 ),
@@ -231,7 +255,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                               fontFamily: 'Roboto',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondary,
+                                                      .accent1,
                                               fontSize: 16.0,
                                               fontWeight: FontWeight.w500,
                                             ),
@@ -239,7 +263,9 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: Color(0xFF586B06),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent1,
                                               fontSize: 16.0,
                                               fontWeight: FontWeight.w500,
                                             ),
@@ -294,7 +320,9 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                 },
                                                 child: Icon(
                                                   Icons.clear,
-                                                  color: Color(0xFF586B06),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .accent1,
                                                   size: 18.0,
                                                 ),
                                               )
@@ -304,7 +332,8 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Roboto',
-                                            color: Colors.white,
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent1,
                                             fontSize: 20.0,
                                             fontWeight: FontWeight.w500,
                                           ),
@@ -402,7 +431,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                   fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondary,
+                                                      .accent1,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -591,7 +620,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                                         'Open Sans',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .secondary,
+                                                                        .accent1,
                                                                     fontSize:
                                                                         16.0,
                                                                   ),
@@ -640,7 +669,6 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                             width: MediaQuery.of(context).size.width * 1.0,
                             height: MediaQuery.of(context).size.height * 0.55,
                             decoration: BoxDecoration(
-                              color: Color(0x30FFFFFF),
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(0.0),
                                 bottomRight: Radius.circular(0.0),
@@ -770,11 +798,12 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).secondary,
+                        color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Open Sans',
-                                  color: FlutterFlowTheme.of(context).tertiary,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                 ),
                         elevation: 2.0,
                         borderSide: BorderSide(

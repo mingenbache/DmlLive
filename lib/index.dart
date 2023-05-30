@@ -14,7 +14,6 @@ export '/pages/report_list/report_list_widget.dart' show ReportListWidget;
 export '/pages/test_deck/test_deck_widget.dart' show TestDeckWidget;
 export '/pages/invoice_list/invoice_list_widget.dart' show InvoiceListWidget;
 export '/pages/edit_user/edit_user_widget.dart' show EditUserWidget;
-export '/pages/tested_tests/tested_tests_widget.dart' show TestedTestsWidget;
 export '/pages/auth/login/login_widget.dart' show LoginWidget;
 export '/pages/auth/checkup/checkup_widget.dart' show CheckupWidget;
 export '/pages/view/my_bookings/my_bookings_widget.dart' show MyBookingsWidget;

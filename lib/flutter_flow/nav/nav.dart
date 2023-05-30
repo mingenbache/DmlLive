@@ -172,11 +172,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => EditUserWidget(),
             ),
             FFRoute(
-              name: 'TestedTests',
-              path: 'testedTests',
-              builder: (context, params) => TestedTestsWidget(),
-            ),
-            FFRoute(
               name: 'Login',
               path: 'login',
               builder: (context, params) => LoginWidget(),

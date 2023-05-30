@@ -110,24 +110,53 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
           children: [
             Stack(
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width * 1.0,
-                  height: MediaQuery.of(context).size.height * 0.83,
-                  constraints: BoxConstraints(
-                    maxHeight: 740.0,
+                ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(0.0),
+                    bottomRight: Radius.circular(0.0),
+                    topLeft: Radius.circular(49.0),
+                    topRight: Radius.circular(49.0),
                   ),
-                  decoration: BoxDecoration(),
-                  child: ClipRect(
-                    child: ImageFiltered(
-                      imageFilter: ImageFilter.blur(
-                        sigmaX: 1.0,
-                        sigmaY: 1.0,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 1.0,
+                    height: MediaQuery.of(context).size.height * 0.83,
+                    constraints: BoxConstraints(
+                      maxHeight: 740.0,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(0.0),
+                        bottomRight: Radius.circular(0.0),
+                        topLeft: Radius.circular(49.0),
+                        topRight: Radius.circular(49.0),
                       ),
-                      child: Image.asset(
-                        'assets/images/cdc-XLhDvfz0sUM-unsplash-reducedBW.jpg',
-                        width: MediaQuery.of(context).size.width * 1.0,
-                        height: MediaQuery.of(context).size.height * 0.5,
-                        fit: BoxFit.cover,
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(0.0),
+                        bottomRight: Radius.circular(0.0),
+                        topLeft: Radius.circular(49.0),
+                        topRight: Radius.circular(49.0),
+                      ),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(
+                          sigmaX: 1.0,
+                          sigmaY: 1.0,
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(0.0),
+                            bottomRight: Radius.circular(0.0),
+                            topLeft: Radius.circular(48.0),
+                            topRight: Radius.circular(49.0),
+                          ),
+                          child: Image.asset(
+                            'assets/images/cdc-XLhDvfz0sUM-unsplash-reducedBW.jpg',
+                            width: MediaQuery.of(context).size.width * 1.0,
+                            height: MediaQuery.of(context).size.height * 0.5,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -148,8 +177,8 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(39.0),
                       bottomRight: Radius.circular(39.0),
-                      topLeft: Radius.circular(0.0),
-                      topRight: Radius.circular(0.0),
+                      topLeft: Radius.circular(49.0),
+                      topRight: Radius.circular(49.0),
                     ),
                   ),
                   child: Padding(
@@ -232,10 +261,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                   alignment: Alignment(0.0, 0),
                                   child: TabBar(
                                     labelColor: FlutterFlowTheme.of(context)
-                                        .primaryText,
+                                        .secondaryBackground,
                                     unselectedLabelColor:
                                         FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
+                                            .primaryText,
                                     labelStyle:
                                         FlutterFlowTheme.of(context).titleSmall,
                                     indicatorColor: FlutterFlowTheme.of(context)
@@ -268,7 +297,9 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                             child: Card(
                                               clipBehavior:
                                                   Clip.antiAliasWithSaveLayer,
-                                              color: Color(0x91FFFFFF),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               shape: RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
@@ -291,9 +322,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                   0.0),
                                                       child: Icon(
                                                         Icons.search_rounded,
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .primaryBackground,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent1,
                                                         size: 24.0,
                                                       ),
                                                     ),
@@ -334,7 +366,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                           'Open Sans',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryText,
+                                                                          .accent1,
                                                                       fontSize:
                                                                           16.0,
                                                                       fontWeight:
@@ -350,7 +382,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                           'Roboto',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryText,
+                                                                          .accent1,
                                                                       fontSize:
                                                                           16.0,
                                                                       fontWeight:
@@ -451,7 +483,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                           .clear,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryText,
+                                                                          .accent1,
                                                                       size:
                                                                           18.0,
                                                                     ),
@@ -466,7 +498,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                     'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryText,
+                                                                    .accent1,
                                                                 fontSize: 20.0,
                                                                 fontWeight:
                                                                     FontWeight
@@ -795,7 +827,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                                 testCategoriesItem,
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       fontFamily: 'Open Sans',
-                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      color: FlutterFlowTheme.of(context).accent1,
                                                                                       fontSize: 16.0,
                                                                                     ),
                                                                               ),

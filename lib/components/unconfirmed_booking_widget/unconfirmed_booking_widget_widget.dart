@@ -221,17 +221,14 @@ class _UnconfirmedBookingWidgetWidgetState
                             ),
                           ),
                         ),
-                        Expanded(
-                          flex: 1,
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 5.0, 5.0, 0.0),
-                            child: wrapWithModel(
-                              model: _model.dateWidgetSmallModel,
-                              updateCallback: () => setState(() {}),
-                              child: DateWidgetSmallWidget(
-                                date: widget.bookingRef!.scheduledDate,
-                              ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 5.0, 5.0, 0.0),
+                          child: wrapWithModel(
+                            model: _model.dateWidgetSmallModel,
+                            updateCallback: () => setState(() {}),
+                            child: DateWidgetSmallWidget(
+                              date: widget.bookingRef!.scheduledDate,
                             ),
                           ),
                         ),
