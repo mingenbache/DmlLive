@@ -134,13 +134,13 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Color(0x00FFFFFF),
-                            FlutterFlowTheme.of(context).secondary,
-                            FlutterFlowTheme.of(context).secondary
+                            Color(0x95012030),
+                            Color(0xFF45A287),
+                            Color(0x7E3D806B)
                           ],
-                          stops: [0.0, 0.3, 0.4],
-                          begin: AlignmentDirectional(0.0, -1.0),
-                          end: AlignmentDirectional(0, 1.0),
+                          stops: [0.0, 0.6, 0.8],
+                          begin: AlignmentDirectional(1.0, -1.0),
+                          end: AlignmentDirectional(-1.0, 1.0),
                         ),
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(69.0),
@@ -356,10 +356,9 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                       Icon(
                                                         Icons
                                                             .motion_photos_pause_rounded,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
                                                         size: 20.0,
                                                       ),
                                                       Padding(
@@ -380,7 +379,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                     'Lexend Deca',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryText,
+                                                                    .secondaryBackground,
                                                                 fontSize: 14.0,
                                                                 fontWeight:
                                                                     FontWeight
@@ -426,7 +425,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                   unselectedLabelColor:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .primaryText,
+                                                          .secondary,
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .bodyMedium

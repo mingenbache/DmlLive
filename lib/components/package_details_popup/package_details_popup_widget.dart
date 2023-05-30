@@ -131,12 +131,13 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              Color(0x646CD7B7),
-                              FlutterFlowTheme.of(context).secondary
+                              Color(0x95012030),
+                              Color(0xFF45A287),
+                              Color(0x7E3D806B)
                             ],
-                            stops: [0.3, 0.4],
-                            begin: AlignmentDirectional(0.0, -1.0),
-                            end: AlignmentDirectional(0, 1.0),
+                            stops: [0.0, 0.6, 0.8],
+                            begin: AlignmentDirectional(1.0, -1.0),
+                            end: AlignmentDirectional(-1.0, 1.0),
                           ),
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(69.0),
@@ -405,8 +406,6 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                   .height *
                                               0.47,
                                           decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondary,
                                             borderRadius: BorderRadius.only(
                                               bottomLeft: Radius.circular(0.0),
                                               bottomRight: Radius.circular(0.0),
@@ -429,7 +428,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                     unselectedLabelColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .primaryText,
+                                                            .alternate,
                                                     labelStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .bodyMedium
@@ -478,8 +477,9 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                           ),
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: Color(
-                                                                0x2CFFFFFF),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryBackground,
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
