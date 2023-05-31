@@ -308,12 +308,8 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                                   ),
                                                                   index:
                                                                       pastbookingsIndex,
-                                                                  isExpanded: _model
-                                                                          .expandedBooking
-                                                                          ?.id ==
-                                                                      pastbookingsItem
-                                                                          .reference
-                                                                          .id,
+                                                                  isExpanded:
+                                                                      true,
                                                                   bookingRef:
                                                                       pastbookingsItem,
                                                                   expand:
